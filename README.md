@@ -3,3 +3,5 @@ UBLost is web app intended for students and visitors of University at Buffalo. T
 
 Trello Link: 
 https://trello.com/b/Xp3Uqtts/team-ublost
+Task Tracking:
+We've decided to use GitHub issues.
