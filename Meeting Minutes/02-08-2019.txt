@@ -1,0 +1,20 @@
+Members present: qchen36, aa268, dgao, sallyleu, hhuang36 
+Minutes taken by: Sally (sallyleu)
+
+Agenda:
+Decide on what sort of product we will demo by the end of sprint 1
+
+Brainstorming:
+Interactive map +
+Database of blueprints/floor plans of each building
+	With pictures
+Implement Google maps API indoor routing from location A to B
+	Risk: GPS doesn’t have signal
+Phone app using camera to recognize buildings
+	Image recognition
+	GPS location stuff
+	Risk: Space issues?
+
+Next meeting: Monday 2/11 4pm Capen
+Go over research
+Post on Trello what you are researching 
