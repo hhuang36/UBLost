@@ -1,3 +1,12 @@
-Feature:
+User Stories - Meeting 02/11/19
 
-User Story:
+Who's Present: Everyone
+
+Abstract:
+As a lost student, I want to find my way through Capen, so I can study with my group.
+
+Action:
+- Show where I am
+- Search name of building where I need to go
+- The route/floor plan of the building I am in
+- Follow path
