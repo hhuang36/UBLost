@@ -1,0 +1,13 @@
+FEATURE: The ability to save routes
+
+Story: As a freshman who wants to find my way to the library during breaks,
+I open the app to determine the way from my location to the library and reuse it.
+
+Actions:
+1. Open the app
+2. Click on the route icon
+3. The app will determine my location
+4. Then I will enter in my desired destination
+5. The app will calculate the route and display it on my screen
+6. I will click on the option to save route
+7. When I go to "saved routes" in the menu panel, this path will be there for next time
