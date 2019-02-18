@@ -1,0 +1,13 @@
+FEATURE: The ability to look up a building and view its floor plan
+
+Story: As a computer science teaching assistant who works in Davis throughout the week, 
+I want to know the layout of the building to determine the locations of my office hours.
+
+Actions:
+1. Open the app
+2. Click on search floorplans
+3. A screen of options for buildings listed in alphabetical order will be displayed
+4. Click on the option labeled "Davis Hall"
+5. A similar option page will open giving options for the floor #
+6. Click on the option labeled "Floor 3"
+7. A floorplan of the 3rd floor of Davis will appear on the screen
