@@ -4,4 +4,5 @@
     <string name="close">Close</string>
     <string name="home_page">Home Page</string>
     <string name="search_floorplans">Search FloorPlans</string>
+    <string name="select_floor">Select Floor</string>
 </resources>

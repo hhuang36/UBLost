@@ -6,16 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".HomeActivity">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
         <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@mipmap/ub"></TextView>
-
-    </LinearLayout>
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="0dp"
+            android:background="@mipmap/background"
+            android:text="@string/select_floor"
+            android:textAlignment="center"
+            android:textColor="@color/colorText"
+            android:textSize="48sp" />
+    </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>
