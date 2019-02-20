@@ -2,4 +2,6 @@
     <string name="app_name">UBLost</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
+    <string name="home_page">Home Page</string>
+    <string name="search_floorplans">Search FloorPlans</string>
 </resources>
