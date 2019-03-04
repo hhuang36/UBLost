@@ -3,6 +3,28 @@
     <string name="open">Open</string>
     <string name="close">Close</string>
     <string name="home_page">Home Page</string>
-    <string name="search_floorplans">Search FloorPlans</string>
+    <string name="search_floorplans">Search Floor Plans</string>
     <string name="select_floor">Select Floor</string>
+    <string name="Capen_Library"> Capen Library </string>
+    <string name="Lockwood_Library">Lockwood Library</string>
+    <string name="Music_Library">Music Library</string>
+    <string name="floor_1">Floor 1</string>
+    <string name="floor_2">Floor 2</string>
+    <string name="floor_3">Floor 3</string>
+    <string name="navigate_me">Navigate Me</string>
+    <string-array name="my_buildings">
+        <item>Capen Library</item>
+        <item>Lockwood Library</item>
+        <item>Norton Hall</item>
+        <item>Davis Hall</item>
+        <item>Music Library</item>
+        <item></item>
+    </string-array>
+    <string-array name="search_capen_floors">
+        <item>Floor 1</item>
+        <item>Floor 2</item>
+        <item>Floor 3</item>
+        <item></item>
+    </string-array>
+    <string name="my_building">My Buildings</string>
 </resources>
