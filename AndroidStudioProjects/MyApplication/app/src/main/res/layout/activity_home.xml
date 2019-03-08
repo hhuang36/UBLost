@@ -26,6 +26,7 @@
 
         <Button
             style="@style/Widget.AppCompat.Button.Colored"
+            android:id="@+id/CapenButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="0dp"
@@ -35,6 +36,7 @@
 
         <Button
             style="@style/Widget.AppCompat.Button.Colored"
+            android:id="@+id/LockWoodButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="0dp"
@@ -44,6 +46,7 @@
 
         <Button
             style="@style/Widget.AppCompat.Button.Colored"
+            android:id="@+id/MusicButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="0dp"
