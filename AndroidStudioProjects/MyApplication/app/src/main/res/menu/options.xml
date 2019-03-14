@@ -2,12 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
+
+
     <item android:id="@+id/home_page"
         android:title="Home"
         android:icon="@mipmap/baseline_home_black_18dp"/>
 
     <item android:id="@+id/saved_maps"
-        android:title="Saved Maps"
+        android:title="Saved Floor Plans"
         android:icon="@mipmap/baseline_satellite_black_18dp"/>
 
     <item android:id="@+id/saved_paths"
