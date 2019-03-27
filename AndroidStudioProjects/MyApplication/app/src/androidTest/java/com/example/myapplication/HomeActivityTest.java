@@ -1,5 +1,6 @@
 package com.example.myapplication;
-
+import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.matcher.ViewMatchers.hasTextColor;
 import android.app.Activity;
 import android.app.Instrumentation;
 import android.graphics.Paint;
@@ -8,6 +9,7 @@ import android.graphics.drawable.Drawable;
 import android.support.test.rule.ActivityTestRule;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import org.junit.After;
 import org.junit.Before;
@@ -68,6 +70,42 @@ public class HomeActivityTest {
         assertNotNull(buttonBackground);
 
     }
+
+    @Test
+    public void testCapenButtonText(){
+        Button button = hActivity.findViewById(R.id.CapenButton);
+        CharSequence text = button.getText();
+        CharSequence actual = "Capen Library";
+        assertEquals(text, actual);
+
+    }
+
+    @Test
+    public void testMusicButtonText(){
+        Button button = hActivity.findViewById(R.id.MusicButton);
+        CharSequence text = button.getText();
+        CharSequence actual = "Music Library";
+        assertEquals(text, actual);
+
+    }
+
+    @Test
+    public void testTextViewText(){
+        TextView tv = hActivity.findViewById(R.id.textView1);
+        CharSequence logo = tv.getText();
+        CharSequence actual = "Search Floor Plans";
+        assertEquals(logo, actual);
+    }
+
+    @Test
+    public void testLockwoodButtonText(){
+        Button button = hActivity.findViewById(R.id.LockWoodButton);
+        CharSequence text = button.getText();
+        CharSequence actual = "Lockwood Library";
+        assertEquals(text, actual);
+
+    }
+
     @Test
     public void testMusicButtonHasBackground(){
         Button button = hActivity.findViewById(R.id.MusicButton);

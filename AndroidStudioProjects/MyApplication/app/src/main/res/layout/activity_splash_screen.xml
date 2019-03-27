@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:text="UB LOST"
         android:textSize="40sp"
-        android:textColor="#ffffff"
+        android:textColor= "@color/colorText"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         />
