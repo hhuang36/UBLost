@@ -3,8 +3,11 @@ package com.example.myapplication;
 import android.app.Activity;
 import android.app.Instrumentation;
 import android.graphics.Paint;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.support.test.rule.ActivityTestRule;
 import android.view.View;
+import android.widget.Button;
 
 import org.junit.After;
 import org.junit.Before;
@@ -40,6 +43,45 @@ public class HomeActivityTest {
         options.finish();
     }
 
+    @Test
+    public void testCapenButtonExists(){
+        Button capenButton = hActivity.findViewById(R.id.MusicButton);
+        assertNotNull(capenButton);
+    }
+
+    @Test
+    public void testMusicButtonExists(){
+        Button musicButton = hActivity.findViewById(R.id.MusicButton);
+        assertNotNull(musicButton);
+    }
+
+    @Test
+    public void testLockwoodButtonExists(){
+        Button lockwoodButton = hActivity.findViewById(R.id.MusicButton);
+        assertNotNull(lockwoodButton);
+    }
+
+    @Test
+    public void testCapenButtonHasBackground(){
+        Button button = hActivity.findViewById(R.id.CapenButton);
+        Drawable buttonBackground= button.getBackground();
+        assertNotNull(buttonBackground);
+
+    }
+    @Test
+    public void testMusicButtonHasBackground(){
+        Button button = hActivity.findViewById(R.id.MusicButton);
+        Drawable buttonBackground= button.getBackground();
+        assertNotNull(buttonBackground);
+
+    }
+    @Test
+    public void testLockwoodButtonHasBackground(){
+        Button button = hActivity.findViewById(R.id.LockWoodButton);
+        Drawable buttonBackground= button.getBackground();
+        assertNotNull(buttonBackground);
+
+    }
     @Test
     public void testListOfOptionsPopUp(){
         onView(withId(R.id.CapenButton)).perform(click());
