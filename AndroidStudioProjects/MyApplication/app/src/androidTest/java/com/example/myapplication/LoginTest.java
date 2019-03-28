@@ -81,7 +81,11 @@ public class LoginTest extends android.app.Activity{
         assertNotNull(button);
     }
 
-
+    @Test
+    public void testRegisterButtonExists() {
+        Button button = lT.findViewById(R.id.registerButton);
+        assertNotNull(button);
+    }
 
     @After
     public void tearDown() throws Exception {
