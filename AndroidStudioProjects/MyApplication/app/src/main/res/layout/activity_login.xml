@@ -18,8 +18,8 @@
         android:id="@+id/UBLostLogo"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="20dp"
         android:scaleType="fitCenter"
         android:src="@drawable/ub_lost_logo" />
 
@@ -73,6 +73,8 @@
                 android:drawableLeft="@drawable/ic_user"
                 android:drawablePadding="7dp"
                 android:hint="username"
+                android:inputType="text"
+                android:maxLines="1"
                 android:paddingStart="7dp"
                 android:paddingLeft="7dp" />
 
@@ -86,31 +88,29 @@
                 android:drawableLeft="@drawable/ic_padlock"
                 android:drawablePadding="7dp"
                 android:hint="password"
+                android:maxLines="1"
                 android:inputType="textPassword"
                 android:paddingStart="7dp"
                 android:paddingLeft="7dp" />
 
-            <RadioButton
-                android:id="@+id/radioButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:button="@drawable/radiobutton"
-                android:paddingLeft="5dp"
-                android:text="I agree to the Terms and Conditions"
-                android:textColor="@color/white"
-                android:textSize="11sp" />
+            <!--<RadioButton-->
+                <!--android:id="@+id/radioButton"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:button="@drawable/radiobutton"-->
+                <!--android:paddingLeft="5dp"-->
+                <!--android:text="I agree to the Terms and Conditions"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:textSize="11sp" />-->
 
             <Button
                 android:id="@+id/loginButton"
-                android:onClick= "login"
-
                 android:layout_width="100dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
-
                 android:layout_marginBottom="5dp"
                 android:background="@drawable/login"
                 android:text="Login"
@@ -119,13 +119,10 @@
 
             <Button
                 android:id="@+id/registerButton"
-                android:onClick="register"
-
                 android:layout_width="100dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
-
                 android:layout_marginBottom="25dp"
                 android:background="@drawable/login"
                 android:text="Register"

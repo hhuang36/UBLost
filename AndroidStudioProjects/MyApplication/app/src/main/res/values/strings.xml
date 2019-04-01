@@ -27,6 +27,7 @@
         <item>Floor 3</item>
         <item></item>
     </string-array>
+
     <string name="my_building">My Buildings</string>
     <string name="title_activity_menu_bar_version2">MenuBarVersion2</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -35,4 +36,9 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+
+    <string-array name="status_array">
+        <item>Student</item>
+        <item>Faculty</item>
+    </string-array>
 </resources>

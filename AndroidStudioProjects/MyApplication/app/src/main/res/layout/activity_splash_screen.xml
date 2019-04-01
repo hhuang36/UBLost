@@ -5,22 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SplashScreen"
-    android:paddingBottom="16dp"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
-    android:paddingTop="16dp"
-    android:background="@color/colorPrimary">
+    android:background="#1f6fba">
 
-
-    <TextView
-        android:id="@+id/SplashScreen"
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="UB LOST"
-        android:textSize="40sp"
-        android:textColor= "@color/colorText"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        />
+        android:layout_centerInParent="true">
+
+        <ImageView
+            android:id="@+id/SplashScreen"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:src="@drawable/ub_lost_logo"
+            android:scaleType="fitCenter"
+            android:adjustViewBounds="true"
+            />
+
+    </RelativeLayout>
 
 </RelativeLayout>

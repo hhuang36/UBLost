@@ -13,6 +13,7 @@ import android.widget.RadioButton;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.content.Intent;
 
 public class Login extends AppCompatActivity {
 
@@ -22,6 +23,7 @@ public class Login extends AppCompatActivity {
     TextView helpTextView;
     AutoCompleteTextView username;
     AutoCompleteTextView password;
+    AutoCompleteTextView confirm_password;
     RadioButton radioButton;
     Button loginButton;
     Button registerButton;
@@ -41,9 +43,10 @@ public class Login extends AppCompatActivity {
         helpTextView = findViewById(R.id.helpTextView);
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
+        confirm_password = findViewById(R.id.confirm_password);
         radioButton = findViewById(R.id.radioButton);
         loginButton = findViewById(R.id.loginButton);
-        registerButton = findViewById(R.id.registerButton);
+        registerButton = this.<Button>findViewById(R.id.registerButton);
 
         //login button functionality - database traversal to be implemented 03/28
         loginButton.setOnClickListener(new View.OnClickListener(){
@@ -53,7 +56,8 @@ public class Login extends AppCompatActivity {
                 //username and password matching
                 if (username.getText().toString().equals("admin") &&
                         password.getText().toString().equals("admin")) {
-                    Toast.makeText(getApplicationContext(), "Welcome back!", Toast.LENGTH_SHORT).show();
+                    Intent loggedIn = new Intent(Login.this, SplashScreen.class);
+                    startActivity(loggedIn);
                     //implement database traversal to verify login information
                 }else{ /*security mechanism - login disabled after 3 failed attempts*/
                     Toast.makeText(getApplicationContext(), "Wrong Credentials", Toast.LENGTH_SHORT).show();
@@ -70,11 +74,14 @@ public class Login extends AppCompatActivity {
         registerButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                //change to new view
+            Intent intent = new Intent(Login.this, Register.class);
+            startActivity(intent);
+
             }
         });
 
         getWindow().setBackgroundDrawableResource(R.drawable.darkenbackground);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
     }
 }

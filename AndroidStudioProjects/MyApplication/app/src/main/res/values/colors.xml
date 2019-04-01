@@ -9,5 +9,7 @@
     <color name="colorPrimaryDark2">#011BB6</color>
     <color name="colorAccent2">#0030F3</color>
 
+    <color name="gradientStart">#1e3c72</color>
+    <color name="gradientEnd">#2a5298</color>
 
 </resources>
