@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -21,7 +20,8 @@
         android:layout_marginTop="40dp"
         android:layout_marginBottom="20dp"
         android:scaleType="fitCenter"
-        android:src="@drawable/ub_lost_logo" />
+        android:src="@drawable/ub_lost_logo"
+        android:contentDescription="UBLost Logo"/>
 
     <ScrollView
         android:id="@+id/scrollView"
@@ -31,7 +31,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
             android:layout_marginEnd="25dp"
             android:background="@drawable/transparent_box"
@@ -44,7 +44,7 @@
                 android:paddingStart="10dp"
                 android:paddingTop="10dp"
                 android:paddingEnd="10dp"
-                android:text="UBLost"
+                android:text="@string/ublost"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="30sp"
@@ -57,7 +57,7 @@
                 android:layout_marginBottom="30dp"
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp"
-                android:text="Helping You Be on Your Way"
+                android:text="@string/slogan"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
@@ -72,11 +72,14 @@
                 android:background="@drawable/roundedwhite"
                 android:drawableLeft="@drawable/ic_user"
                 android:drawablePadding="7dp"
-                android:hint="username"
+                android:hint="@string/username"
                 android:inputType="text"
                 android:maxLines="1"
+                android:imeOptions="actionNext"
                 android:paddingStart="7dp"
-                android:paddingLeft="7dp" />
+                android:paddingEnd="7dp"
+                android:paddingLeft="7dp"
+                android:drawableStart="@drawable/ic_user" />
 
             <AutoCompleteTextView
                 android:id="@+id/password"
@@ -87,23 +90,14 @@
                 android:background="@drawable/roundedwhite"
                 android:drawableLeft="@drawable/ic_padlock"
                 android:drawablePadding="7dp"
-                android:hint="password"
+                android:hint="@string/password"
                 android:maxLines="1"
+                android:imeOptions="actionDone"
                 android:inputType="textPassword"
                 android:paddingStart="7dp"
-                android:paddingLeft="7dp" />
-
-            <!--<RadioButton-->
-                <!--android:id="@+id/radioButton"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_gravity="center"-->
-                <!--android:layout_marginTop="10dp"-->
-                <!--android:button="@drawable/radiobutton"-->
-                <!--android:paddingLeft="5dp"-->
-                <!--android:text="I agree to the Terms and Conditions"-->
-                <!--android:textColor="@color/white"-->
-                <!--android:textSize="11sp" />-->
+                android:paddingEnd="7dp"
+                android:paddingLeft="7dp"
+                android:drawableStart="@drawable/ic_padlock" />
 
             <Button
                 android:id="@+id/loginButton"
@@ -113,7 +107,7 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="5dp"
                 android:background="@drawable/login"
-                android:text="Login"
+                android:text="@string/login"
                 android:textColor="@color/white"
                 android:textStyle="normal" />
 
@@ -125,7 +119,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="25dp"
                 android:background="@drawable/login"
-                android:text="Register"
+                android:text="@string/register"
                 android:textColor="@color/white"
                 android:textStyle="normal" />
         </LinearLayout>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,7 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:background="@drawable/grad_bg" />
+        android:background="@drawable/grad_bg"
+        android:contentDescription="gradient background" />
 
     <ImageView
         android:id="@+id/UBLostLogo"
@@ -19,7 +19,8 @@
         android:layout_height="70dp"
         android:layout_marginTop="30dp"
         android:scaleType="fitCenter"
-        android:src="@drawable/ub_lost_logo" />
+        android:src="@drawable/ub_lost_logo"
+        android:contentDescription="UBLost Logo" />
 
     <ScrollView
         android:id="@+id/scrollView"
@@ -30,7 +31,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="25dp"
@@ -44,7 +45,7 @@
                 android:layout_marginBottom="10dp"
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp"
-                android:text="Register"
+                android:text="@string/register"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="25sp"
@@ -81,9 +82,10 @@
                 android:layout_marginEnd="15dp"
                 android:layout_marginBottom="10dp"
                 android:backgroundTint="@color/white"
-                android:hint="username"
+                android:hint="@string/username"
                 android:inputType="text"
                 android:maxLines="1"
+                android:imeOptions="actionNext"
                 android:paddingStart="7dp"
                 android:paddingTop="10dp"
                 android:paddingEnd="7dp"
@@ -101,9 +103,10 @@
                 android:layout_marginEnd="15dp"
                 android:layout_marginBottom="10dp"
                 android:backgroundTint="@color/white"
-                android:hint="email address"
+                android:hint="@string/email_address"
                 android:inputType="textEmailAddress"
                 android:maxLines="1"
+                android:imeOptions="actionNext"
                 android:paddingStart="7dp"
                 android:paddingTop="10dp"
                 android:paddingEnd="7dp"
@@ -121,9 +124,10 @@
                 android:layout_marginEnd="15dp"
                 android:layout_marginBottom="10dp"
                 android:backgroundTint="@color/white"
-                android:hint="password"
+                android:hint="@string/password"
                 android:inputType="textPassword"
                 android:maxLines="1"
+                android:imeOptions="actionNext"
                 android:paddingStart="7dp"
                 android:paddingTop="10dp"
                 android:paddingEnd="7dp"
@@ -141,9 +145,10 @@
                 android:layout_marginEnd="15dp"
                 android:layout_marginBottom="10dp"
                 android:backgroundTint="@color/white"
-                android:hint="confirm password"
+                android:hint="@string/confirm_password"
                 android:inputType="textPassword"
                 android:maxLines="1"
+                android:imeOptions="actionDone"
                 android:paddingStart="7dp"
                 android:paddingTop="10dp"
                 android:paddingEnd="7dp"
@@ -159,7 +164,7 @@
                 android:layout_marginTop="10dp"
                 android:button="@drawable/radiobutton"
                 android:paddingLeft="5dp"
-                android:text="I agree to the Terms and Conditions"
+                android:text="@string/terms"
                 android:textColor="@color/white"
                 android:textSize="12sp" />
 
@@ -173,7 +178,7 @@
                 android:background="@drawable/login"
                 android:paddingStart="7dp"
                 android:paddingEnd="7dp"
-                android:text="Register"
+                android:text="@string/register"
                 android:textColor="@color/white"
                 android:textStyle="normal" />
 
@@ -185,7 +190,7 @@
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp"
                 android:autoLink="all"
-                android:text="Already have an account? Login now"
+                android:text="@string/back2login"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="15sp" />

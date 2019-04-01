@@ -13,11 +13,13 @@ import android.text.*;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AutoCompleteTextView;
+import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import android.widget.Button;
 import android.support.annotation.NonNull;
+import android.widget.Toast;
 
 public class Register extends AppCompatActivity {
     AutoCompleteTextView username;
@@ -25,6 +27,7 @@ public class Register extends AppCompatActivity {
     AutoCompleteTextView confirm_password;
     AutoCompleteTextView email;
     Button registerButton;
+    RadioButton terms;
     boolean passwordValid = false;
     boolean emailValid = false;
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
@@ -41,6 +44,7 @@ public class Register extends AppCompatActivity {
         confirm_password = findViewById(R.id.confirm_password);
         email = findViewById(R.id.email);
         registerButton = findViewById(R.id.registerButton);
+        terms = findViewById(R.id.radioButton);
 
 
         Spinner spinner = findViewById(R.id.status_spinner);
@@ -127,6 +131,8 @@ public class Register extends AppCompatActivity {
                     confirm_password.setError("passwords do not match!");
                 } else if(!emailValid) {
                     email.setError("invalid email address!");
+                }else if(!terms.isChecked()) {
+                    Toast.makeText(getApplicationContext(), "Please accept Terms and Conditions", Toast.LENGTH_SHORT).show();
                 } else {
                     Intent intent = new Intent(Register.this, Login.class);
                     startActivity(intent);

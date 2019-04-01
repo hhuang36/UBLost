@@ -36,6 +36,16 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+    <string name="ublost">UBLost</string>
+    <string name="slogan">Helping You Be on Your Way</string>
+    <string name="username">username</string>
+    <string name="password">password</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="email_address">email address</string>
+    <string name="confirm_password">confirm password</string>
+    <string name="terms">I agree to the Terms and Conditions</string>
+    <string name="back2login">Already have an account? Login now</string>
 
     <string-array name="status_array">
         <item>Student</item>
