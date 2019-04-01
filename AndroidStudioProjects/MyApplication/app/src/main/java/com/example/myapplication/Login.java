@@ -23,7 +23,6 @@ public class Login extends AppCompatActivity {
     TextView helpTextView;
     AutoCompleteTextView username;
     AutoCompleteTextView password;
-    AutoCompleteTextView confirm_password;
     RadioButton radioButton;
     Button loginButton;
     Button registerButton;
@@ -43,10 +42,9 @@ public class Login extends AppCompatActivity {
         helpTextView = findViewById(R.id.helpTextView);
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
-        confirm_password = findViewById(R.id.confirm_password);
         radioButton = findViewById(R.id.radioButton);
         loginButton = findViewById(R.id.loginButton);
-        registerButton = this.<Button>findViewById(R.id.registerButton);
+        registerButton = this.findViewById(R.id.registerButton);
 
         //login button functionality - database traversal to be implemented 03/28
         loginButton.setOnClickListener(new View.OnClickListener(){
