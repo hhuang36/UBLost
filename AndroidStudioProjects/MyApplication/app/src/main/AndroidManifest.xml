@@ -8,10 +8,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".CapenFloor1Plan"></activity>
         <activity
             android:name=".MenuBarVersion2"
             android:label="@string/title_activity_menu_bar_version2"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".SplashScreen2" />
         <activity android:name=".SplashScreen" />
         <activity android:name=".CapenFloorOptions" />

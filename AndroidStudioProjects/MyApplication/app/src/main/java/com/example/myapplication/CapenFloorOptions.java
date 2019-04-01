@@ -47,8 +47,8 @@ public class CapenFloorOptions extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(capenFloorButtons[position] == "Floor 1"){
                     Toast.makeText(CapenFloorOptions.this, "Testing", Toast.LENGTH_SHORT).show();
-//                    Intent intent = new Intent(CapenFloorOptions.this, capenFloor1Plan.class);
-//                    startActivity(intent);
+                    Intent intent = new Intent(CapenFloorOptions.this, CapenFloor1Plan.class);
+                    startActivity(intent);
                 } else if(capenFloorButtons[position] == "Floor 2"){
 //                    Intent intent = new Intent(CapenFloorOptions.this, capenFloor2Plan.class);
 //                    startActivity(intent);
