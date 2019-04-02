@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CapenFloor2Plan">
+
+    <TextView
+        android:text="Capen Floor 3"
+        android:textAlignment="center"
+        android:textSize="48dp"
+        android:paddingTop="20dp"
+        android:textColor="@color/colorText"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimaryDark">
+
+
+    </TextView>
+
+    <ImageView
+        android:layout_centerInParent="true"
+        android:id="@+id/capenF2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/capen_floor_3"
+        android:contentDescription="@string/Capen_Library">
+    </ImageView>
+
+</RelativeLayout>
