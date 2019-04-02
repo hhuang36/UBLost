@@ -6,13 +6,26 @@
     android:layout_height="match_parent"
     tools:context=".CapenFloor1Plan">
 
+    <TextView
+        android:text="Capen Floor 2"
+        android:textAlignment="center"
+        android:textSize="48dp"
+        android:paddingTop="20dp"
+        android:textColor="@color/colorText"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimaryDark">
+
+
+    </TextView>
+
     <ImageView
+        android:layout_centerInParent="true"
+        android:id="@+id/capenF1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/capenF1"
-        android:src="@mipmap/ub"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        />
+        android:src="@mipmap/capen_floor_2"
+        android:contentDescription="@string/Capen_Library">
+    </ImageView>
 
 </RelativeLayout>

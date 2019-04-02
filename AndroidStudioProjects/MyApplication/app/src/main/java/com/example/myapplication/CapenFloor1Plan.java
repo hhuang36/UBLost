@@ -12,7 +12,7 @@ public class CapenFloor1Plan extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_capen_floor1_plan);
         capenF1 = findViewById(R.id.capenF1);
-        capenF1.setImageResource(R.mipmap.ub);
+        capenF1.setImageResource(R.mipmap.capen_floor_2);
     }
 
 

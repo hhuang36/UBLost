@@ -23,7 +23,7 @@ public class CapenFloorOptions extends AppCompatActivity {
     ListView search_capen;
     ArrayAdapter<String> adapter;
 
-    String capenFloorButtons[] = new String [] {"Floor 1", "Floor 2", "Floor 3"};
+    String capenFloorButtons[] = new String [] {"Floor 2", "Floor 3", "Floor 4"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,14 +45,14 @@ public class CapenFloorOptions extends AppCompatActivity {
         search_capen.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if(capenFloorButtons[position] == "Floor 1"){
+                if(capenFloorButtons[position] == "Floor 2"){
                     Toast.makeText(CapenFloorOptions.this, "Testing", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(CapenFloorOptions.this, CapenFloor1Plan.class);
                     startActivity(intent);
-                } else if(capenFloorButtons[position] == "Floor 2"){
+                } else if(capenFloorButtons[position] == "Floor 3"){
 //                    Intent intent = new Intent(CapenFloorOptions.this, capenFloor2Plan.class);
 //                    startActivity(intent);
-                } else if(capenFloorButtons[position] == "Floor 3"){
+                } else if(capenFloorButtons[position] == "Floor 4"){
 //                    Intent intent = new Intent(CapenFloorOptions.this, capenFloor3Plan.class);
 //                    startActivity(intent);
                 }

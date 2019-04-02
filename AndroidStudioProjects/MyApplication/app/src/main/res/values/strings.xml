@@ -8,9 +8,9 @@
     <string name="Capen_Library"> Capen Library </string>
     <string name="Lockwood_Library">Lockwood Library</string>
     <string name="Music_Library">Music Library</string>
-    <string name="floor_1">Floor 1</string>
-    <string name="floor_2">Floor 2</string>
-    <string name="floor_3">Floor 3</string>
+    <string name="floor_1">Floor 2</string>
+    <string name="floor_2">Floor 3</string>
+    <string name="floor_3">Floor 4</string>
     <string name="navigate_me">Navigate Me</string>
     <string-array name="my_buildings">
         <item>Capen Library</item>
