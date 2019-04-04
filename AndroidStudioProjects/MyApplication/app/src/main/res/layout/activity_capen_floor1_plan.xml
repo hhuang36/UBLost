@@ -7,6 +7,7 @@
     tools:context=".CapenFloor1Plan">
 
     <TextView
+        android:id="@+id/CapenFloor1TextView"
         android:text="Capen Floor 2"
         android:textAlignment="center"
         android:textSize="48dp"
