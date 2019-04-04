@@ -4,12 +4,15 @@ import android.app.Activity;
 import android.app.Instrumentation;
 import android.support.annotation.FloatRange;
 import android.support.test.rule.ActivityTestRule;
+import android.widget.Adapter;
 import android.widget.ListView;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
+
+import java.util.List;
 
 import static android.support.test.InstrumentationRegistry.getInstrumentation;
 import static android.support.test.espresso.Espresso.onView;
@@ -24,6 +27,8 @@ public class CapenFloorOptionsTest {
     public ActivityTestRule<CapenFloorOptions> capenFloorOptionsActivityTestRule = new ActivityTestRule(CapenFloorOptions.class);
 
     Instrumentation.ActivityMonitor monitor = getInstrumentation().addMonitor(CapenFloor1Plan.class.getName(), null, false);
+    Instrumentation.ActivityMonitor monitor1 = getInstrumentation().addMonitor(CapenFloor2Plan.class.getName(), null, false);
+    Instrumentation.ActivityMonitor monitor2 = getInstrumentation().addMonitor(CapenFloor3Plan.class.getName(), null, false);
 
     public CapenFloorOptions cFO = null;
 
@@ -57,27 +62,73 @@ public class CapenFloorOptionsTest {
     @Test
     public void testListViewAppears(){
         ListView lv = cFO.search_capen;
+        assertNotNull(lv);
+    }
+
+    // test that the adapter in CapenFloorOptions.java is not null and appears on screen
+    @Test
+    public void testAdapterNotNull(){
+        Adapter ad = cFO.adapter;
+        assertNotNull(ad);
+    }
+
+    // tests that the ListView is using the right string array by testing the Id's
+    @Test
+    public void testListViewHasCorrectId(){
+        ListView lv = cFO.search_capen;
         int id = lv.getId();
         assertEquals(id, R.id.search_capen_floors);
     }
-    
 
+    // test that the Floor 2 option brings the user to the CapenFloor1Plan.java activity
     @Test
     public void testFloorTwo(){
-        onView(withId(R.id.search_capen_floors)).perform(click());
+        final ListView lv = cFO.search_capen;
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                lv.performItemClick(lv.getAdapter().getView(0, null, null),
+                        0, lv.getAdapter().getItemId(0));
+            }
+        });
         Activity secondActivity = getInstrumentation().waitForMonitorWithTimeout(monitor, 5000);
         assertNotNull(secondActivity);
         secondActivity.finish();
     }
 
+    // test that the Floor 3 option brings the user to the CapenFloor2Plan.java activity
     @Test
     public void testFloorThree(){
-
+        final ListView lv = cFO.search_capen;
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                lv.performItemClick(lv.getAdapter().getView(1, null, null),
+                        1, lv.getAdapter().getItemId(1));
+            }
+        });
+        Activity secondActivity = getInstrumentation().waitForMonitorWithTimeout(monitor1, 5000);
+        assertNotNull(secondActivity);
+        secondActivity.finish();
     }
+
+    // test that the Floor 3 option brings the user to the CapenFloor2Plan.java activity
     @Test
     public void testFloorFloor(){
-
+        final ListView lv = cFO.search_capen;
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                lv.performItemClick(lv.getAdapter().getView(2, null, null),
+                        2, lv.getAdapter().getItemId(2));
+            }
+        });
+        Activity secondActivity = getInstrumentation().waitForMonitorWithTimeout(monitor2, 5000);
+        assertNotNull(secondActivity);
+        secondActivity.finish();
     }
+
+
     @After
     public void tearDown() throws Exception{
         cFO = null;
