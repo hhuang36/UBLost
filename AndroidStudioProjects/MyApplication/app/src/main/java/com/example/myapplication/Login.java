@@ -15,7 +15,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.content.Intent;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class Login extends AppCompatActivity {
+
+    //database
+    FirebaseDatabase database;
+    DatabaseReference users;
 
     ImageView UBLostLogo;
     ScrollView scrollView;
