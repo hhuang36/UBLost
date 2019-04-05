@@ -21,7 +21,15 @@ import android.widget.Button;
 import android.support.annotation.NonNull;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class Register extends AppCompatActivity {
+    
+    //database
+    FirebaseDatabase database;
+    DatabaseReference users;
+
     AutoCompleteTextView username;
     AutoCompleteTextView password;
     AutoCompleteTextView confirm_password;
