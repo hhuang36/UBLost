@@ -15,14 +15,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.content.Intent;
 
+
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class Login extends AppCompatActivity {
 
     //database
-    FirebaseDatabase database;
-    DatabaseReference users;
+    private FirebaseDatabase database;
+    private DatabaseReference users;
 
     ImageView UBLostLogo;
     ScrollView scrollView;
@@ -43,6 +44,7 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+
         UBLostLogo = findViewById(R.id.UBLostLogo);
         scrollView = findViewById(R.id.scrollView);
         UBLostTextView = findViewById(R.id.UBlostTextView);
@@ -58,7 +60,7 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v){
                 //dummy testing data - 03/28
-                //username and password matching
+                //editTextUsername and editTextPassword matching
                 if (username.getText().toString().equals("admin") &&
                         password.getText().toString().equals("admin")) {
                     Intent loggedIn = new Intent(Login.this, SplashScreen.class);

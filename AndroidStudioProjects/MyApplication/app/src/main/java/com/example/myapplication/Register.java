@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
@@ -21,36 +22,50 @@ import android.widget.Button;
 import android.support.annotation.NonNull;
 import android.widget.Toast;
 
+import com.example.myapplication.Model.User;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Register extends AppCompatActivity {
-    
-    //database
-    FirebaseDatabase database;
-    DatabaseReference users;
 
-    AutoCompleteTextView username;
-    AutoCompleteTextView password;
+    //database
+    private FirebaseDatabase database;
+    private DatabaseReference users;
+
+//    private FirebaseAuth mAuth;
+
+    AutoCompleteTextView editTextUsername;
+    AutoCompleteTextView editTextPassword;
     AutoCompleteTextView confirm_password;
-    AutoCompleteTextView email;
+    AutoCompleteTextView editTextEmail;
     Button registerButton;
     RadioButton terms;
     boolean passwordValid = false;
     boolean emailValid = false;
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
+    private ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
+        database = FirebaseDatabase.getInstance();
+        users = database.getReference("Users");
+
+//        progressDialog = new ProgressDialog (this);
+//        mAuth = FirebaseAuth.getInstance();
+
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
-        username = findViewById(R.id.username);
-        password = findViewById(R.id.password);
+        editTextUsername = findViewById(R.id.username);
+        editTextPassword = findViewById(R.id.password);
         confirm_password = findViewById(R.id.confirm_password);
-        email = findViewById(R.id.email);
+        editTextEmail = findViewById(R.id.email);
         registerButton = findViewById(R.id.registerButton);
         terms = findViewById(R.id.radioButton);
 
@@ -94,7 +109,7 @@ public class Register extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                String strPass1 = password.getText().toString();
+                String strPass1 = editTextPassword.getText().toString();
                 String strPass2 = confirm_password.getText().toString();
                 if (strPass1.equals(strPass2)) {
                     passwordValid = true;
@@ -105,7 +120,7 @@ public class Register extends AppCompatActivity {
             }
         });
 
-        email.addTextChangedListener(new TextWatcher()
+        editTextEmail.addTextChangedListener(new TextWatcher()
         {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
@@ -114,10 +129,10 @@ public class Register extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                if (email.getText().toString().trim().matches(emailPattern)) {
+                if (editTextEmail.getText().toString().trim().matches(emailPattern)) {
                     emailValid = true;
                 } else{
-                    email.setError("invalid email address");
+                    editTextEmail.setError("invalid editTextEmail address");
                 }
             }
         });
@@ -125,27 +140,57 @@ public class Register extends AppCompatActivity {
         registerButton.setOnClickListener(new View.OnClickListener()
 
             {
+
                 @Override
                 public void onClick (View v){
-                if (TextUtils.isEmpty(username.getText())) {
-                    username.setError("username is required!");
-                } else if (TextUtils.isEmpty(email.getText())) {
-                    email.setError("email is required!");
-                } else if (TextUtils.isEmpty(password.getText())) {
-                    password.setError("password is required!");
+                    if (TextUtils.isEmpty(editTextUsername.getText())) {
+                    editTextUsername.setError("editTextUsername is required!");
+                } else if (TextUtils.isEmpty(editTextEmail.getText())) {
+                    editTextEmail.setError("editTextEmail is required!");
+                } else if (TextUtils.isEmpty(editTextPassword.getText())) {
+                    editTextPassword.setError("editTextPassword is required!");
                 } else if (TextUtils.isEmpty(confirm_password.getText())) {
                     confirm_password.setError("confirmation required!");
                 } else if(!passwordValid) {
                     confirm_password.setError("passwords do not match!");
                 } else if(!emailValid) {
-                    email.setError("invalid email address!");
+                    editTextEmail.setError("invalid editTextEmail address!");
                 }else if(!terms.isChecked()) {
                     Toast.makeText(getApplicationContext(), "Please accept Terms and Conditions", Toast.LENGTH_SHORT).show();
-                } else {
+                } else{
+                        final User user = new User(editTextUsername.getText().toString(),
+                                editTextEmail.getText().toString(),
+                                editTextPassword.getText().toString());
+                        users.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                if(dataSnapshot.child(user.getUsername()).exists())
+                                    Toast.makeText(Register.this, "This Username already exists! Please choose another", Toast.LENGTH_SHORT).show();
+                                else {
+                                    users.child(user.getUsername()).setValue(user);
+                                    Toast.makeText(Register.this, "Successfully Registered!", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
+//                    String email = editTextEmail.getText().toString().trim();
+//                    String password = editTextPassword.getText().toString().trim();
+//                    progressDialog.setMessage("Registering User...");
+//                    progressDialog.show();
+//
+//                    mAuth.createUserWithEmailAndPassword(email,password);
+//                    Toast.makeText(getApplicationContext(), "Registration Success!", Toast.LENGTH_SHORT).show();
+
                     Intent intent = new Intent(Register.this, Login.class);
                     startActivity(intent);
                 }
-            }
+
+                }
             });
+
         }
 }
