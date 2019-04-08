@@ -159,8 +159,8 @@ public class Register extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Please accept Terms and Conditions", Toast.LENGTH_SHORT).show();
                 } else{
                         final User user = new User(editTextUsername.getText().toString(),
-                                editTextEmail.getText().toString(),
-                                editTextPassword.getText().toString());
+                                editTextPassword.getText().toString(),
+                                editTextEmail.getText().toString());
                         users.addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
