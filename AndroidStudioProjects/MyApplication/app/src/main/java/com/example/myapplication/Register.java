@@ -46,6 +46,8 @@ public class Register extends AppCompatActivity {
     boolean passwordValid = false;
     boolean emailValid = false;
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+    Spinner spinner;
+    String status;
 
     private ProgressDialog progressDialog;
     @Override
@@ -68,9 +70,9 @@ public class Register extends AppCompatActivity {
         editTextEmail = findViewById(R.id.email);
         registerButton = findViewById(R.id.registerButton);
         terms = findViewById(R.id.radioButton);
+        spinner = findViewById(R.id.status_spinner);
 
 
-        Spinner spinner = findViewById(R.id.status_spinner);
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.status_array, android.R.layout.simple_spinner_item);
@@ -78,7 +80,6 @@ public class Register extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
-
 
         TextView back2Login = findViewById(R.id.helpTextView);
         String text = "Already have an account? Login now";
@@ -114,7 +115,7 @@ public class Register extends AppCompatActivity {
                 if (strPass1.equals(strPass2)) {
                     passwordValid = true;
                 } else {
-                    confirm_password.setError("passwords do not match!");
+                    confirm_password.setError("Passwords do not match!");
                 }
 
             }
@@ -132,7 +133,7 @@ public class Register extends AppCompatActivity {
                 if (editTextEmail.getText().toString().trim().matches(emailPattern)) {
                     emailValid = true;
                 } else{
-                    editTextEmail.setError("invalid editTextEmail address");
+                    editTextEmail.setError("Invalid email address");
                 }
             }
         });
@@ -144,23 +145,26 @@ public class Register extends AppCompatActivity {
                 @Override
                 public void onClick (View v){
                     if (TextUtils.isEmpty(editTextUsername.getText())) {
-                    editTextUsername.setError("editTextUsername is required!");
+                    editTextUsername.setError("Username is required!");
                 } else if (TextUtils.isEmpty(editTextEmail.getText())) {
-                    editTextEmail.setError("editTextEmail is required!");
+                    editTextEmail.setError("Email is required!");
                 } else if (TextUtils.isEmpty(editTextPassword.getText())) {
-                    editTextPassword.setError("editTextPassword is required!");
+                    editTextPassword.setError("Password is required!");
                 } else if (TextUtils.isEmpty(confirm_password.getText())) {
-                    confirm_password.setError("confirmation required!");
+                    confirm_password.setError("Confirmation required!");
                 } else if(!passwordValid) {
-                    confirm_password.setError("passwords do not match!");
+                    confirm_password.setError("Passwords do not match!");
                 } else if(!emailValid) {
-                    editTextEmail.setError("invalid editTextEmail address!");
+                    editTextEmail.setError("Invalid email address!");
                 }else if(!terms.isChecked()) {
                     Toast.makeText(getApplicationContext(), "Please accept Terms and Conditions", Toast.LENGTH_SHORT).show();
                 } else{
+                        status = spinner.getSelectedItem().toString();
+
                         final User user = new User(editTextUsername.getText().toString(),
+                                editTextPassword.getText().toString(),
                                 editTextEmail.getText().toString(),
-                                editTextPassword.getText().toString());
+                                status);
                         users.addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
