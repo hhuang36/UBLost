@@ -11,6 +11,7 @@ package com.example.myapplication;
         import android.view.View;
         import android.widget.Button;
         import android.widget.ImageButton;
+        import android.widget.TextView;
 
 public class SplashScreen extends AppCompatActivity { // THIS IS THE HOME PAGE
     private DrawerLayout menuDrawerLayout;
@@ -18,6 +19,7 @@ public class SplashScreen extends AppCompatActivity { // THIS IS THE HOME PAGE
     private Button floorplanButton;
     private Button navigateMe;
     private Button Home;
+    TextView tv;
     public static  int SPLASH_TIME_OUT = 4000;
 
     @Override
@@ -28,6 +30,7 @@ public class SplashScreen extends AppCompatActivity { // THIS IS THE HOME PAGE
         //openSplashScreen();
         Home = (Button) findViewById(R.id.home_page);
 
+        tv = findViewById(R.id.textView);
         menuDrawerLayout = findViewById(R.id.drawerLayout);
         menuToggle = new ActionBarDrawerToggle(this, menuDrawerLayout, R.string.open, R.string.close);
 
@@ -50,6 +53,7 @@ public class SplashScreen extends AppCompatActivity { // THIS IS THE HOME PAGE
                 openNavigateMe();
             }
         });
+
 
     }
 
