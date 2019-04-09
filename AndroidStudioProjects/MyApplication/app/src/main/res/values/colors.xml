@@ -5,11 +5,12 @@
     <color name="colorAccent">#2042BE</color>
     <color name="colorText">#FFFFFF</color>
     <color name="white">#ffff</color>
+    <color name="yellow">#FFEB3B</color>
     <color name="colorPrimary2">#0030F3</color>
     <color name="colorPrimaryDark2">#011BB6</color>
     <color name="colorAccent2">#0030F3</color>
 
-    <color name="gradientStart">#1e3c72</color>
-    <color name="gradientEnd">#2a5298</color>
+    <color name="gradientStart">#0575E6</color>
+    <color name="gradientEnd">#021B79</color>
 
 </resources>

@@ -243,7 +243,6 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                         if (dataSnapshot.child(user.getUsername()).exists()) {
                                             Toast.makeText(Register.this, "Username already exists!", Toast.LENGTH_LONG).show();
-                                            return;
                                         } else {
                                             users.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user)
                                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -253,10 +252,9 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                                                                 Toast.makeText(Register.this, "Successfully Registered!", Toast.LENGTH_LONG).show();
                                                                 Intent intent = new Intent(Register.this, Login.class);
                                                                 startActivity(intent);
-                                                                return;
+
                                                             } else {
                                                                 Toast.makeText(Register.this, "Registration Failed!", Toast.LENGTH_LONG).show();
-                                                                return;
                                                             }
                                                         }
                                                     });
@@ -272,8 +270,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                             }
                         }
                     });
-        } else
-            return;
+        }
     } // end RegisterUser
 
     @Override

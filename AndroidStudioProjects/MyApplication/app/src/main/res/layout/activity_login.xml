@@ -5,21 +5,39 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/UBLostLogo"
+    <TextView
+        android:id="@+id/UBlostTextView"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="20dp"
-        android:contentDescription="@string/ublost"
-        android:scaleType="fitCenter"
-        android:src="@drawable/ub_lost_logo" />
+        android:layout_height="wrap_content"
+        android:paddingStart="10dp"
+        android:paddingTop="30dp"
+        android:paddingEnd="10dp"
+        android:text="Welcome Back,"
+        android:layout_marginLeft="25dp"
+        android:textColor="@color/yellow"
+        android:textSize="40sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:text="Log in to continue"
+        android:layout_marginLeft="25dp"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="normal"
+        android:layout_below="@id/UBlostTextView"/>
+
 
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/UBLostLogo">
+        android:layout_marginTop="200dp">
+        <!--android:layout_alignParentStart="true"-->
+        <!--android:layout_below="@id/UBLostLogo"-->
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -29,43 +47,33 @@
             android:background="@drawable/transparent_box"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/UBlostTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingStart="10dp"
-                android:paddingTop="10dp"
-                android:paddingEnd="10dp"
-                android:text="@string/ublost"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="30sp"
-                android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/helpTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="30dp"
-                android:paddingStart="10dp"
-                android:paddingEnd="10dp"
-                android:text="@string/slogan"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="18sp" />
+
+            <!--<TextView-->
+                <!--android:id="@+id/helpTextView"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginBottom="30dp"-->
+                <!--android:paddingStart="10dp"-->
+                <!--android:paddingEnd="10dp"-->
+                <!--android:text="@string/slogan"-->
+                <!--android:textAlignment="center"-->
+                <!--android:textColor="@color/yellow"-->
+                <!--android:textSize="18sp" />-->
 
             <AutoCompleteTextView
-                android:id="@+id/username"
+                android:id="@+id/email"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="50dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="15dp"
                 android:background="@drawable/roundedwhite"
                 android:drawableStart="@drawable/ic_user"
                 android:drawableLeft="@drawable/ic_user"
                 android:drawablePadding="7dp"
-                android:hint="@string/username"
+                android:hint="@string/email_address"
                 android:imeOptions="actionNext"
                 android:inputType="text"
                 android:maxLines="1"
@@ -76,9 +84,10 @@
             <AutoCompleteTextView
                 android:id="@+id/password"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="50dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
+                android:layout_marginBottom="15dp"
                 android:background="@drawable/roundedwhite"
                 android:drawableStart="@drawable/ic_padlock"
                 android:drawableLeft="@drawable/ic_padlock"
@@ -93,29 +102,40 @@
 
             <Button
                 android:id="@+id/loginButton"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="5dp"
                 android:background="@drawable/login"
                 android:text="@string/login"
+                android:textAlignment="center"
                 android:textColor="@color/white"
-                android:textStyle="normal" />
+                android:textStyle="normal"
+                android:elevation="10dp"/>
 
             <Button
                 android:id="@+id/registerButton"
-                android:layout_width="100dp"
-                android:layout_height="40dp"
+                android:layout_width="200dp"
+                android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="25dp"
-                android:background="@drawable/login"
+                android:background="@drawable/roundedwhite"
                 android:text="@string/register"
-                android:textColor="@color/white"
-                android:textStyle="normal" />
+                android:textColor="@color/colorPrimary"
+                android:textStyle="normal"
+                android:elevation="10dp"/>
         </LinearLayout>
 
     </ScrollView>
 
+    <ImageView
+        android:id="@+id/UBLostLogo"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="150dp"
+        android:contentDescription="@string/ublost"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ub_lost_logo" />
 </RelativeLayout>

@@ -13,20 +13,20 @@
         android:background="@drawable/grad_bg"
         android:contentDescription="gradient background" />
 
-    <ImageView
-        android:id="@+id/UBLostLogo"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_marginTop="30dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/ub_lost_logo"
-        android:contentDescription="UBLost Logo" />
+    <!--<ImageView-->
+        <!--android:id="@+id/UBLostLogo"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="80dp"-->
+        <!--android:layout_marginTop="30dp"-->
+        <!--android:scaleType="fitCenter"-->
+        <!--android:src="@drawable/ub_lost_logo"-->
+        <!--android:contentDescription="UBLost Logo" />-->
 
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/UBLostLogo"
+
         android:layout_marginTop="0dp">
 
         <LinearLayout
@@ -42,17 +42,17 @@
                 android:id="@+id/RegisterTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="50dp"
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp"
+                android:paddingLeft="40dp"
                 android:text="@string/register"
-                android:textAlignment="center"
                 android:textColor="@color/white"
-                android:textSize="25sp"
+                android:textSize="45sp"
                 android:textStyle="bold" />
 
             <RelativeLayout
-                android:layout_width="330dp"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:padding="5dp"
@@ -62,8 +62,8 @@
                 <Spinner
                     android:id="@+id/status_spinner"
                     style="@style/Widget.AppCompat.DropDownItem.Spinner"
-                    android:layout_width="340dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="300dp"
+                    android:layout_height="35dp"
                     android:layout_gravity="center"
                     android:entries="@array/status_array"
                     android:popupBackground="#FFF"
@@ -74,7 +74,7 @@
 
             <AutoCompleteTextView
                 android:id="@+id/username"
-                android:layout_width="match_parent"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginStart="15dp"
@@ -89,13 +89,13 @@
                 android:paddingStart="7dp"
                 android:paddingTop="10dp"
                 android:paddingEnd="7dp"
-                android:paddingBottom="20dp"
+                android:paddingBottom="25dp"
                 android:textColor="@android:color/white"
                 android:textColorHint="#BCFFFFFF" />
 
             <AutoCompleteTextView
                 android:id="@+id/email"
-                android:layout_width="match_parent"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginStart="15dp"
@@ -110,13 +110,13 @@
                 android:paddingStart="7dp"
                 android:paddingTop="10dp"
                 android:paddingEnd="7dp"
-                android:paddingBottom="20dp"
+                android:paddingBottom="25dp"
                 android:textColor="@android:color/white"
                 android:textColorHint="#BCFFFFFF" />
 
             <AutoCompleteTextView
                 android:id="@+id/password"
-                android:layout_width="match_parent"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginStart="15dp"
@@ -131,13 +131,13 @@
                 android:paddingStart="7dp"
                 android:paddingTop="10dp"
                 android:paddingEnd="7dp"
-                android:paddingBottom="20dp"
+                android:paddingBottom="25dp"
                 android:textColor="@android:color/white"
                 android:textColorHint="#BCFFFFFF" />
 
             <AutoCompleteTextView
                 android:id="@+id/confirm_password"
-                android:layout_width="match_parent"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginStart="15dp"
@@ -148,19 +148,21 @@
                 android:hint="@string/confirm_password"
                 android:inputType="textPassword"
                 android:maxLines="1"
+                android:cursorVisible="true"
                 android:imeOptions="actionDone"
                 android:paddingStart="7dp"
                 android:paddingTop="10dp"
                 android:paddingEnd="7dp"
-                android:paddingBottom="20dp"
+                android:paddingBottom="25dp"
                 android:textColor="@android:color/white"
                 android:textColorHint="#BCFFFFFF" />
 
             <RadioButton
                 android:id="@+id/radioButton"
-                android:layout_width="wrap_content"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_gravity="center_horizontal"
+
                 android:layout_marginTop="10dp"
                 android:button="@drawable/radiobutton"
                 android:paddingLeft="5dp"
@@ -170,8 +172,8 @@
 
             <Button
                 android:id="@+id/registerButton"
-                android:layout_width="340dp"
-                android:layout_height="40dp"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
@@ -180,7 +182,8 @@
                 android:paddingEnd="7dp"
                 android:text="@string/register"
                 android:textColor="@color/white"
-                android:textStyle="normal" />
+                android:textStyle="normal"
+                />
 
             <TextView
                 android:id="@+id/helpTextView"

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SplashScreen"
-    android:background="#1f6fba">
+    android:background="@drawable/grad_bg">
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -16,10 +16,10 @@
             android:id="@+id/SplashScreen"
             android:layout_width="250dp"
             android:layout_height="250dp"
-            android:src="@drawable/ub_lost_logo"
-            android:scaleType="fitCenter"
             android:adjustViewBounds="true"
-            />
+            android:scaleType="fitCenter"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_launcher2" />
 
     </RelativeLayout>
 
