@@ -16,8 +16,8 @@ package com.example.myapplication;
 public class SplashScreen extends AppCompatActivity { // THIS IS THE HOME PAGE
     private DrawerLayout menuDrawerLayout;
     private ActionBarDrawerToggle menuToggle;
-    private Button floorplanButton;
-    private Button navigateMe;
+     Button floorplanButton;
+     Button navigateMe;
     private Button Home;
     TextView tv;
     public static  int SPLASH_TIME_OUT = 4000;

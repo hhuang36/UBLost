@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Instrumentation;
 import android.support.test.rule.ActivityTestRule;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import org.junit.After;
@@ -38,10 +39,9 @@ public class SplashScreenTest {
         assertNotNull(view);
     }
 
-    // tests that the Search Floor Plans Button is displayed on the screen
+    // tests that the Search Floor Plans button when clicked brings user to HomeActivity.java
     @Test
     public void testLaunchOfSearchFloorPlansButton(){
-        assertNotNull(splashScreen.findViewById(R.id.floorplanButton));
         onView(withId(R.id.floorplanButton)).perform(click());
         Activity secondActivity = getInstrumentation().waitForMonitorWithTimeout(HomePage, 5000);
         assertNotNull(secondActivity);
@@ -49,6 +49,21 @@ public class SplashScreenTest {
     }
 
     // tests that the Navigate Me Button is displayed on the screen
+    @Test
+    public void testFloorPlanButtonExists(){
+        Button nmb = splashScreen.findViewById(R.id.NavigateMe);
+        assertNotNull(nmb);
+    }
+
+    // tests that the Floor Plan Button is displayed on the screen
+    @Test
+    public void testNavigateMeButtonExists(){
+        Button fpb = splashScreen.findViewById(R.id.floorplanButton);
+        assertNotNull(fpb);
+
+    }
+
+    // tests that Navigate Me button when clicked brings user to HomeActivity2.java
     @Test
     public void testLaunchOfNavigateMe(){
         assertNotNull(splashScreen.findViewById(R.id.NavigateMe));
@@ -85,6 +100,24 @@ public class SplashScreenTest {
         TextView tv2 = splashScreen.tv;
         int color2 = tv2.getCurrentTextColor();
         assertTrue(color == color2);
+    }
+
+    // tests that the text on the Floor Plan button displays "Search Floor Plans"
+    @Test
+    public void FloorPlanButtonText(){
+        Button button = splashScreen.floorplanButton;
+        CharSequence buttonText = button.getText();
+        CharSequence expected = "Search Floor Plans";
+        assertEquals(buttonText, expected);
+    }
+
+    // tests that the text on the Navigate Me button displays "Navigate Me"
+    @Test
+    public void NavigateMeButtonText(){
+        Button button = splashScreen.navigateMe;
+        CharSequence buttonText = button.getText();
+        CharSequence expected = "Navigate Me";
+        assertEquals(buttonText, expected);
     }
 
     @After
