@@ -9,12 +9,15 @@ import android.graphics.drawable.Drawable;
 import android.support.test.rule.ActivityTestRule;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
+
+import java.util.List;
 
 import static android.support.test.InstrumentationRegistry.getInstrumentation;
 import static android.support.test.espresso.Espresso.onView;
@@ -37,6 +40,7 @@ public class HomeActivityTest {
         cFo = capenFloorOptionsActivityTestRule.getActivity();
     }
 
+    // tests that CapenFloorOptions launches when Capen Library is clicked
     @Test
     public void testLaunchOfCapenFloorPageOpensFromButton(){
         onView(withId(R.id.CapenButton)).perform(click());
@@ -45,24 +49,28 @@ public class HomeActivityTest {
         options.finish();
     }
 
+    // tests that the Capen Library button is displayed
     @Test
     public void testCapenButtonExists(){
         Button capenButton = hActivity.findViewById(R.id.MusicButton);
         assertNotNull(capenButton);
     }
 
+    // tests that the Music Library button is displayed
     @Test
     public void testMusicButtonExists(){
         Button musicButton = hActivity.findViewById(R.id.MusicButton);
         assertNotNull(musicButton);
     }
 
+    // tests that the LockWood Library button is displayed
     @Test
     public void testLockwoodButtonExists(){
         Button lockwoodButton = hActivity.findViewById(R.id.MusicButton);
         assertNotNull(lockwoodButton);
     }
 
+    // tests that the Capen Library button background is displayed
     @Test
     public void testCapenButtonHasBackground(){
         Button button = hActivity.findViewById(R.id.CapenButton);
@@ -71,6 +79,7 @@ public class HomeActivityTest {
 
     }
 
+    // tests that the Capen Library button text is correct
     @Test
     public void testCapenButtonText(){
         Button button = hActivity.findViewById(R.id.CapenButton);
@@ -80,6 +89,7 @@ public class HomeActivityTest {
 
     }
 
+    // tests that the Music Library button text is correct
     @Test
     public void testMusicButtonText(){
         Button button = hActivity.findViewById(R.id.MusicButton);
@@ -89,6 +99,7 @@ public class HomeActivityTest {
 
     }
 
+    // tests that the "Search Floor Plans" text displayed is correct
     @Test
     public void testTextViewText(){
         TextView tv = hActivity.findViewById(R.id.textView1);
@@ -97,6 +108,7 @@ public class HomeActivityTest {
         assertEquals(logo, actual);
     }
 
+    // tests that the LockWood Library button text is correct
     @Test
     public void testLockwoodButtonText(){
         Button button = hActivity.findViewById(R.id.LockWoodButton);
@@ -106,6 +118,7 @@ public class HomeActivityTest {
 
     }
 
+    // tests that the Music Library button background is displayed
     @Test
     public void testMusicButtonHasBackground(){
         Button button = hActivity.findViewById(R.id.MusicButton);
@@ -113,6 +126,8 @@ public class HomeActivityTest {
         assertNotNull(buttonBackground);
 
     }
+
+    // tests that the Lockwood Library button background is displayed
     @Test
     public void testLockwoodButtonHasBackground(){
         Button button = hActivity.findViewById(R.id.LockWoodButton);
@@ -120,15 +135,19 @@ public class HomeActivityTest {
         assertNotNull(buttonBackground);
 
     }
+
+    // tests that the listview of options is displayed when the Capen Library button is clicked
     @Test
     public void testListOfOptionsPopUp(){
         onView(withId(R.id.CapenButton)).perform(click());
-        View view = cFo.findViewById(R.array.search_capen_floors);
-        assertNotNull(view);
+        Activity options = getInstrumentation().waitForMonitorWithTimeout(monitor, 10000);
+        View list = options.findViewById(R.id.search_capen_floors);
+        assertNotNull(list);
     }
 
     @After
     public void tearDown() throws Exception{
         hActivity = null;
+        cFo = null;
     }
 }
