@@ -3,6 +3,7 @@
     package="com.example.myapplication">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 
     <application
         android:icon="@mipmap/ic_launcher"
@@ -11,19 +12,25 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+                  android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
-        <activity android:name=".Login" />
-        <activity android:name=".Register" />
+        <activity android:name=".Login"
+                  android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity android:name=".Register"
+                  android:theme="@style/AppTheme.NoActionBar" />
+
         <activity
             android:name=".MenuBarVersion2"
             android:label="@string/title_activity_menu_bar_version2"
             android:theme="@style/AppTheme.NoActionBar" />
+
         <activity android:name=".SplashScreen2" />
         <activity android:name=".SplashScreen" />
         <activity android:name=".CapenFloorOptions" />

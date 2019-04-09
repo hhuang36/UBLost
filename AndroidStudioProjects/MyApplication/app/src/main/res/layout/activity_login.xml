@@ -5,23 +5,15 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
-    <!--<ImageView
-        android:id="@+id/Background"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/DarkenBackground" />-->
-
     <ImageView
         android:id="@+id/UBLostLogo"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_marginTop="40dp"
         android:layout_marginBottom="20dp"
+        android:contentDescription="@string/ublost"
         android:scaleType="fitCenter"
-        android:src="@drawable/ub_lost_logo"
-        android:contentDescription="UBLost Logo"/>
+        android:src="@drawable/ub_lost_logo" />
 
     <ScrollView
         android:id="@+id/scrollView"
@@ -70,16 +62,16 @@
                 android:layout_marginEnd="15dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/roundedwhite"
+                android:drawableStart="@drawable/ic_user"
                 android:drawableLeft="@drawable/ic_user"
                 android:drawablePadding="7dp"
                 android:hint="@string/username"
+                android:imeOptions="actionNext"
                 android:inputType="text"
                 android:maxLines="1"
-                android:imeOptions="actionNext"
                 android:paddingStart="7dp"
-                android:paddingEnd="7dp"
                 android:paddingLeft="7dp"
-                android:drawableStart="@drawable/ic_user" />
+                android:paddingEnd="7dp" />
 
             <AutoCompleteTextView
                 android:id="@+id/password"
@@ -88,16 +80,16 @@
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="15dp"
                 android:background="@drawable/roundedwhite"
+                android:drawableStart="@drawable/ic_padlock"
                 android:drawableLeft="@drawable/ic_padlock"
                 android:drawablePadding="7dp"
                 android:hint="@string/password"
-                android:maxLines="1"
                 android:imeOptions="actionDone"
                 android:inputType="textPassword"
+                android:maxLines="1"
                 android:paddingStart="7dp"
-                android:paddingEnd="7dp"
                 android:paddingLeft="7dp"
-                android:drawableStart="@drawable/ic_padlock" />
+                android:paddingEnd="7dp" />
 
             <Button
                 android:id="@+id/loginButton"

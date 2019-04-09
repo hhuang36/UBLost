@@ -15,6 +15,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.content.Intent;
 
+import com.example.myapplication.Model.User;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -43,7 +49,6 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
 
         UBLostLogo = findViewById(R.id.UBLostLogo);
         scrollView = findViewById(R.id.scrollView);
@@ -76,6 +81,8 @@ public class Login extends AppCompatActivity {
                 }
             }
         });
+
+
 
         //register button functionality -- TO BE IMPLEMENTED 03/28
         registerButton.setOnClickListener(new View.OnClickListener(){
