@@ -14,6 +14,7 @@ package com.example.myapplication;
         import org.junit.Before;
         import org.junit.Rule;
         import org.junit.Test;
+        import org.w3c.dom.Text;
 
         import static android.support.test.InstrumentationRegistry.getInstrumentation;
         import static android.support.test.espresso.Espresso.onView;
@@ -64,12 +65,21 @@ public class RegisterTest {
         AutoCompleteTextView uView = rT.findViewById(R.id.username);
         assertNotNull(uView);
     }
-    
+
 
     @Test// Testing if the email view exists.
     public void testEmailView(){
         AutoCompleteTextView eView = rT.findViewById(R.id.email);
         assertNotNull(eView);
+    }
+
+    // tests that the hint displayed in the email field is correct
+    @Test
+    public void testEmailTextIsCorrect(){
+        AutoCompleteTextView eView = rT.findViewById(R.id.email);
+        CharSequence emailText = eView.getHint();
+        CharSequence expected = "email address";
+        assertEquals(emailText, expected);
     }
 
     @Test// Testing if the password view exists.
@@ -78,10 +88,28 @@ public class RegisterTest {
         assertNotNull(pView);
     }
 
+    // tests that the hint displayed in the password field is correct
+    @Test
+    public void testPasswordTextIsCorrect(){
+        AutoCompleteTextView pView = rT.findViewById(R.id.password);
+        CharSequence passwordText = pView.getHint();
+        CharSequence expected = "password";
+        assertEquals(passwordText, expected);
+    }
+
     @Test// Testing if the confirm password view exists.
     public void testConfirmPasswordView(){
         AutoCompleteTextView cPView = rT.findViewById(R.id.confirm_password);
         assertNotNull(cPView);
+    }
+
+    // tests that the hint displayed in the confirm password field is correct
+    @Test
+    public void testConfirmPasswordTextIsCorrect(){
+        AutoCompleteTextView pView = rT.findViewById(R.id.confirm_password);
+        CharSequence confirmPasswordText = pView.getHint();
+        CharSequence expected = "confirm password";
+        assertEquals(confirmPasswordText, expected);
     }
 
     @Test// Testing if the radio button exists.
@@ -90,11 +118,21 @@ public class RegisterTest {
         assertNotNull(rButton);
     }
 
+
     @Test// Testing if the register button exists.
     public void testRegiterButton(){
         Button registerButton = rT.findViewById(R.id.registerButton);
         assertNotNull(registerButton);
 
+    }
+
+    // tests that the text displayed in the Register Button  is correct
+    @Test
+    public void testRegisterButtonTextIsCorrect(){
+        Button registerButton = rT.findViewById(R.id.registerButton);
+        CharSequence registerButtonText = registerButton.getText();
+        CharSequence expected = "Register";
+        assertEquals(registerButtonText, expected);
     }
 
     // tests that when the uer is done filling out his or her credentials and clicks the register button, the home page should be displayed.
