@@ -20,12 +20,12 @@ import static org.junit.Assert.*;
 public class LoginTest extends android.app.Activity{
 
     @Rule
-    public ActivityTestRule<LoginTest> loginTestActivityTestRule = new ActivityTestRule(LoginTest.class);
-    public LoginTest lT = null;
+    public ActivityTestRule<Login> loginActivityTestRule = new ActivityTestRule(Login.class);
+    public Login lT = null;
 
     @Before
     public void setUp() throws Exception {
-        lT = loginTestActivityTestRule.getActivity();
+        lT = loginActivityTestRule.getActivity();
     }
 
     // test that the LoginTest activity is not null when the application is run
@@ -99,5 +99,6 @@ public class LoginTest extends android.app.Activity{
 
     @After
     public void tearDown() throws Exception {
+        lT = null;
     }
 }

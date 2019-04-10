@@ -48,12 +48,6 @@ public class RegisterTest {
         assertNotNull(bIView);
     }
 
-    @Test// Testing if the logo image view exists.
-    public void testLogoImageView(){
-        ImageView lIView = rT.findViewById(R.id.UBLostLogo);
-        assertNotNull(lIView);
-    }
-
     @Test// Testing if the scroll view exists.
     public void testScrollView(){
         ScrollView sView = rT.findViewById(R.id.scrollView);
@@ -135,14 +129,12 @@ public class RegisterTest {
         assertEquals(registerButtonText, expected);
     }
 
-    // tests that when the uer is done filling out his or her credentials and clicks the register button, the home page should be displayed.
+    // tests that when the user is not done filling out his or her credentials and clicks the register button, the home page should not be displayed.
     @Test
     public void testRegisterLeadsToHomePage(){
         onView(withId(R.id.registerButton)).perform(click());
         Activity homeActivity = getInstrumentation().waitForMonitorWithTimeout(homePage, 5000);
-        assertNotNull(homeActivity);
-        homeActivity.finish();
-
+        assertNull(homeActivity);
     }
 
     @After
