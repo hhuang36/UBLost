@@ -1,20 +1,28 @@
 package com.example.myapplication;
 
 
+import android.app.Activity;
 import android.app.Instrumentation;
 import android.content.Intent;
 import android.provider.ContactsContract;
 import android.support.test.espresso.DataInteraction;
+import android.support.test.espresso.NoMatchingViewException;
+import android.support.test.espresso.UiController;
+import android.support.test.espresso.ViewAction;
 import android.support.test.espresso.ViewInteraction;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
+import android.text.SpannableString;
+import android.text.style.ClickableSpan;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
+import android.widget.TextView;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
+import org.hamcrest.Matchers;
 import org.hamcrest.TypeSafeMatcher;
 import org.hamcrest.core.IsInstanceOf;
 import org.junit.Before;
@@ -22,6 +30,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static android.support.test.InstrumentationRegistry.getInstrumentation;
 import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.Espresso.pressBack;
@@ -31,6 +40,8 @@ import static android.support.test.espresso.action.ViewActions.openLinkWithText;
 import static android.support.test.espresso.action.ViewActions.replaceText;
 import static android.support.test.espresso.action.ViewActions.scrollTo;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
+import static android.support.test.espresso.intent.Intents.intending;
+import static android.support.test.espresso.intent.matcher.IntentMatchers.toPackage;
 import static android.support.test.espresso.matcher.ViewMatchers.hasErrorText;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
@@ -368,8 +379,63 @@ public class RegisterTest2 {
 
     @Test
     public void testReturnToLoginLink() {
-        //TODO
+        onView(withId(R.id.helpTextView)).perform(clickClickableSpan("Login Now"));
+        Instrumentation.ActivityMonitor loginPage = getInstrumentation().addMonitor(Login.class.getName(), null, false);
 
+        Activity login = getInstrumentation().waitForMonitorWithTimeout(loginPage, 5000);
+        assertNotNull(login);
+        login.finish();
+    }
+
+    public static ViewAction clickClickableSpan(final CharSequence textToClick) {
+        return new ViewAction() {
+            @Override
+            public Matcher<View> getConstraints() {
+                return Matchers.instanceOf(TextView.class);
+            }
+
+            @Override
+            public String getDescription() {
+                return "clicking on a ClickableSpan";
+            }
+
+            @Override
+            public void perform(UiController uiController, View view) {
+                TextView textView = (TextView) view;
+                SpannableString spannableString = (SpannableString) textView.getText();
+
+                if (spannableString.length() == 0) {
+                    // TextView is empty, nothing to do
+                    throw new NoMatchingViewException.Builder()
+                            .includeViewHierarchy(true)
+                            .withRootView(textView)
+                            .build();
+                }
+
+                // Get the links inside the TextView and check if we find textToClick
+                ClickableSpan[] spans = spannableString.getSpans(0, spannableString.length(), ClickableSpan.class);
+                if (spans.length > 0) {
+                    ClickableSpan spanCandidate;
+                    for (ClickableSpan span : spans) {
+                        spanCandidate = span;
+                        int start = spannableString.getSpanStart(spanCandidate);
+                        int end = spannableString.getSpanEnd(spanCandidate);
+                        CharSequence sequence = spannableString.subSequence(start, end);
+                        if (textToClick.toString().equals(sequence.toString())) {
+                            span.onClick(textView);
+                            return;
+                        }
+                    }
+                }
+
+                // textToClick not found in TextView
+                throw new NoMatchingViewException.Builder()
+                        .includeViewHierarchy(true)
+                        .withRootView(textView)
+                        .build();
+
+            }
+        };
     }
 
 
