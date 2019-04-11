@@ -42,13 +42,13 @@
                 android:id="@+id/RegisterTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="50dp"
+                android:layout_marginBottom="40dp"
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp"
-                android:paddingLeft="40dp"
                 android:text="@string/register"
+                android:textAlignment="center"
                 android:textColor="@color/white"
-                android:textSize="45sp"
+                android:textSize="40sp"
                 android:textStyle="bold" />
 
             <RelativeLayout
@@ -162,7 +162,6 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-
                 android:layout_marginTop="10dp"
                 android:button="@drawable/radiobutton"
                 android:paddingLeft="5dp"

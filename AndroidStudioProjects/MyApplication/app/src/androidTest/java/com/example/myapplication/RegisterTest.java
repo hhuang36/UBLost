@@ -2,7 +2,9 @@ package com.example.myapplication;
 
         import android.app.Activity;
         import android.app.Instrumentation;
+        import android.support.test.filters.LargeTest;
         import android.support.test.rule.ActivityTestRule;
+        import android.support.test.runner.AndroidJUnit4;
         import android.view.View;
         import android.widget.AutoCompleteTextView;
         import android.widget.Button;
@@ -14,6 +16,7 @@ package com.example.myapplication;
         import org.junit.Before;
         import org.junit.Rule;
         import org.junit.Test;
+        import org.junit.runner.RunWith;
         import org.w3c.dom.Text;
 
         import static android.support.test.InstrumentationRegistry.getInstrumentation;
@@ -22,6 +25,8 @@ package com.example.myapplication;
         import static android.support.test.espresso.matcher.ViewMatchers.withId;
         import static org.junit.Assert.*;
 
+@RunWith(AndroidJUnit4.class)
+@LargeTest
 public class RegisterTest {
 
     @Rule

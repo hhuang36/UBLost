@@ -19,7 +19,7 @@
             android:adjustViewBounds="true"
             android:scaleType="fitCenter"
             android:background="@android:color/transparent"
-            android:src="@drawable/ublost_splashpagelogo2" />
+            android:src="@drawable/ublost_logo3" />
 
     </RelativeLayout>
 

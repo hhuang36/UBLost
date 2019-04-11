@@ -220,10 +220,6 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             return;
         }
 
-        if (!emailValid) {
-            editTextEmail.setError("Invalid email address!");
-            return;
-        }
 
         if (!terms.isChecked()) {
             Toast.makeText(getApplicationContext(), "Please accept Terms and Conditions", Toast.LENGTH_SHORT).show();
