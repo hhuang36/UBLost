@@ -139,7 +139,7 @@ public class RegisterTest {
 
     // tests that when the user is not done filling out his or her credentials and clicks the register button, the home page should not be displayed.
     @Test
-    public void testRegisterLeadsToHomePage(){
+    public void testRegisterDoesNotLeadToHomePageWithIncorrectCredentials(){
         onView(withId(R.id.registerButton)).perform(click());
         Activity homeActivity = getInstrumentation().waitForMonitorWithTimeout(homePage, 5000);
         assertNull(homeActivity);

@@ -1,5 +1,8 @@
 package com.example.myapplication;
 
+import android.app.Activity;
+import android.app.Instrumentation;
+import android.support.test.espresso.ViewInteraction;
 import android.support.test.rule.ActivityTestRule;
 import android.text.Layout;
 import android.view.View;
@@ -15,6 +18,12 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
+import static android.support.test.InstrumentationRegistry.getInstrumentation;
+import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
+import static android.support.test.espresso.action.ViewActions.replaceText;
+import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static org.junit.Assert.*;
 
 public class LoginTest {
@@ -22,6 +31,7 @@ public class LoginTest {
     @Rule
     public ActivityTestRule<Login> loginActivityTestRule = new ActivityTestRule(Login.class);
     public Login lT = null;
+    Instrumentation.ActivityMonitor homePage = getInstrumentation().addMonitor(SplashScreen.class.getName(), null, false);
 
     @Before
     public void setUp() throws Exception {
@@ -75,6 +85,22 @@ public class LoginTest {
     public void testRegisterButtonExists() {
         Button button = lT.findViewById(R.id.registerButton);
         assertNotNull(button);
+    }
+
+    @Test
+    public void testLoginButtonFunctionality(){
+        ViewInteraction appCompatAutoCompleteTextView = onView(withId(R.id.email));
+        appCompatAutoCompleteTextView.perform(replaceText("hartloff@gmail.com"), closeSoftKeyboard());
+
+        // click email & type in test@gmail.com
+        ViewInteraction appCompatAutoCompleteTextView2 = onView(withId(R.id.password));
+        appCompatAutoCompleteTextView2.perform(replaceText("hartloff"), closeSoftKeyboard());
+
+        // click on register button
+        onView(withId(R.id.loginButton)).perform(click());
+        Activity home = getInstrumentation().waitForMonitorWithTimeout(homePage, 5000);
+        assertNotNull(home);
+        home.finish();
     }
 
     @After
