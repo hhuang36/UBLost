@@ -120,7 +120,7 @@ public class RegisterTest {
 
 
     @Test// Testing if the register button exists.
-    public void testRegiterButton(){
+    public void testRegisterButton(){
         Button registerButton = rT.findViewById(R.id.registerButton);
         assertNotNull(registerButton);
 
