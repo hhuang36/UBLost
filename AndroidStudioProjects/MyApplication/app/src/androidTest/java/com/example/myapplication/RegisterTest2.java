@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 
+import android.app.Activity;
 import android.app.Instrumentation;
 import android.content.Intent;
 import android.provider.ContactsContract;
@@ -22,6 +23,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static android.support.test.InstrumentationRegistry.getInstrumentation;
 import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.Espresso.pressBack;
@@ -41,6 +43,8 @@ import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.anything;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
@@ -48,7 +52,13 @@ public class RegisterTest2 {
 
     @Rule
     public ActivityTestRule<Register> registerTestRule = new ActivityTestRule<>(Register.class);
+    Instrumentation.ActivityMonitor loginPage = getInstrumentation().addMonitor(Login.class.getName(), null, false);
 
+    Register register = null;
+    @Before
+    public void before(){
+        register = registerTestRule.getActivity();
+    }
     @Test
     public void registerTest2() {
         ViewInteraction appCompatSpinner2 = onView(withId(R.id.status_spinner));
@@ -372,6 +382,32 @@ public class RegisterTest2 {
 
     }
 
+    // tests that when the user successfully entered all fields that register brings the user back to the login activity
+    @Test
+    public void testRegisterButton(){
+        ViewInteraction appCompatAutoCompleteTextView = onView(withId(R.id.username));
+        appCompatAutoCompleteTextView.perform(replaceText("asdf"), closeSoftKeyboard());
+
+        // click email & type in test@gmail.com
+        ViewInteraction appCompatAutoCompleteTextView2 = onView(withId(R.id.email));
+        appCompatAutoCompleteTextView2.perform(replaceText("asdf@gmail.com"), closeSoftKeyboard());
+
+        // click password & type in 123456
+        ViewInteraction appCompatAutoCompleteTextView3 = onView(withId(R.id.password));
+        appCompatAutoCompleteTextView3.perform(replaceText("123456"), closeSoftKeyboard());
+
+        // click confirm password & type in 12345
+        ViewInteraction appCompatAutoCompleteTextView4 = onView(withId(R.id.confirm_password));
+        appCompatAutoCompleteTextView4.perform(replaceText("123456"), closeSoftKeyboard());
+
+        // click on register button
+        onView(withId(R.id.radioButton)).perform(click());
+        onView(withId(R.id.registerButton)).perform(click());
+        Activity login = getInstrumentation().waitForMonitorWithTimeout(loginPage, 5000);
+        assertNotNull(login);
+        login.finish();
+
+    }
 
 
 }

@@ -5,12 +5,15 @@ package com.example.myapplication;
         import android.support.test.filters.LargeTest;
         import android.support.test.rule.ActivityTestRule;
         import android.support.test.runner.AndroidJUnit4;
+        import android.text.SpannableString;
+        import android.text.style.ClickableSpan;
         import android.view.View;
         import android.widget.AutoCompleteTextView;
         import android.widget.Button;
         import android.widget.ImageView;
         import android.widget.RadioButton;
         import android.widget.ScrollView;
+        import android.widget.TextView;
 
         import org.junit.After;
         import org.junit.Before;
@@ -141,6 +144,7 @@ public class RegisterTest {
         Activity homeActivity = getInstrumentation().waitForMonitorWithTimeout(homePage, 5000);
         assertNull(homeActivity);
     }
+
 
     @After
     public void tearDown() throws Exception {
