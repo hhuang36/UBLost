@@ -10,6 +10,8 @@ import android.support.test.espresso.NoMatchingViewException;
 import android.support.test.espresso.UiController;
 import android.support.test.espresso.ViewAction;
 import android.support.test.espresso.ViewInteraction;
+import android.support.test.espresso.action.ViewActions;
+import android.support.test.espresso.matcher.ViewMatchers;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
@@ -383,67 +385,6 @@ public class RegisterTest2 {
 
         // check if error message pops up next to email
         onView(withId(R.id.confirm_password)).check(matches(hasErrorText("Passwords do not match!")));
-    }
-
-    @Test
-    public void testReturnToLoginLink() {
-        onView(withId(R.id.helpTextView)).perform(clickClickableSpan("Login Now"));
-        Instrumentation.ActivityMonitor loginPage = getInstrumentation().addMonitor(Login.class.getName(), null, false);
-
-        Activity login = getInstrumentation().waitForMonitorWithTimeout(loginPage, 5000);
-        assertNotNull(login);
-        login.finish();
-    }
-
-    public static ViewAction clickClickableSpan(final CharSequence textToClick) {
-        return new ViewAction() {
-            @Override
-            public Matcher<View> getConstraints() {
-                return Matchers.instanceOf(TextView.class);
-            }
-
-            @Override
-            public String getDescription() {
-                return "clicking on a ClickableSpan";
-            }
-
-            @Override
-            public void perform(UiController uiController, View view) {
-                TextView textView = (TextView) view;
-                SpannableString spannableString = (SpannableString) textView.getText();
-
-                if (spannableString.length() == 0) {
-                    // TextView is empty, nothing to do
-                    throw new NoMatchingViewException.Builder()
-                            .includeViewHierarchy(true)
-                            .withRootView(textView)
-                            .build();
-                }
-
-                // Get the links inside the TextView and check if we find textToClick
-                ClickableSpan[] spans = spannableString.getSpans(0, spannableString.length(), ClickableSpan.class);
-                if (spans.length > 0) {
-                    ClickableSpan spanCandidate;
-                    for (ClickableSpan span : spans) {
-                        spanCandidate = span;
-                        int start = spannableString.getSpanStart(spanCandidate);
-                        int end = spannableString.getSpanEnd(spanCandidate);
-                        CharSequence sequence = spannableString.subSequence(start, end);
-                        if (textToClick.toString().equals(sequence.toString())) {
-                            span.onClick(textView);
-                            return;
-                        }
-                    }
-                }
-
-                // textToClick not found in TextView
-                throw new NoMatchingViewException.Builder()
-                        .includeViewHierarchy(true)
-                        .withRootView(textView)
-                        .build();
-
-            }
-        };
     }
 
     // tests that when the user successfully entered all fields that register brings the user back to the login activity
