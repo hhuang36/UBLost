@@ -78,9 +78,9 @@ public class LoginTest {
     }
     //tests that the Password Text Views displays correct hint
     @Test
-    public void testTextViewText(){
+    public void testPasswordTextViewText(){
         TextView tv = lT.findViewById(R.id.password);
-        CharSequence pass = tv.getText();
+        CharSequence pass = tv.getHint();
         CharSequence actual = "password";
         assertEquals(pass, actual);
     }
@@ -93,9 +93,9 @@ public class LoginTest {
     @Test
     public void testEmailText(){
         TextView tv = lT.findViewById(R.id.email);
-        CharSequence pass = tv.getText();
+        CharSequence Email = tv.getHint();
         CharSequence actual = "email address";
-        assertEquals(pass, actual);
+        assertEquals(Email, actual);
     }
 
     // tests that the login button is displayed on screen
@@ -108,9 +108,9 @@ public class LoginTest {
     @Test
     public void loginButtonText(){
         Button button = lT.findViewById(R.id.loginButton);
-        CharSequence pass = button.getText();
+        CharSequence Login = button.getText();
         CharSequence actual = "Login";
-        assertEquals(pass, actual);
+        assertEquals(Login, actual);
     }
 
     // tests that the register button is displayed on screen
@@ -123,9 +123,9 @@ public class LoginTest {
     @Test
     public void registerButtonText(){
         Button button = lT.findViewById(R.id.registerButton);
-        CharSequence pass = button.getText();
+        CharSequence Register = button.getText();
         CharSequence actual = "Register";
-        assertEquals(pass, actual);
+        assertEquals(Register, actual);
     }
     //testing when register button it clicked, it opens the register page or not
     @Test
