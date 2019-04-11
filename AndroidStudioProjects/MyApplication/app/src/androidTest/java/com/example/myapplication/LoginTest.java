@@ -36,6 +36,7 @@ public class LoginTest {
     public Login lT = null;
     Instrumentation.ActivityMonitor homePage = getInstrumentation().addMonitor(SplashScreen.class.getName(), null, false);
     Instrumentation.ActivityMonitor loginPage = getInstrumentation().addMonitor(Login.class.getName(), null, false);
+    Instrumentation.ActivityMonitor registerPage = getInstrumentation().addMonitor(Register.class.getName(), null, false);
 
     @Before
     public void setUp() throws Exception {
