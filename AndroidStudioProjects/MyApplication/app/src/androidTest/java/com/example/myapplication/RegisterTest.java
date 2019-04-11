@@ -2,18 +2,24 @@ package com.example.myapplication;
 
         import android.app.Activity;
         import android.app.Instrumentation;
+        import android.support.test.filters.LargeTest;
         import android.support.test.rule.ActivityTestRule;
+        import android.support.test.runner.AndroidJUnit4;
+        import android.text.SpannableString;
+        import android.text.style.ClickableSpan;
         import android.view.View;
         import android.widget.AutoCompleteTextView;
         import android.widget.Button;
         import android.widget.ImageView;
         import android.widget.RadioButton;
         import android.widget.ScrollView;
+        import android.widget.TextView;
 
         import org.junit.After;
         import org.junit.Before;
         import org.junit.Rule;
         import org.junit.Test;
+        import org.junit.runner.RunWith;
         import org.w3c.dom.Text;
 
         import static android.support.test.InstrumentationRegistry.getInstrumentation;
@@ -22,6 +28,8 @@ package com.example.myapplication;
         import static android.support.test.espresso.matcher.ViewMatchers.withId;
         import static org.junit.Assert.*;
 
+@RunWith(AndroidJUnit4.class)
+@LargeTest
 public class RegisterTest {
 
     @Rule
@@ -46,12 +54,6 @@ public class RegisterTest {
     public void testBackgroundImageView(){
         ImageView bIView = rT.findViewById(R.id.Background);
         assertNotNull(bIView);
-    }
-
-    @Test// Testing if the logo image view exists.
-    public void testLogoImageView(){
-        ImageView lIView = rT.findViewById(R.id.UBLostLogo);
-        assertNotNull(lIView);
     }
 
     @Test// Testing if the scroll view exists.
@@ -135,15 +137,14 @@ public class RegisterTest {
         assertEquals(registerButtonText, expected);
     }
 
-    // tests that when the uer is done filling out his or her credentials and clicks the register button, the home page should be displayed.
+    // tests that when the user is not done filling out his or her credentials and clicks the register button, the home page should not be displayed.
     @Test
-    public void testRegisterLeadsToHomePage(){
+    public void testRegisterDoesNotLeadToHomePageWithIncorrectCredentials(){
         onView(withId(R.id.registerButton)).perform(click());
         Activity homeActivity = getInstrumentation().waitForMonitorWithTimeout(homePage, 5000);
-        assertNotNull(homeActivity);
-        homeActivity.finish();
-
+        assertNull(homeActivity);
     }
+
 
     @After
     public void tearDown() throws Exception {
