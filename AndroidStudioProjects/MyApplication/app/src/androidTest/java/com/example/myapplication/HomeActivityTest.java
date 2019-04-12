@@ -52,7 +52,7 @@ public class HomeActivityTest {
     // tests that the Capen Library button is displayed
     @Test
     public void testCapenButtonExists(){
-        Button capenButton = hActivity.findViewById(R.id.MusicButton);
+        Button capenButton = hActivity.findViewById(R.id.CapenButton);
         assertNotNull(capenButton);
     }
 
@@ -66,7 +66,7 @@ public class HomeActivityTest {
     // tests that the LockWood Library button is displayed
     @Test
     public void testLockwoodButtonExists(){
-        Button lockwoodButton = hActivity.findViewById(R.id.MusicButton);
+        Button lockwoodButton = hActivity.findViewById(R.id.LockWoodButton);
         assertNotNull(lockwoodButton);
     }
 
