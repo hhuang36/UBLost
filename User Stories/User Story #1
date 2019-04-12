@@ -1,0 +1,12 @@
+FEATURE: The ability to look up a building and view its floor plan
+
+Story: As a professor who works in the second floor of Capen throughout the week, I want to know the layout of the building to determine the locations of my office hours.
+
+Acceptance Tests:
+1. Open the app
+2. Click on search floorplans
+3. A screen of options for buildings will be listed
+4. Click on the option labeled "Capen Library"
+5. A similar option page will open giving options for the floor #
+6. Click on the option labeled "Floor 2"
+7. A floorplan of the 2nd floor of Capen will appear on the screen
