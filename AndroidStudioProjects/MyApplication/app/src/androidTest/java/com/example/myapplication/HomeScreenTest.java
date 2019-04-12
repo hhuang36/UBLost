@@ -18,12 +18,12 @@ import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static org.junit.Assert.*;
 
-public class SplashScreenTest {
+public class HomeScreenTest {
 
     @Rule
-    public ActivityTestRule<SplashScreen> splashScreenHomeRule = new ActivityTestRule(SplashScreen.class);
+    public ActivityTestRule<HomeScreen> splashScreenHomeRule = new ActivityTestRule(HomeScreen.class);
 
-    public SplashScreen splashScreen = null;
+    public HomeScreen splashScreen = null;
     Instrumentation.ActivityMonitor HomePage = getInstrumentation().addMonitor(HomeActivity.class.getName(), null, false);
     Instrumentation.ActivityMonitor NavigationOptions = getInstrumentation().addMonitor(HomeActivity2.class.getName(), null, false);
 
@@ -92,15 +92,6 @@ public class SplashScreenTest {
 
     }
 
-    // tests that the text view background is the right color
-    @Test
-    public void testTextViewColor(){
-        TextView tv = splashScreen.findViewById(R.id.textView);
-        int color = tv.getCurrentTextColor();
-        TextView tv2 = splashScreen.tv;
-        int color2 = tv2.getCurrentTextColor();
-        assertTrue(color == color2);
-    }
 
     // tests that the text on the Floor Plan button displays "Search Floor Plans"
     @Test
