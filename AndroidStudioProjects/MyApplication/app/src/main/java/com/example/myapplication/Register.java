@@ -46,7 +46,6 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
     RadioButton terms;
     boolean passwordValid = false;
     boolean emailValid = false;
-    boolean userValid = false;
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     Spinner spinner;
     String status;
@@ -101,34 +100,6 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         back2Login.setText(ss);
         back2Login.setMovementMethod(LinkMovementMethod.getInstance());
 
-        // username verification (no duplicates)
-        editTextUsername.addTextChangedListener(new TextWatcher() {
-                                                    @Override
-                                                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                                                    }
-
-                                                    @Override
-                                                    public void onTextChanged(CharSequence s, int start, int before, int count) {
-                                                    }
-
-                                                    @Override
-                                                    public void afterTextChanged(Editable s) {
-                                                        users.addListenerForSingleValueEvent(new ValueEventListener() {
-                                                            @Override
-                                                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                                                if (dataSnapshot.child(editTextUsername.getText().toString().trim()).exists()) {
-                                                                    editTextUsername.setError("Username already exists");
-                                                                    userValid = false;
-                                                                } else
-                                                                    userValid = true;
-                                                            }
-
-                                                            @Override
-                                                            public void onCancelled(@NonNull DatabaseError databaseError) {
-                                                            }
-                                                        });
-                                                    }
-                                                });
 
         // Matching password verification
         confirm_password.addTextChangedListener(new TextWatcher() {
@@ -210,11 +181,6 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             return;
         }
 
-        if (!userValid) {
-            editTextUsername.setError("Username already exists!");
-            return;
-        }
-
         if (!passwordValid) {
             confirm_password.setError("Passwords do not match!");
             return;
@@ -226,7 +192,6 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             return;
         }
 
-        if(userValid) {
             mAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
@@ -267,7 +232,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                         }
                     });
         }
-    } // end RegisterUser
+     // end RegisterUser
 
     @Override
     public void onClick(View v) {

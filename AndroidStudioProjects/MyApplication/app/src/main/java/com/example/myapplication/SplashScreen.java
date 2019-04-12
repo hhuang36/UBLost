@@ -19,7 +19,7 @@ public class SplashScreen extends AppCompatActivity { // THIS IS THE HOME PAGE
      Button floorplanButton;
      Button navigateMe;
     private Button Home;
-    TextView tv;
+    //TextView tv;
     public static  int SPLASH_TIME_OUT = 4000;
 
     @Override
@@ -30,7 +30,7 @@ public class SplashScreen extends AppCompatActivity { // THIS IS THE HOME PAGE
         //openSplashScreen();
         Home = (Button) findViewById(R.id.home_page);
 
-        tv = findViewById(R.id.textView);
+        //tv = findViewById(R.id.textView);
         menuDrawerLayout = findViewById(R.id.drawerLayout);
         menuToggle = new ActionBarDrawerToggle(this, menuDrawerLayout, R.string.open, R.string.close);
 

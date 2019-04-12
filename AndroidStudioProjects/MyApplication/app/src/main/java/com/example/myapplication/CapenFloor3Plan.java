@@ -13,5 +13,6 @@ public class CapenFloor3Plan extends AppCompatActivity {
         setContentView(R.layout.activity_capen_floor3_plan);
         capenF3 = findViewById(R.id.capenF3);
         capenF3.setImageResource(R.mipmap.capen_floor_4);
+
     }
 }
