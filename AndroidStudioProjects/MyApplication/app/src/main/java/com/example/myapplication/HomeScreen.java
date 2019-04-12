@@ -13,7 +13,7 @@ package com.example.myapplication;
         import android.widget.ImageButton;
         import android.widget.TextView;
 
-public class SplashScreen extends AppCompatActivity { // THIS IS THE HOME PAGE
+public class HomeScreen extends AppCompatActivity { // THIS IS THE HOME PAGE
     private DrawerLayout menuDrawerLayout;
     private ActionBarDrawerToggle menuToggle;
      Button floorplanButton;

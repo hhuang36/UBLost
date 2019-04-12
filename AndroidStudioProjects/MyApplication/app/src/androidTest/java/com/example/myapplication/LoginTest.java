@@ -4,13 +4,9 @@ import android.app.Activity;
 import android.app.Instrumentation;
 import android.support.test.espresso.ViewInteraction;
 import android.support.test.rule.ActivityTestRule;
-import android.text.Layout;
-import android.util.Log;
-import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RadioButton;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
@@ -24,7 +20,6 @@ import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static android.support.test.espresso.action.ViewActions.replaceText;
-import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.hasErrorText;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static org.junit.Assert.*;
@@ -34,7 +29,7 @@ public class LoginTest {
     @Rule
     public ActivityTestRule<Login> loginActivityTestRule = new ActivityTestRule(Login.class);
     public Login lT = null;
-    Instrumentation.ActivityMonitor homePage = getInstrumentation().addMonitor(SplashScreen.class.getName(), null, false);
+    Instrumentation.ActivityMonitor homePage = getInstrumentation().addMonitor(HomeScreen.class.getName(), null, false);
     Instrumentation.ActivityMonitor loginPage = getInstrumentation().addMonitor(Login.class.getName(), null, false);
     Instrumentation.ActivityMonitor registerPage = getInstrumentation().addMonitor(Register.class.getName(), null, false);
 

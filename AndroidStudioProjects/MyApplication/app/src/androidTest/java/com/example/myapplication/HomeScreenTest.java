@@ -18,12 +18,12 @@ import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static org.junit.Assert.*;
 
-public class SplashScreenTest {
+public class HomeScreenTest {
 
     @Rule
-    public ActivityTestRule<SplashScreen> splashScreenHomeRule = new ActivityTestRule(SplashScreen.class);
+    public ActivityTestRule<HomeScreen> splashScreenHomeRule = new ActivityTestRule(HomeScreen.class);
 
-    public SplashScreen splashScreen = null;
+    public HomeScreen splashScreen = null;
     Instrumentation.ActivityMonitor HomePage = getInstrumentation().addMonitor(HomeActivity.class.getName(), null, false);
     Instrumentation.ActivityMonitor NavigationOptions = getInstrumentation().addMonitor(HomeActivity2.class.getName(), null, false);
 
