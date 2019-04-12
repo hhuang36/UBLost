@@ -7,10 +7,6 @@ public class User {
     private String status;
 
     public User(String password, String email, String status){
-
-    }
-
-    public User(String username, String password, String email, String status){
         this.password = password;
         this.email = email;
         this.status = status;

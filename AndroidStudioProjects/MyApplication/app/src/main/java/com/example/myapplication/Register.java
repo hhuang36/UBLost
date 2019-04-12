@@ -184,30 +184,45 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             return;
         }
 
-        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            final User user = new User(password, email, status);
-                            users.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user)
-                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-                                            if (task.isSuccessful()) {
-                                                Toast.makeText(Register.this, "Successfully Registered!", Toast.LENGTH_LONG).show();
-                                                Intent intent = new Intent(Register.this, Login.class);
-                                                startActivity(intent);
+            mAuth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                final User user = new User(password, email, status);
 
-                                            } else {
-                                                Toast.makeText(Register.this, "Registration Failed!", Toast.LENGTH_LONG).show();
-                                            }
+                                users.addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                                            users.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user)
+                                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                        @Override
+                                                        public void onComplete(@NonNull Task<Void> task) {
+                                                            if (task.isSuccessful()) {
+                                                                Toast.makeText(Register.this, "Successfully Registered!", Toast.LENGTH_LONG).show();
+                                                                Intent intent = new Intent(Register.this, Login.class);
+                                                                startActivity(intent);
+
+                                                            } else {
+                                                                Toast.makeText(Register.this, "Registration Failed!", Toast.LENGTH_LONG).show();
+                                                            }
+                                                        }
+                                                    });
                                         }
-                                    });
+
+
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                                    }
+                                });
+                            } else {
+                                Toast.makeText(Register.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                            }
                         }
-                    }
-                });
-    }
+                    });
+        }
+    // end RegisterUser
 
 
     @Override
