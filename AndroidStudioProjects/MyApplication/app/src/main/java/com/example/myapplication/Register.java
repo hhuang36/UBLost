@@ -17,7 +17,6 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-import android.widget.Button;
 import android.support.annotation.NonNull;
 import android.widget.Toast;
 
@@ -46,7 +45,6 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
     RadioButton terms;
     boolean passwordValid = false;
     boolean emailValid = false;
-    boolean userValid = false;
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     Spinner spinner;
     String status;
@@ -57,13 +55,11 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         setContentView(R.layout.activity_register);
 
 
-
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
         findViewById(R.id.registerButton).setOnClickListener(this);
 
-        editTextUsername = findViewById(R.id.username);
         editTextPassword = findViewById(R.id.password);
         confirm_password = findViewById(R.id.confirm_password);
         editTextEmail = findViewById(R.id.email);
@@ -101,56 +97,27 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         back2Login.setText(ss);
         back2Login.setMovementMethod(LinkMovementMethod.getInstance());
 
-        // username verification (no duplicates)
-        editTextUsername.addTextChangedListener(new TextWatcher() {
-                                                    @Override
-                                                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                                                    }
-
-                                                    @Override
-                                                    public void onTextChanged(CharSequence s, int start, int before, int count) {
-                                                    }
-
-                                                    @Override
-                                                    public void afterTextChanged(Editable s) {
-                                                        users.addListenerForSingleValueEvent(new ValueEventListener() {
-                                                            @Override
-                                                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                                                if (dataSnapshot.child(editTextUsername.getText().toString().trim()).exists()) {
-                                                                    editTextUsername.setError("Username already exists");
-                                                                    userValid = false;
-                                                                } else
-                                                                    userValid = true;
-                                                            }
-
-                                                            @Override
-                                                            public void onCancelled(@NonNull DatabaseError databaseError) {
-                                                            }
-                                                        });
-                                                    }
-                                                });
-
         // Matching password verification
         confirm_password.addTextChangedListener(new TextWatcher() {
-                                                    @Override
-                                                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                                                    }
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
 
-                                                    @Override
-                                                    public void onTextChanged(CharSequence s, int start, int before, int count) {
-                                                    }
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
 
-                                                    @Override
-                                                    public void afterTextChanged(Editable s) {
-                                                        String strPass1 = editTextPassword.getText().toString();
-                                                        String strPass2 = confirm_password.getText().toString();
-                                                        if (strPass1.equals(strPass2)) {
-                                                            passwordValid = true;
-                                                        } else {
-                                                            confirm_password.setError("Passwords do not match!");
-                                                        }
-                                                    }
-                                                });
+            @Override
+            public void afterTextChanged(Editable s) {
+                String strPass1 = editTextPassword.getText().toString();
+                String strPass2 = confirm_password.getText().toString();
+                if (strPass1.equals(strPass2)) {
+                    passwordValid = true;
+                } else {
+                    confirm_password.setError("Passwords do not match!");
+                }
+            }
+        });
 
         // Email format verification
         editTextEmail.addTextChangedListener(new TextWatcher() {
@@ -185,15 +152,10 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
 
     public void registerUser() {
         status = spinner.getSelectedItem().toString();
-        final String username = editTextUsername.getText().toString().trim();
         final String email = editTextEmail.getText().toString().trim();
         final String password = editTextPassword.getText().toString().trim();
         final String password_again = confirm_password.getText().toString().trim();
 
-        if (username.isEmpty()) {
-            editTextUsername.setError("Username is required!");
-            return;
-        }
 
         if (email.isEmpty()) {
             editTextEmail.setError("Email is required!");
@@ -210,10 +172,6 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             return;
         }
 
-        if (!userValid) {
-            editTextUsername.setError("Username already exists!");
-            return;
-        }
 
         if (!passwordValid) {
             confirm_password.setError("Passwords do not match!");
@@ -226,48 +184,31 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             return;
         }
 
-        if(userValid) {
-            mAuth.createUserWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                final User user = new User(editTextUsername.getText().toString().trim(), password, email, status);
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            final User user = new User(password, email, status);
+                            users.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user)
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if (task.isSuccessful()) {
+                                                Toast.makeText(Register.this, "Successfully Registered!", Toast.LENGTH_LONG).show();
+                                                Intent intent = new Intent(Register.this, Login.class);
+                                                startActivity(intent);
 
-                                users.addListenerForSingleValueEvent(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                        if (dataSnapshot.child(user.getUsername()).exists()) {
-                                            Toast.makeText(Register.this, "Username already exists!", Toast.LENGTH_LONG).show();
-                                        } else {
-                                            users.child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user)
-                                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                        @Override
-                                                        public void onComplete(@NonNull Task<Void> task) {
-                                                            if (task.isSuccessful()) {
-                                                                Toast.makeText(Register.this, "Successfully Registered!", Toast.LENGTH_LONG).show();
-                                                                Intent intent = new Intent(Register.this, Login.class);
-                                                                startActivity(intent);
-
-                                                            } else {
-                                                                Toast.makeText(Register.this, "Registration Failed!", Toast.LENGTH_LONG).show();
-                                                            }
-                                                        }
-                                                    });
+                                            } else {
+                                                Toast.makeText(Register.this, "Registration Failed!", Toast.LENGTH_LONG).show();
+                                            }
                                         }
-                                    }
-
-                                    @Override
-                                    public void onCancelled(@NonNull DatabaseError databaseError) {
-                                    }
-                                });
-                            } else {
-                                Toast.makeText(Register.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
-                            }
+                                    });
                         }
-                    });
-        }
-    } // end RegisterUser
+                    }
+                });
+    }
+
 
     @Override
     public void onClick(View v) {

@@ -142,10 +142,10 @@ public class LoginTest {
     @Test
     public void testLoginButtonFunctionality(){
         ViewInteraction appCompatAutoCompleteTextView = onView(withId(R.id.email));
-        appCompatAutoCompleteTextView.perform(replaceText("hartloff@gmail.com"), closeSoftKeyboard());
+        appCompatAutoCompleteTextView.perform(replaceText("hartloff@buffalo.edu"), closeSoftKeyboard());
 
         ViewInteraction appCompatAutoCompleteTextView2 = onView(withId(R.id.password));
-        appCompatAutoCompleteTextView2.perform(replaceText("hartloff"), closeSoftKeyboard());
+        appCompatAutoCompleteTextView2.perform(replaceText("123456"), closeSoftKeyboard());
 
         onView(withId(R.id.loginButton)).perform(click());
         Activity home = getInstrumentation().waitForMonitorWithTimeout(homePage, 5000);

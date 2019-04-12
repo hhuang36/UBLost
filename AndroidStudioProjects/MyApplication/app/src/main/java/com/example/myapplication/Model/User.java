@@ -2,27 +2,18 @@ package com.example.myapplication.Model;
 
 public class User {
 
-    private String username;
     private String password;
     private String email;
     private String status;
 
-    public User(){
+    public User(String password, String email, String status){
 
     }
 
     public User(String username, String password, String email, String status){
-        this.username = username;
         this.password = password;
         this.email = email;
         this.status = status;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-    public void setUsername() {
-        this.username = username;
     }
 
     public String getPassword() {

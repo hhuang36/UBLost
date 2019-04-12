@@ -62,12 +62,6 @@ public class RegisterTest {
         assertNotNull(sView);
     }
 
-    @Test // Testing if the username view exists.
-    public void testUsernameView(){
-        AutoCompleteTextView uView = rT.findViewById(R.id.username);
-        assertNotNull(uView);
-    }
-
 
     @Test// Testing if the email view exists.
     public void testEmailView(){
