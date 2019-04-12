@@ -92,15 +92,6 @@ public class SplashScreenTest {
 
     }
 
-    // tests that the text view background is the right color
-    @Test
-    public void testTextViewColor(){
-        TextView tv = splashScreen.findViewById(R.id.textView);
-        int color = tv.getCurrentTextColor();
-        TextView tv2 = splashScreen.tv;
-        int color2 = tv2.getCurrentTextColor();
-        assertTrue(color == color2);
-    }
 
     // tests that the text on the Floor Plan button displays "Search Floor Plans"
     @Test
