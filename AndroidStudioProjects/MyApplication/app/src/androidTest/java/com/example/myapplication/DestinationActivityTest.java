@@ -34,11 +34,18 @@ public class DestinationActivityTest {
         assertEquals(BuildingOptions[1], destination.adapter.getItem(1));
     }
 
-    // test that the second option shows the text "Norton Hall"
+    // test that the third option shows the text "Norton Hall"
     @Test
     public void testBuildingOptionsStringArray3(){
         String BuildingOptions[] = new String [] {"Capen Library", "Lockwood Library", "Norton Hall", "Davis Hall", "Music Library"};
         assertEquals(BuildingOptions[2], destination.adapter.getItem(2));
+    }
+
+    // test that the fourth option shows the text "Davis Hall"
+    @Test
+    public void testBuildingOptionsStringArray4(){
+        String BuildingOptions[] = new String [] {"Capen Library", "Lockwood Library", "Norton Hall", "Davis Hall", "Music Library"};
+        assertEquals(BuildingOptions[3], destination.adapter.getItem(3));
     }
 
     @After
