@@ -27,10 +27,17 @@ public class DestinationActivityTest {
         assertEquals(BuildingOptions[0], destination.adapter.getItem(0));
     }
 
+    // test that the second option shows the text "Lockwood Library"
+    @Test
+    public void testBuildingOptionsStringArray2(){
+        String BuildingOptions[] = new String [] {"Capen Library", "Lockwood Library", "Norton Hall", "Davis Hall", "Music Library"};
+        assertEquals(BuildingOptions[1], destination.adapter.getItem(1));
+    }
+
     @After
     public void tearDown() throws Exception {
         destination = null;
     }
-
+    
 
 }
