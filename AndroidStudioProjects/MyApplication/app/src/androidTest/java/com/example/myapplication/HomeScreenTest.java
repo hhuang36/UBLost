@@ -25,7 +25,7 @@ public class HomeScreenTest {
 
     public HomeScreen splashScreen = null;
     Instrumentation.ActivityMonitor HomePage = getInstrumentation().addMonitor(HomeActivity.class.getName(), null, false);
-    Instrumentation.ActivityMonitor NavigationOptions = getInstrumentation().addMonitor(HomeActivity2.class.getName(), null, false);
+    Instrumentation.ActivityMonitor NavigationOptions = getInstrumentation().addMonitor(DestinationActivity.class.getName(), null, false);
 
     @Before
     public void setUp() throws Exception {
@@ -63,7 +63,7 @@ public class HomeScreenTest {
 
     }
 
-    // tests that Navigate Me button when clicked brings user to HomeActivity2.java
+    // tests that Navigate Me button when clicked brings user to DestinationActivity.java
     @Test
     public void testLaunchOfNavigateMe(){
         assertNotNull(splashScreen.findViewById(R.id.NavigateMe));

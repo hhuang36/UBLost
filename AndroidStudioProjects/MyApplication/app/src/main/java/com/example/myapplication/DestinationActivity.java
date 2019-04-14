@@ -11,16 +11,15 @@ import android.widget.SearchView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.zip.Inflater;
 
-public class HomeActivity2 extends AppCompatActivity {
+public class DestinationActivity extends AppCompatActivity {
 
     ListView search_building;
     ArrayAdapter<String> adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home2);
+        setContentView(R.layout.activity_destination_activity);
 
         search_building = findViewById(R.id.search_building);
 
@@ -28,7 +27,7 @@ public class HomeActivity2 extends AppCompatActivity {
         arrayBuildings.addAll(Arrays.asList(getResources().getStringArray(R.array.my_buildings)));
 
         adapter = new ArrayAdapter<String>(
-                HomeActivity2.this,
+                DestinationActivity.this,
                 android.R.layout.simple_list_item_1,
                 arrayBuildings
         );

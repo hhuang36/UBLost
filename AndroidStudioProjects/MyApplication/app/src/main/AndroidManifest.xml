@@ -37,7 +37,7 @@
         <activity android:name=".SplashScreen2" />
         <activity android:name=".HomeScreen" />
         <activity android:name=".CapenFloorOptions" />
-        <activity android:name=".HomeActivity2" />
+        <activity android:name=".DestinationActivity" />
         <activity android:name=".HomeActivity" />
 
     </application>

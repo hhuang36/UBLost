@@ -1,8 +1,6 @@
 package com.example.myapplication;
 
         import android.content.Intent;
-        import android.media.Image;
-        import android.os.Handler;
         import android.support.v4.widget.DrawerLayout;
         import android.support.v7.app.ActionBarDrawerToggle;
         import android.support.v7.app.AppCompatActivity;
@@ -10,8 +8,6 @@ package com.example.myapplication;
         import android.view.MenuItem;
         import android.view.View;
         import android.widget.Button;
-        import android.widget.ImageButton;
-        import android.widget.TextView;
 
 public class HomeScreen extends AppCompatActivity { // THIS IS THE HOME PAGE
     private DrawerLayout menuDrawerLayout;
@@ -63,7 +59,7 @@ public class HomeScreen extends AppCompatActivity { // THIS IS THE HOME PAGE
     }
 
     public void openNavigateMe(){
-        Intent intent = new Intent(this, HomeActivity2.class);
+        Intent intent = new Intent(this, DestinationActivity.class);
         startActivity(intent);
     }
 
