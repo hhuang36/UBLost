@@ -63,6 +63,15 @@ public class DestinationActivityTest {
         assertNotNull(lv);
     }
 
+    // test that the list view used is the correct one from corresponding xml file using ID's
+    @Test
+    public void testListViewHasCorrectID(){
+        ListView lv = destination.search_building;
+        int lvID = lv.getId();
+        int expectedID = R.id.search_building;
+        assertEquals(lvID, expectedID);
+    }
+    
     @After
     public void tearDown() throws Exception {
         destination = null;
