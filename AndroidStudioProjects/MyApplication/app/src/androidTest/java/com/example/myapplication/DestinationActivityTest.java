@@ -89,6 +89,15 @@ public class DestinationActivityTest {
         assertEquals(tvID, expectedID);
     }
 
+    // test that the text view has the correct text shown, which should be "Navigate Me"
+    @Test
+    public void testTextViewHasCorrectText(){
+        TextView tv = destination.navigateMeTextView;
+        CharSequence text = tv.getText();
+        CharSequence expectedText = "Navigate Me";
+        assertEquals(text, expectedText);
+    }
+
     @After
     public void tearDown() throws Exception {
         destination = null;
