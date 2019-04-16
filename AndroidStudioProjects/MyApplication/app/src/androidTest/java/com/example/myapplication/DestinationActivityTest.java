@@ -80,6 +80,15 @@ public class DestinationActivityTest {
         assertNotNull(tv);
     }
 
+    // test that the text view used is the correct one from corresponding xml file using ID's
+    @Test
+    public void testTextViewHasCorrectID(){
+        TextView tv = destination.navigateMeTextView;
+        int tvID = tv.getId();
+        int expectedID = R.id.textView1;
+        assertEquals(tvID, expectedID);
+    }
+
     @After
     public void tearDown() throws Exception {
         destination = null;
