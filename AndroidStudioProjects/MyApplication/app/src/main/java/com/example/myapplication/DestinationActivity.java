@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,6 +17,7 @@ public class DestinationActivity extends AppCompatActivity {
 
     ListView search_building;
     ArrayAdapter<String> adapter;
+    TextView navigateMeTextView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +35,7 @@ public class DestinationActivity extends AppCompatActivity {
         );
 
         search_building.setAdapter(adapter);
+        navigateMeTextView = findViewById(R.id.textView1);
     }
 
     @Override

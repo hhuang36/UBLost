@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.support.test.rule.ActivityTestRule;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import org.junit.After;
 import org.junit.Before;
@@ -71,7 +72,14 @@ public class DestinationActivityTest {
         int expectedID = R.id.search_building;
         assertEquals(lvID, expectedID);
     }
-    
+
+    // test that the TextView appears on the screen when destination activity is run
+    @Test
+    public void testTextViewExists(){
+        TextView tv = destination.navigateMeTextView;
+        assertNotNull(tv);
+    }
+
     @After
     public void tearDown() throws Exception {
         destination = null;
