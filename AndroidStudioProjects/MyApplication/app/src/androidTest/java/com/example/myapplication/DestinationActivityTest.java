@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.graphics.Color;
 import android.support.test.rule.ActivityTestRule;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -96,6 +97,15 @@ public class DestinationActivityTest {
         CharSequence text = tv.getText();
         CharSequence expectedText = "Navigate Me";
         assertEquals(text, expectedText);
+    }
+
+    // test that the text view has the correct text color shown, which should be white or -1 as an int
+    @Test
+    public void testTextColor(){
+        TextView tv = destination.navigateMeTextView;
+        int color = tv.getCurrentTextColor();
+        int expected = -1; // -1 = FFFF = White
+        assertEquals(expected, color);
     }
 
     @After
