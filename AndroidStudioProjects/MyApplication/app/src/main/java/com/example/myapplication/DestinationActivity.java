@@ -1,10 +1,13 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
@@ -18,6 +21,8 @@ public class DestinationActivity extends AppCompatActivity {
     ListView search_building;
     ArrayAdapter<String> adapter;
     TextView navigateMeTextView;
+    String buildingButtons[] = new String [] {"Capen Library", "Lockwood Library", "Norton Hall", "Davis Hall", "Music Library"};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +40,29 @@ public class DestinationActivity extends AppCompatActivity {
         );
 
         search_building.setAdapter(adapter);
+
+        search_building.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if(buildingButtons[position] == "Capen Library"){
+                    Intent intent = new Intent(DestinationActivity.this, CapenFloor1Plan.class);
+                    startActivity(intent);
+                } else if(buildingButtons[position] == "Lockwood Library"){
+                    Intent intent = new Intent(DestinationActivity.this, CapenFloor1Plan.class);
+                    startActivity(intent);
+                } else if(buildingButtons[position] == "Norton Hall"){
+                    Intent intent = new Intent(DestinationActivity.this, CapenFloor1Plan.class);
+                    startActivity(intent);
+                } else if(buildingButtons[position] == "Davis Hall"){
+                    Intent intent = new Intent(DestinationActivity.this, CapenFloor1Plan.class);
+                    startActivity(intent);
+                } else if(buildingButtons[position] == "Music Library"){
+                    Intent intent = new Intent(DestinationActivity.this, CapenFloor1Plan.class);
+                    startActivity(intent);
+                }
+            }
+        });
+
         navigateMeTextView = findViewById(R.id.textView1);
     }
 
