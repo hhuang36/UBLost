@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.support.test.rule.ActivityTestRule;
+import android.widget.ListView;
 
 import org.junit.After;
 import org.junit.Before;
@@ -53,6 +54,13 @@ public class DestinationActivityTest {
     public void testBuildingOptionsStringArray5(){
         String BuildingOptions[] = new String [] {"Capen Library", "Lockwood Library", "Norton Hall", "Davis Hall", "Music Library"};
         assertEquals(BuildingOptions[4], destination.adapter.getItem(4));
+    }
+
+    // test that the ListView appears on the screen when destination activity is run
+    @Test
+    public void testListViewExists(){
+        ListView lv = destination.search_building;
+        assertNotNull(lv);
     }
 
     @After
