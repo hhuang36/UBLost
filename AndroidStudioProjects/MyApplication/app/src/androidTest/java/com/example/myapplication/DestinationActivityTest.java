@@ -116,6 +116,15 @@ public class DestinationActivityTest {
         assertNotNull(searchView);
     }
 
+    // test that the search bar displays the correct hint
+    @Test
+    public void testSearchViewHasCorrectHint(){
+        SearchView searchView = destination.searchView;
+        CharSequence hint = searchView.getQueryHint();
+        CharSequence expectedHint = "Search Buildings...";
+        assertEquals(hint, expectedHint);
+    }
+
     @After
     public void tearDown() throws Exception {
         destination = null;

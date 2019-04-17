@@ -72,7 +72,7 @@ public class DestinationActivity extends AppCompatActivity {
         inflater.inflate(R.menu.search_building_menu, menu);
         MenuItem item = menu.findItem(R.id.search_building);
         searchView = (SearchView) item.getActionView();
-
+        searchView.setQueryHint("Search Buildings...");
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
