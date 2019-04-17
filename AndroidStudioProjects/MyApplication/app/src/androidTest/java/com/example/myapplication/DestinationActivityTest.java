@@ -3,6 +3,7 @@ package com.example.myapplication;
 import android.graphics.Color;
 import android.support.test.rule.ActivityTestRule;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import org.junit.After;
@@ -106,6 +107,13 @@ public class DestinationActivityTest {
         int color = tv.getCurrentTextColor();
         int expected = -1; // -1 = FFFF = White
         assertEquals(expected, color);
+    }
+
+    // test that the search bar is displayed on the screen
+    @Test
+    public void testSearchViewExists(){
+        SearchView searchView = destination.searchView;
+        assertNotNull(searchView);
     }
 
     @After
