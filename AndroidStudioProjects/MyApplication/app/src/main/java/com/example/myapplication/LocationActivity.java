@@ -55,28 +55,28 @@ public class LocationActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(locationButtons[position] == "Capen Library"){
-                    Intent intent = new Intent(LocationActivity.this, CapenFloor1Plan.class);
+                    Intent intent = new Intent(LocationActivity.this, DestinationActivity.class);
                     startActivity(intent);
                 } else if(locationButtons[position] == "Lockwood Library"){
-                    Intent intent = new Intent(LocationActivity.this, CapenFloor1Plan.class);
+                    Intent intent = new Intent(LocationActivity.this, DestinationActivity.class);
                     startActivity(intent);
                 } else if(locationButtons[position] == "Norton Hall"){
-                    Intent intent = new Intent(LocationActivity.this, CapenFloor1Plan.class);
+                    Intent intent = new Intent(LocationActivity.this, DestinationActivity.class);
                     startActivity(intent);
                 } else if(locationButtons[position] == "Davis Hall"){
-                    Intent intent = new Intent(LocationActivity.this, CapenFloor1Plan.class);
+                    Intent intent = new Intent(LocationActivity.this, DestinationActivity.class);
                     startActivity(intent);
                 } else if(locationButtons[position] == "Music Library"){
-                    Intent intent = new Intent(LocationActivity.this, CapenFloor1Plan.class);
+                    Intent intent = new Intent(LocationActivity.this, DestinationActivity.class);
                     startActivity(intent);
                 } else if(locationButtons[position] == "Natural Science Complex"){
-                    Intent intent = new Intent(LocationActivity.this, CapenFloor1Plan.class);
+                    Intent intent = new Intent(LocationActivity.this, DestinationActivity.class);
                     startActivity(intent);
                 } else if(locationButtons[position] == "Student Union"){
-                    Intent intent = new Intent(LocationActivity.this, CapenFloor1Plan.class);
+                    Intent intent = new Intent(LocationActivity.this, DestinationActivity.class);
                     startActivity(intent);
                 } else if(locationButtons[position] == "Knox Hall"){
-                    Intent intent = new Intent(LocationActivity.this, CapenFloor1Plan.class);
+                    Intent intent = new Intent(LocationActivity.this, DestinationActivity.class);
                     startActivity(intent);
                 }
             }

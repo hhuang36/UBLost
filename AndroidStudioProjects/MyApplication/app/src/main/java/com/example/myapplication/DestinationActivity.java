@@ -45,19 +45,19 @@ public class DestinationActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(buildingButtons[position] == "Capen Library"){
-                    Intent intent = new Intent(DestinationActivity.this, LocationActivity.class);
+                    Intent intent = new Intent(DestinationActivity.this, CapenFloor1Plan.class);
                     startActivity(intent);
                 } else if(buildingButtons[position] == "Lockwood Library"){
-                    Intent intent = new Intent(DestinationActivity.this, LocationActivity.class);
+                    Intent intent = new Intent(DestinationActivity.this, CapenFloor1Plan.class);
                     startActivity(intent);
                 } else if(buildingButtons[position] == "Norton Hall"){
-                    Intent intent = new Intent(DestinationActivity.this, LocationActivity.class);
+                    Intent intent = new Intent(DestinationActivity.this, CapenFloor1Plan.class);
                     startActivity(intent);
                 } else if(buildingButtons[position] == "Davis Hall"){
-                    Intent intent = new Intent(DestinationActivity.this, LocationActivity.class);
+                    Intent intent = new Intent(DestinationActivity.this, CapenFloor1Plan.class);
                     startActivity(intent);
                 } else if(buildingButtons[position] == "Music Library"){
-                    Intent intent = new Intent(DestinationActivity.this, LocationActivity.class);
+                    Intent intent = new Intent(DestinationActivity.this, CapenFloor1Plan.class);
                     startActivity(intent);
                 }
             }

@@ -59,7 +59,7 @@ public class HomeScreen extends AppCompatActivity { // THIS IS THE HOME PAGE
     }
 
     public void openNavigateMe(){
-        Intent intent = new Intent(this, DestinationActivity.class);
+        Intent intent = new Intent(this, LocationActivity.class);
         startActivity(intent);
     }
 
