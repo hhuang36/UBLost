@@ -4,6 +4,14 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <uses-feature android:name="android.hardware.sensor.accelerometer" android:required="true" />
+    <uses-feature android:name="android.hardware.sensor.compass"  android:required="true" />
+    <uses-feature android:name="android.hardware.sensor.gyroscope"  android:required="true" />
+    <uses-feature android:name="android.hardware.wifi" android:required="true" />
 
     <application
         android:icon="@mipmap/ic_launcher"
@@ -37,6 +45,15 @@
         <activity android:name=".CapenFloorOptions" />
         <activity android:name=".DestinationActivity" />
         <activity android:name=".HomeActivity" />
+
+        <meta-data
+            android:name="com.indooratlas.android.sdk.API_KEY"
+            android:value="228a51a3-9501-4904-82a5-2605ec86137d" />
+
+        <meta-data
+            android:name="com.indooratlas.android.sdk.API_SECRET"
+            android:value="ZwKfvS0eR2f1gOF5xS/zKUwmWNU9gFZUCCIh/TA0nAq+FPeMxMptWGdxlviKqYVHO4pV2fN8oam5TmlCtcdl1sjc5n0dC5VpBRVqh9TYHlSltEFnKJ32DFh7CYX2TQ==" />
+
     </application>
 
 </manifest>

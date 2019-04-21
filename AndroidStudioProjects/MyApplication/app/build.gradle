@@ -36,7 +36,14 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:16.1.0'
     implementation 'com.google.firebase:firebase-auth:16.2.1'
 
+    implementation 'com.indooratlas.android:indooratlas-android-sdk:2.0.2-beta@aar'
+
 }
 
+repositories{
+    maven{
+        url "http://indooratlas-ltd.bintray.com/mvn-public"
+    }
+}
 
 apply plugin: 'com.google.gms.google-services'

@@ -21,6 +21,8 @@ import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
 
+import com.indooratlas.android.sdk.IALocationManager;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -37,6 +39,8 @@ public class LocationActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_location);
+
+        IALocationManager mIALocationManager = IALocationManager.create(this);
 
         search_location = findViewById(R.id.search_location);
 
