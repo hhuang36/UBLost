@@ -1,13 +1,16 @@
 package com.example.myapplication;
 
-        import android.content.Intent;
-        import android.support.v4.widget.DrawerLayout;
-        import android.support.v7.app.ActionBarDrawerToggle;
-        import android.support.v7.app.AppCompatActivity;
-        import android.os.Bundle;
-        import android.view.MenuItem;
-        import android.view.View;
-        import android.widget.Button;
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 public class HomeScreen extends AppCompatActivity { // THIS IS THE HOME PAGE
     private DrawerLayout menuDrawerLayout;
@@ -15,41 +18,56 @@ public class HomeScreen extends AppCompatActivity { // THIS IS THE HOME PAGE
      Button floorplanButton;
      Button navigateMe;
     private Button Home;
-    //TextView tv;
-    public static  int SPLASH_TIME_OUT = 4000;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //openSplashScreen();
-        Home = (Button) findViewById(R.id.home_page);
+        Home = findViewById(R.id.home_page);
 
-        //tv = findViewById(R.id.textView);
+
         menuDrawerLayout = findViewById(R.id.drawerLayout);
         menuToggle = new ActionBarDrawerToggle(this, menuDrawerLayout, R.string.open, R.string.close);
 
         menuDrawerLayout.addDrawerListener(menuToggle);
         menuToggle.syncState();
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        floorplanButton = findViewById(R.id.floorplanButton);
-        floorplanButton.setOnClickListener(new View.OnClickListener() {
+//        floorplanButton = findViewById(R.id.floorplanButton);
+//        floorplanButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                openFloorPlan();
+//            }
+//        });
+//
+//        navigateMe = findViewById(R.id.NavigateMe);
+//        navigateMe.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                openNavigateMe();
+//            }
+//        });
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void onClick(View v) {
-                openFloorPlan();
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.action_navigate:
+                        openNavigateMe();
+                        break;
+                    case R.id.action_map:
+                        openFloorPlan();
+                        break;
+                    case R.id.action_nearby:
+                        Toast.makeText(HomeScreen.this, "Nearby", Toast.LENGTH_SHORT).show();
+                        break;
+                }
+                return true;
             }
         });
-
-        navigateMe = findViewById(R.id.NavigateMe);
-        navigateMe.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openNavigateMe();
-            }
-        });
-
 
     }
 

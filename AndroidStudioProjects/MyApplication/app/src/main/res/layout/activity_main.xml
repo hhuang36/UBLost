@@ -12,72 +12,90 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
+        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/map"
+            tools:context=".LocationActivity"
+            android:name="com.google.android.gms.maps.SupportMapFragment"/>
+
+        <!--<TextView-->
+            <!--android:id="@+id/textView"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignParentTop="true"-->
+            <!--android:layout_gravity="center_vertical"-->
+            <!--android:layout_marginTop="0dp"-->
+            <!--android:background="@mipmap/background"-->
+            <!--android:contentDescription="@string/home_page" -->
+            <!--android:text="@string/home_page"-->
+            <!--android:textAlignment="center"-->
+            <!--android:textColor="@color/colorText"-->
+            <!--android:textSize="48sp" />-->
+
+        <!--<Button-->
+            <!--android:id="@+id/floorplanButton"-->
+            <!--style="@style/Widget.AppCompat.Button.Colored"-->
+            <!--android:layout_width="200dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignTop="@id/textView"-->
+            <!--android:layout_marginStart="150dp"-->
+            <!--android:layout_marginLeft="80dp"-->
+            <!--android:layout_marginTop="115dp"-->
+            <!--android:text="@string/search_floorplans"-->
+            <!--android:textColor="@color/colorText" />-->
+
+        <!--<ImageView-->
+            <!--android:id="@+id/imageView"-->
+            <!--android:layout_width="89dp"-->
+            <!--android:layout_height="89dp"-->
+            <!--android:layout_marginStart="50dp"-->
+            <!--android:layout_marginLeft="30dp"-->
+            <!--android:layout_marginTop="90dp"-->
+            <!--android:contentDescription="@string/search_floorplans"-->
+            <!--app:srcCompat="@mipmap/floorplan" />-->
+
+        <!--<Button-->
+            <!--android:id="@+id/NavigateMe"-->
+            <!--style="@style/Widget.AppCompat.Button.Colored"-->
+            <!--android:layout_width="200dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignTop="@id/textView"-->
+            <!--android:layout_marginStart="150dp"-->
+            <!--android:layout_marginLeft="80dp"-->
+            <!--android:layout_marginTop="210dp"-->
+            <!--android:text="@string/navigate_me"-->
+            <!--android:textColor="@color/colorText" />-->
+
+        <!--<ImageView-->
+            <!--android:id="@+id/imageView2"-->
+            <!--android:layout_width="89dp"-->
+            <!--android:layout_height="89dp"-->
+            <!--android:layout_marginStart="50dp"-->
+            <!--android:layout_marginLeft="30dp"-->
+            <!--android:layout_marginTop="190dp"-->
+            <!--android:contentDescription="hi"-->
+            <!--app:srcCompat="@mipmap/floorplan" />-->
+
+        <android.support.design.widget.BottomNavigationView
+            android:id="@+id/bottom_navigation"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_gravity="center_vertical"
-            android:layout_marginTop="0dp"
-            android:background="@mipmap/background"
-            android:contentDescription="@string/home_page"
-            android:text="@string/home_page"
-            android:textAlignment="center"
-            android:textColor="@color/colorText"
-            android:textSize="48sp" />
-
-        <Button
-            android:id="@+id/floorplanButton"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@id/textView"
-            android:layout_marginStart="150dp"
-            android:layout_marginLeft="80dp"
-            android:layout_marginTop="115dp"
-            android:text="@string/search_floorplans"
-            android:textColor="@color/colorText" />
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="89dp"
-            android:layout_height="89dp"
-            android:layout_marginStart="50dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="90dp"
-            android:contentDescription="@string/search_floorplans"
-            app:srcCompat="@mipmap/floorplan" />
-
-        <Button
-            android:id="@+id/NavigateMe"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_alignTop="@id/textView"
-            android:layout_marginStart="150dp"
-            android:layout_marginLeft="80dp"
-            android:layout_marginTop="210dp"
-            android:text="@string/navigate_me"
-            android:textColor="@color/colorText" />
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="89dp"
-            android:layout_height="89dp"
-            android:layout_marginStart="50dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="190dp"
-            android:contentDescription="hi"
-            app:srcCompat="@mipmap/floorplan" />
+            android:layout_alignParentBottom="true"
+            app:itemBackground="@color/colorPrimary"
+            app:itemIconTint="@android:color/white"
+            app:itemTextColor="@android:color/white"
+            app:menu="@menu/bottom_nav_menu" />
     </RelativeLayout>
 
-    <android.support.design.widget.NavigationView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        app:menu="@menu/options"
-        android:layout_gravity="start">
+    <!--<android.support.design.widget.NavigationView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="match_parent"-->
+        <!--app:menu="@menu/options"-->
+        <!--android:layout_gravity="start">-->
 
-    </android.support.design.widget.NavigationView>
+    <!--</android.support.design.widget.NavigationView>-->
 
 </android.support.v4.widget.DrawerLayout>
 
