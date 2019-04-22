@@ -1,13 +1,69 @@
-FEATURE: The ability to save routes
+CURRENT STATUS: IN PROGRESS AS OF 4/11/19
+FEATURE: The ability to save routes placed by anchors within AR. 
 
-Story: As a freshman who wants to find my way to the library during breaks,
-I open the app to determine the way from my location to the library and reuse it.
+Story:
+As a lost student, I (User 2) want to find my way through Capen, so I can study with my friend (User 1).
 
-Actions:
-1. Open the app
-2. Click on the route icon
-3. The app will determine my location
-4. Then I will enter in my desired destination
-5. The app will calculate the route and display it on my screen
-6. I will click on the option to save route
-7. When I go to "saved routes" in the menu panel, this path will be there for next time
+Acceptance Tests:
+
+Create Map:
+1. My friend (User 1) opens UBLost App.
+2. Tap on Drop A Path button.
+3. My friend (User 1) drops a path from the entrance of Capen to where they’ll be sitting.
+4. Close app.
+
+Follow Map:
+5. I (User 2) open UBLost App.
+6. Tap on Find Friend button.
+7. Give start location, aka where path starts. When the user presses “got it, I’m there” button, camera opens.
+8. I (User 2) follows AR Camera's nodes until I locate friend in real life.
+10. Close app.
+
+Tasks:
+
+Create Map:
+1) Create a Drop A Path button that opens up to camera. (UI)
+2a) When camera opens, User 1 must download ARCore on their device in order for AR to work. Prompt user to download ARCore. (AR)
+2b) If the User 1 doesn’t/can’t download, redirect back to homescreen of app. (UI)
+3) Create listener that will listen for user taps on camera. (AR)
+4a) When User 1 taps on a detected plane (ex: hallway floor on way to destination location), drop an anchor at that point. (AR)
+4b) First anchor should be rendered as a special colored model to indicate start location.
+5a) Save anchor to database. (AR, database)
+5b) First anchor should have an approximate location by GPS? Google Cloud? saved onto database so then User 2 will be able to know where to start.
+6) At the anchor, render model to indicate to user that they’ve dropped part of a path. (AR)
+7a) If User 1 dislikes where they placed their last anchor, create a button that lets them undo it. (UI)
+7b) Undo button causes last anchor dropped and its model to disappear from the camera screen and the database.
+7c) If the user dislikes their path, create a button that lets them clear the whole path.
+7d) Clear button causes all anchors dropped by this user in the current AR session to disappear from the camera screen and the database.
+8a) When user is at their target location, create a “Here. Done placing path” button.
+8b) When user presses that button, their last anchor is saved as a special colored model to indicate destination location.
+9) After done button pressed, prompt user to “share path” with user 2 by typing in their username/UBIT.
+
+Follow Map:
+1) Create a Find Friend button. (UI)
+2) Find Friend button then prompts User 2 choose from a list of friends that chose to share their location with you.
+3) When User 2 chooses User 1, a pop-up with “Got it, I’m here” button under it shows approximate start location of start anchor from database.
+4) When User 2 taps “Got it, I’m here,” open up to camera.
+5a) When camera opens, User 2 must download ARCore on their device in order for AR to work. Prompt user to download ARCore. (AR)
+5b) If the User 1 doesn’t/can’t download, redirect back to homescreen of app. (UI)
+6a) From the database, call to first anchor of User 1’s path.
+6b) Show anchor at correct location with the corresponding model.
+7a) While User 2 is “close” to anchor, call to database to show next anchor in path, render the anchor with the corresponding model, until User 2 is at final destination.
+8) Text shows up on camera saying “You’re here at User 1’s location!”
+
+Unit Tests: 
+1. Unit Testing in User Story #1
+2. Unit Testing in User Story #1
+3a. Test map loads.
+3b. Test it is the correct map.
+3c. Test location is initiated.
+3d. Test location gets determined.
+4a. Test destination can be inputted.
+4b. Test destinations correlate to proper locations.
+5a. Test arrows pop up on screen.
+5b. Test arrows remain in view.
+5c. Test arrows stay on the path to destination.
+6&7. Test application exits seamlessly when user closes app.
+
+GITHUB LINK:
+https://github.com/hhuang36/UBLost/tree/User_Story_3/AndroidStudioProjects/HelloAR/app/src/androidTest/java/com/example/helloar

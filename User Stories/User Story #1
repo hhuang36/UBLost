@@ -1,0 +1,90 @@
+CURRENT STATUS: COMPLETE (MERGED TO DEVELOPMENT 4/10/19)
+
+FEATURE: The ability to look up a building and view its floor plan
+
+Story: As a professor who works in the second floor of Capen throughout the week, I want to know the layout of the building to determine the locations of my office hours.
+
+Acceptance Tests:
+1. Open the app
+2. Click on search floorplans
+3. A screen of options for buildings will be listed
+4. Click on the option labeled "Capen Library"
+5. A similar option page will open giving options for the floor #
+6. Click on the option labeled "Floor 2"
+7. A floorplan of the 2nd floor of Capen will appear on the screen
+
+Task A - Logo Screen
+Tasks
+Ensure that the application displays a logo screen with the text "UBLost" for 2 seconds before the home page appears.
+
+Task Test
+The activity titled "MainActivity.java" is run and the test checks that the textView with the ID "SplashScreen" for the logo is displayed when the splash screen appears.
+Github Links
+hhuang36/UBLost: 9248bf1
+
+Lines 29-33
+
+
+Task B - MainActivity
+Tasks
+Ensure that the Main Activity shown appears on the screen when the app is run.
+
+Task Test
+The test launches the MainActivity.java activity and ensures that the activity is not NULL. This means that the app works/opens and does not crash.
+Github Link
+hhuang36/UBLost: 9248bf1
+
+Lines 18-40
+
+Task C - Home Page
+Tasks
+Create the home page with a button for choosing to view floor plans and a button for choosing to navigate the user to a certain destination.
+
+Task Tests
+This tested the functionality of the home screen. In the test, it makes sure that the SplashScreen.java activity is not NULL (it appears on the screen without error). Additionally, it checks to see that the textView containing the "Home Page" screen appears, along with the "Search Floor Plans" and "Navigate Me" in the relative layout. This will tell us that our home screen pops up with all the right components.
+Github Links
+hhuang36/UBLost: 9248bf1
+
+Task D - Floor Plan Options
+Task
+Implement functionality to the button to search floor plans on the home page. Make sure that it brings the user to a new activity.
+
+Task tests
+This test clicks on the "Search Floor Plans" button. It confirms that the button labeled with the ID "floorplanButton" when clicked launches the activity titled "HomeActivity.java". This is done using a monitor that JUnit 4 provides.
+Github Link
+hhuang36/UBLost: 9248bf1
+
+Task E - Capen Library Button
+Tasks
+Implement the "Capen Library" button in the Home Activity to bring the user to a list of options for the floor number in a new activity when clicked.
+
+Task Tests
+We test the functionality of the "CAPEN LIBRARY" button with the ID "Capen Button". This is done with the HomeActivityTest.java test program. It clicks the button and ensures that a new activity labeled "CapenFloorOptions" using the "activity_capen_floor_options.xml" layout appears on the screen. It also checks that the array of floor options appear on the display.
+Github Link
+hhuang36/UBLost: 9248bf1
+
+hhuang36/UBLost: 2e38539
+
+Task F - Floor 2 Option
+Tasks
+Implement the "Floor 2" option after clicking "Capen Library" in "Search Floor Plans". Ensure that the option when clicked, brings the user to a new activity with the corresponding floor plan.
+
+Task Test
+The the "Floor 2" Array String is clicked from <string-array name="search_capen_floors">, a new activity displaying the correct jpg/png (placed in a relativeLayout) of the correct corresponding floorplan is shown.
+Github Link
+hhuang36/UBLost: 9248bf1
+
+Task G - Displaying Floor Plan
+Task
+Implement the "Floor 2" option after clicking "Capen Library" in "Search Floor Plans". Ensure that the option when clicked, brings the user to a new activity with the corresponding floor plan.
+
+Task Tests
+G.1: In CapenFloorOptionsTest.java I make sure that "Floor 2" is correctly displayed on the listview in CapenFloorOptions. I test text for the option, and that when the option is clicked, it brings the user to the right activity ("Floor1Plan.java).
+
+G.2: In CapenFloor1PlanTest.java I test that the right text is shown ("Capen Floor 2") and that the correct image is shown. I also test that both of them appear on the screen by asserting that they are not null in my tests.
+
+Github Links
+hhuang36/UBLost: 3b5dbc5
+
+hhuang36/UBLost: 094c933
+

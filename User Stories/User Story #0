@@ -1,0 +1,80 @@
+CURRENT STATUS: COMPLETE (MERGED TO DEVELOP 4/11/19)
+
+FEATURE: Login & Register Functionality for users.
+
+Story:
+As a member of the University at Buffalo,
+I want to register a unique account using my email and a password,
+so that I can access its features.
+
+Acceptance Tests:
+1. Open the App.
+2. Click on the Register Button to make a new account if I don't have an account.
+3. If I have an account, then I can input my email and password, and press Login. I would be brought to the app's main page.
+4. If I need to register, then I would be brought to the Register page.
+5. I enter a username, password, and email into the corresponding fields and click the Register button, which brings me back to the Login page.
+6. Login with the new account after registering
+7. If I correctly entered my username and password combination, I enter the app with saved personalized account information.
+
+TASK A: SYNC FIREBASE TO OUR PROJECT
+  Tasks:
+  Add Firebase SDK to our Project. Allow users to create an account and associate unique data to their respective account. 
+  This includes their login information and any messages or saved navigational data.
+
+  Subtasks:
+  A.0: Add internet permission on app to use Firebase/Google sign-in.
+  A.1: Add/sync Firebase core SDK to the project.
+  A.2: Enable Firebase Authentication SDK on Firebase
+  A.3: Enable read and write on Firebase Database SDK
+  
+  Unit Tests:
+  A.0: We test that the App has access to the internet.
+  A.1: Firebase runs their unique tests to verify our project is connected to the FIrebase console. Only after this   verification is complete can changes will the project console show. We test that the verification is complete because we now have access to the project overview page (Attachment A1 below).
+  A.2: Attachment A2 (below) links to the project's Firebase Authentication SDK lists of sign-in providers. This console shows we have enabled the email/password sign-in method for our project.
+  A.3: Attachment A3 (below) links to the project's Firebase Realtime Database SDK read/write rules. This console shows we have enabled read and write privileges for our project.
+  
+  
+TASK B: LOGIN PAGE
+  Tasks:
+  Create new activity for the login page and implement logging in/register functionality.
+
+  Subtasks:
+  B.1: Create login text fields (email and password)
+  B.2: Create login button
+  B.2a Implement functionality for login button
+  B.3: Create the register button to allow the user to register for an account
+  B.4: Check Firebase Auth that user has inputted the correct account information to log in
+  B.5: Link the register button to the register activity page
+  B.6: Implement error messages when fields are empty or incorrect.
+
+  Task Tests:
+  B.1: We test that the textviews for the email and password are not null when the activity is run. Additionally, we also test that in their corresponding text views, that their hints are displayed correctly. (in the username text field, "username" is shown on screen)
+  B.2: We test that the button is not null when the login screen is displayed. We also test that the login button says "Login"
+  B.2a: We automate AS to enter in correct, already registered credentials and then click on the login button. We use JUnit4 to test that the home page is displayed after login is clicked.
+  B.3: We test that the register button is not null when the login screen is displayed. We also test that the register button says "Register"
+  B.4: We test that when login button is clicked with empty/incorrect information, an error message appears and user remains on login page.
+  B.5: We test that the register button, when clicked, brings the user to the Register.java activity.
+  B.6: We test that the login button, when clicked, brings the user to the MainActivity.java activity upon correct credentials.
+  
+TASK C: REGISTER PAGE
+  Tasks:
+  Create new activity for the register page and implement registering functionality.
+
+  Subtasks:
+  C.1: Create user credential fields (username, email, etc.)
+  C.2: Create register button to allow the user to register for an account
+  C.3: Implement the register button so that the credentials are stored in Firebase
+
+  C.3a: Create method in Register.java that takes user input of username, email, and password objects and writes that information onto the online database.
+  C.4: Create 'Return to Login' text link to return back to the Login page
+
+  C.5: Implement error messages when fields are empty or when passwords do not match
+
+  Task Tests:
+  C.1: We test that all the textviews for the email, username, password, and confirm password fields are not null when the register button is displayed. We also ensure that they have the right text displayed for their hints (username text fields displays "username", likewise for all).
+  C.2: We test that the register button is not null when the register activity is displayed. We also test that the register button says "Register"
+  C.3: We test that upon successful registration, the user's information is stored in Firebase database.
+  C.4: We test that the "Return to Login" link when clicked, brings the user back to the Login.java activity.
+  C.5: We test that incorrect inputs generate an error message at the respective fields.
+  
+  
