@@ -47,6 +47,7 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
     <string name="ublost">UBLost</string>
+    <string name="remember_me">Remember Me</string>
     <string name="slogan">Helping You Be on Your Way</string>
     <string name="username">username</string>
     <string name="password">password</string>

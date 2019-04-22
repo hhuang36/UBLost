@@ -1,26 +1,33 @@
 package com.example.myapplication;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.content.Intent;
-
+import android.widget.CheckBox;
+import android.content.SharedPreferences;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+
+
+
+
 
 public class Login extends AppCompatActivity {
 
@@ -29,7 +36,6 @@ public class Login extends AppCompatActivity {
     private DatabaseReference users;
     private FirebaseAuth mAuth;
 
-    ImageView UBLostLogo;
     ScrollView scrollView;
     TextView UBLostTextView;
     TextView helpTextView;
@@ -38,6 +44,11 @@ public class Login extends AppCompatActivity {
     RadioButton radioButton;
     Button loginButton;
     Button registerButton;
+    private String saveEmail, savePassword;
+    private CheckBox saveLoginCheckBox;
+    private SharedPreferences loginPreferences;
+    private SharedPreferences.Editor loginPrefsEditor;
+    private Boolean saveLogin;
 
     //security mechanism variables
     int counter = 3;
@@ -47,7 +58,6 @@ public class Login extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        //UBLostLogo = findViewById(R.id.UBLostLogo);
         scrollView = findViewById(R.id.scrollView);
         UBLostTextView = findViewById(R.id.UBlostTextView);
         helpTextView = findViewById(R.id.helpTextView);
@@ -59,13 +69,37 @@ public class Login extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         users = database.getReference("Users");
         mAuth = FirebaseAuth.getInstance();
+        saveLoginCheckBox = findViewById(R.id.rememberMe);
+        loginPreferences = getSharedPreferences("loginPrefs", MODE_PRIVATE);
+        loginPrefsEditor = loginPreferences.edit();
+        saveLogin = loginPreferences.getBoolean("saveLogin", false);
+        if (saveLogin == true) {
+            emailAddr.setText(loginPreferences.getString("email", ""));
+            password.setText(loginPreferences.getString("password", ""));
+            saveLoginCheckBox.setChecked(true);
+        }
 
-        //login button functionality - database traversal to be implemented 03/28
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String email = emailAddr.getText().toString();
                 final String pass = password.getText().toString();
+
+                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(emailAddr.getWindowToken(), 0);
+
+                saveEmail = emailAddr.getText().toString();
+                savePassword = password.getText().toString();
+
+                if (saveLoginCheckBox.isChecked()) {
+                    loginPrefsEditor.putBoolean("saveLogin", true);
+                    loginPrefsEditor.putString("email", saveEmail);
+                    loginPrefsEditor.putString("password", savePassword);
+                    loginPrefsEditor.commit();
+                } else {
+                    loginPrefsEditor.clear();
+                    loginPrefsEditor.commit();
+                }
 
                 if (TextUtils.isEmpty(email)) {
                     emailAddr.setError("Enter email!");
@@ -92,7 +126,7 @@ public class Login extends AppCompatActivity {
                                     if (counter == 0)
                                         loginButton.setEnabled(false);
                                 } else {
-                                    Intent loggedIn = new Intent(Login.this, HomeScreen.class);
+                                    Intent loggedIn = new Intent(Login.this, HomeActivity.class);
                                     startActivity(loggedIn);
                                     finish();
                                 }
@@ -100,7 +134,7 @@ public class Login extends AppCompatActivity {
                         });
             }
         });
-        //register button functionality -- TO BE IMPLEMENTED 03/28
+
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
