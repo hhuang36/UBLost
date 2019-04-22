@@ -126,7 +126,7 @@ public class Login extends AppCompatActivity {
                                     if (counter == 0)
                                         loginButton.setEnabled(false);
                                 } else {
-                                    Intent loggedIn = new Intent(Login.this, HomeActivity.class);
+                                    Intent loggedIn = new Intent(Login.this, HomeScreen.class);
                                     startActivity(loggedIn);
                                     finish();
                                 }
