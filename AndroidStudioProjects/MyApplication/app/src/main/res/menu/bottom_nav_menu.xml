@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_navigate"
+        android:enabled="true"
+        android:icon="@drawable/ic_navigate"
+        android:title="Navigate"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_map"
+        android:enabled="true"
+        android:icon="@drawable/ic_map"
+        android:title="Floor Plans"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_nearby"
+        android:enabled="true"
+        android:icon="@drawable/ic_nearby"
+        android:title="Nearby"
+        app:showAsAction="ifRoom" />
+</menu>
