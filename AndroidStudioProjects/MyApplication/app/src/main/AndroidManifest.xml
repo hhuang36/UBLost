@@ -54,6 +54,12 @@
             android:name="com.indooratlas.android.sdk.API_SECRET"
             android:value="ZwKfvS0eR2f1gOF5xS/zKUwmWNU9gFZUCCIh/TA0nAq+FPeMxMptWGdxlviKqYVHO4pV2fN8oam5TmlCtcdl1sjc5n0dC5VpBRVqh9TYHlSltEFnKJ32DFh7CYX2TQ==" />
 
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyAH7Vh6cthSUtIYzk849mNJOxlHhDecDwE" />
     </application>
 
 </manifest>

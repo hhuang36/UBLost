@@ -1,43 +1,51 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<fragment xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LocationActivity">
+    android:id="@+id/map"
+    tools:context=".LocationActivity"
+    android:name="com.google.android.gms.maps.SupportMapFragment"/>
 
-    <TextView
-        android:textColorLink="@color/colorPrimaryDark"
-        android:id="@+id/locationTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_gravity="center_vertical"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="0dp"
-        android:text="@string/my_location"
-        android:textAlignment="center"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="40sp"
-        android:visibility="visible" />
+    <!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--tools:context=".LocationActivity">-->
 
-    <TextView
-        android:id="@+id/locateMeButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorPrimaryDark"
-        android:text="Find my location!"
-        android:textSize="15sp"
-        android:layout_marginTop="70dp"
-        android:layout_marginStart="150dp"
-        android:layout_marginLeft="150dp"/>
+    <!--<TextView-->
+        <!--android:textColorLink="@color/colorPrimaryDark"-->
+        <!--android:id="@+id/locationTextView"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_gravity="center_vertical"-->
+        <!--android:layout_centerInParent="true"-->
+        <!--android:layout_marginTop="0dp"-->
+        <!--android:text="@string/my_location"-->
+        <!--android:textAlignment="center"-->
+        <!--android:textColor="@color/colorPrimaryDark"-->
+        <!--android:textSize="40sp"-->
+        <!--android:visibility="visible" />-->
 
-    <ListView
-        android:layout_marginTop="90dp"
-        android:padding="20dp"
-        android:id="@+id/search_location"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+    <!--<TextView-->
+        <!--android:id="@+id/locateMeButton"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:textColor="@color/colorPrimaryDark"-->
+        <!--android:text="Find my location!"-->
+        <!--android:textSize="15sp"-->
+        <!--android:layout_marginTop="70dp"-->
+        <!--android:layout_marginStart="150dp"-->
+        <!--android:layout_marginLeft="150dp"/>-->
+
+    <!--<ListView-->
+        <!--android:layout_marginTop="90dp"-->
+        <!--android:padding="20dp"-->
+        <!--android:id="@+id/search_location"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"/>-->
 
 
-</RelativeLayout>
+<!--</RelativeLayout>-->

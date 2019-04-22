@@ -32,7 +32,7 @@ public class HomeScreen extends AppCompatActivity { // THIS IS THE HOME PAGE
 
         menuDrawerLayout.addDrawerListener(menuToggle);
         menuToggle.syncState();
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         floorplanButton = findViewById(R.id.floorplanButton);
         floorplanButton.setOnClickListener(new View.OnClickListener() {

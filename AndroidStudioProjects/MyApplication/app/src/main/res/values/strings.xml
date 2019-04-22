@@ -61,4 +61,6 @@
         <item>Student</item>
         <item>Faculty</item>
     </string-array>
+
+    <string name="button_close">Close</string>
 </resources>
