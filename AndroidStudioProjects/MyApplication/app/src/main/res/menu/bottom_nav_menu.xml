@@ -16,7 +16,7 @@
     <item
         android:id="@+id/action_nearby"
         android:enabled="true"
-        android:icon="@drawable/ic_nearby"
-        android:title="Nearby"
+        android:icon="@mipmap/baseline_satellite_black_18dp"
+        android:title="Saved Paths"
         app:showAsAction="ifRoom" />
 </menu>
