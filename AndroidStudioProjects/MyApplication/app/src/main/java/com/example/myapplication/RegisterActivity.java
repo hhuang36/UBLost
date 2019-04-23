@@ -31,7 +31,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class Register extends AppCompatActivity implements View.OnClickListener {
+public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
     //database
     private FirebaseDatabase database;
@@ -78,16 +78,16 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
 
-        // Creating link text to go back to Login page
+        // Creating link text to go back to LoginActivity page
         TextView back2Login = findViewById(R.id.helpTextView);
-        String text = "Already have an account? Login now";
+        String text = "Already have an account? LoginActivity now";
         SpannableString ss = new SpannableString(text);
         ForegroundColorSpan color = new ForegroundColorSpan(Color.YELLOW);
 
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
             public void onClick(@NonNull View widget) {
-                Intent intent = new Intent(Register.this, Login.class);
+                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                 startActivity(intent);
 
             }
@@ -200,12 +200,12 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                                                         @Override
                                                         public void onComplete(@NonNull Task<Void> task) {
                                                             if (task.isSuccessful()) {
-                                                                Toast.makeText(Register.this, "Successfully Registered!", Toast.LENGTH_LONG).show();
-                                                                Intent intent = new Intent(Register.this, Login.class);
+                                                                Toast.makeText(RegisterActivity.this, "Successfully Registered!", Toast.LENGTH_LONG).show();
+                                                                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                                                                 startActivity(intent);
 
                                                             } else {
-                                                                Toast.makeText(Register.this, "Registration Failed!", Toast.LENGTH_LONG).show();
+                                                                Toast.makeText(RegisterActivity.this, "Registration Failed!", Toast.LENGTH_LONG).show();
                                                             }
                                                         }
                                                     });
@@ -217,7 +217,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
                                     }
                                 });
                             } else {
-                                Toast.makeText(Register.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                Toast.makeText(RegisterActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
                             }
                         }
                     });

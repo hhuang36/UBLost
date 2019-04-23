@@ -29,7 +29,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 
 
-public class Login extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     //database
     private FirebaseDatabase database;
@@ -112,7 +112,7 @@ public class Login extends AppCompatActivity {
                 }
 
                 mAuth.signInWithEmailAndPassword(email, pass)
-                        .addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
+                        .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (!task.isSuccessful()) {
@@ -120,13 +120,13 @@ public class Login extends AppCompatActivity {
                                     if (pass.length() < 6) {
                                         password.setError("Password must be greater than 6 characters!");
                                     } else {
-                                        Toast.makeText(Login.this, "Incorrect Credentials!", Toast.LENGTH_LONG).show();
+                                        Toast.makeText(LoginActivity.this, "Incorrect Credentials!", Toast.LENGTH_LONG).show();
                                         counter--;
                                     }
                                     if (counter == 0)
                                         loginButton.setEnabled(false);
                                 } else {
-                                    Intent loggedIn = new Intent(Login.this, HomeScreen.class);
+                                    Intent loggedIn = new Intent(LoginActivity.this, HomeScreen.class);
                                     startActivity(loggedIn);
                                     finish();
                                 }
@@ -138,7 +138,7 @@ public class Login extends AppCompatActivity {
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Login.this, Register.class);
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(intent);
 
             }

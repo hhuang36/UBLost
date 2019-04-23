@@ -1,72 +1,47 @@
 package com.example.myapplication;
 
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.Circle;
+import com.google.android.gms.maps.model.CircleOptions;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.indooratlas.android.sdk.IALocation;
+import com.indooratlas.android.sdk.IALocationListener;
+import com.indooratlas.android.sdk.IALocationManager;
+import com.indooratlas.android.sdk.IALocationRequest;
 
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationServices;
+import utils.ExampleUtils;
 
-public class HomeScreen extends AppCompatActivity { // THIS IS THE HOME PAGE
-    private DrawerLayout menuDrawerLayout;
-    private ActionBarDrawerToggle menuToggle;
-     Button floorplanButton;
-     Button navigateMe;
-    private Button Home;
+public class HomeScreen extends FragmentActivity implements IALocationListener, OnMapReadyCallback { // THIS IS THE HOME PAGE
+
     private static final String TAG = "HomeScreen";
-    private FusedLocationProviderClient mFusedLocationProviderClient;
+    private ActionBarDrawerToggle menuToggle;
 
+    private GoogleMap mMap; // Might be null if Google Play services APK is not available.
+    private Circle mCircle;
+    private Marker mHeadingMarker;
+    private boolean mCameraPositionNeedsUpdating = true; // update on first location
+    private IALocationManager mIALocationManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        Home = findViewById(R.id.home_page);
-
-//        // Construct a GeoDataClient.
-//        mGeoDataClient = Places.getGeoDataClient(this, null);
-//
-//        // Construct a PlaceDetectionClient.
-//        mPlaceDetectionClient = Places.getPlaceDetectionClient(this, null);
-//
-//        // Construct a FusedLocationProviderClient.
-//        mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-
-
-        menuDrawerLayout = findViewById(R.id.drawerLayout);
-        menuToggle = new ActionBarDrawerToggle(this, menuDrawerLayout, R.string.open, R.string.close);
-
-        menuDrawerLayout.addDrawerListener(menuToggle);
-        menuToggle.syncState();
-
-//        floorplanButton = findViewById(R.id.floorplanButton);
-//        floorplanButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                openFloorPlan();
-//            }
-//        });
-//
-//        navigateMe = findViewById(R.id.NavigateMe);
-//        navigateMe.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                openNavigateMe();
-//            }
-//        });
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -87,7 +62,105 @@ public class HomeScreen extends AppCompatActivity { // THIS IS THE HOME PAGE
             }
         });
 
+        DrawerLayout menuDrawerLayout = findViewById(R.id.drawerLayout);
+        menuToggle = new ActionBarDrawerToggle(this, menuDrawerLayout, R.string.open, R.string.close);
+
+        menuDrawerLayout.addDrawerListener(menuToggle);
+        menuToggle.syncState();
+
+        mIALocationManager = IALocationManager.create(this);
+
+        // Try to obtain the map from the SupportMapFragment.
+        ((SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map))
+                .getMapAsync(this);
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mIALocationManager.destroy();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mIALocationManager.requestLocationUpdates(IALocationRequest.create(), this);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (mIALocationManager != null) {
+            mIALocationManager.removeLocationUpdates(this);
+        }
+
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+        mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
+            @Override
+            public void onMapLongClick(LatLng latLng) {
+                ExampleUtils.shareText(HomeScreen.this, mIALocationManager.getExtraInfo().traceId,
+                        "traceId");
+            }
+        });
+    }
+
+    private void showLocationCircle(LatLng center, double accuracyRadius) {
+        if (mCircle == null) {
+            // location can received before map is initialized, ignoring those updates
+            if (mMap != null) {
+                mCircle = mMap.addCircle(new CircleOptions()
+                        .center(center)
+                        .radius(accuracyRadius)
+                        .fillColor(0x201681FB)
+                        .strokeColor(0x500A78DD)
+                        .zIndex(1.0f)
+                        .visible(true)
+                        .strokeWidth(5.0f));
+                mHeadingMarker = mMap.addMarker(new MarkerOptions()
+                        .position(center)
+                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.map_blue_dot))
+                        .anchor(0.5f, 0.5f)
+                        .flat(true));
+            }
+        } else {
+            // move existing markers position to received location
+            mCircle.setCenter(center);
+            mHeadingMarker.setPosition(center);
+            mCircle.setRadius(accuracyRadius);
+        }
+    }
+
+    /**
+     * Callback for receiving locations.
+     * This is where location updates can be handled by moving markers or the camera.
+     */
+    public void onLocationChanged(IALocation location) {
+        Log.d(TAG, "new location received with coordinates: " + location.getLatitude()
+                + "," + location.getLongitude());
+
+        if (mMap == null) {
+            // location received before map is initialized, ignoring update here
+            return;
+        }
+
+        final LatLng center = new LatLng(location.getLatitude(), location.getLongitude());
+
+        showLocationCircle(center, location.getAccuracy());
+
+        // our camera position needs updating if location has significantly changed
+        if (mCameraPositionNeedsUpdating) {
+            mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(center, 17.5f));
+            mCameraPositionNeedsUpdating = false;
+        }
+    }
+
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) { }
 
     public void openFloorPlan(){
         Intent intent = new Intent(this, HomeActivity.class);
@@ -106,28 +179,6 @@ public class HomeScreen extends AppCompatActivity { // THIS IS THE HOME PAGE
         }
         return super.onOptionsItemSelected(x);
     }
-
-//    private void getDeviceLocation() {
-//        Log.d(TAG, "getDeviceLocation: getting the device current location");
-//        mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
-//    }
-//
-//    private void getLocationPermission() {
-//        /*
-//         * Request location permission, so that we can get the location of the
-//         * device. The result of the permission request is handled by a callback,
-//         * onRequestPermissionsResult.
-//         */
-//        if (ContextCompat.checkSelfPermission(this.getApplicationContext(),
-//                android.Manifest.permission.ACCESS_FINE_LOCATION)
-//                == PackageManager.PERMISSION_GRANTED) {
-//            mLocationPermissionGranted = true;
-//        } else {
-//            ActivityCompat.requestPermissions(this,
-//                    new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
-//                    PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
-//        }
-//    }
 
 }
 

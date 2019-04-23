@@ -57,6 +57,7 @@
     <string name="confirm_password">confirm password</string>
     <string name="terms">I agree to the Terms and Conditions</string>
     <string name="back2login">Already have an account? Login now</string>
+    <string name="storage_permission_denied_message_osm">No access to external storage. Permission needed for storing map tiles in the OSMDroid example.</string>
 
     <string-array name="status_array">
         <item>Student</item>
@@ -64,4 +65,8 @@
     </string-array>
 
     <string name="button_close">Close</string>
+    <string name="capen_floor_3">Capen Floor 3</string>
+    <string name="gradient_background">gradient background</string>
+    <string name="welcome_back">Welcome Back,</string>
+    <string name="log_in_to_continue">Log in to continue</string>
 </resources>

@@ -13,12 +13,12 @@ import static org.junit.Assert.*;
 public class LocationActivityTest {
 
     @Rule
-    public ActivityTestRule<DestinationActivity> destinationActivityTestRule = new ActivityTestRule(DestinationActivity.class);
-    public ActivityTestRule<LocationActivity> locationActivityActivityTestRule = new ActivityTestRule<>(LocationActivity.class);
+    private ActivityTestRule<DestinationActivity> destinationActivityTestRule = new ActivityTestRule(DestinationActivity.class);
+    private ActivityTestRule<LocationActivity> locationActivityActivityTestRule = new ActivityTestRule<>(LocationActivity.class);
 
     public LocationActivity location = null;
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         location = locationActivityActivityTestRule.getActivity();
     }
 
@@ -28,15 +28,8 @@ public class LocationActivityTest {
         assertNotNull(location);
     }
 
-    // test that the list view appears on the screen
-    @Test
-    public void testListViewNotNull(){
-        ListView listView = location.search_location;
-        assertNotNull(listView);
-    }
-
     @After
-    public void tearDown() throws Exception {
+    public void tearDown() {
         location = null;
     }
 }

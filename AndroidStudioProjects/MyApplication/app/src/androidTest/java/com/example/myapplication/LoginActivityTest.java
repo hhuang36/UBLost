@@ -24,21 +24,21 @@ import static android.support.test.espresso.matcher.ViewMatchers.hasErrorText;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static org.junit.Assert.*;
 
-public class LoginTest {
+public class LoginActivityTest {
 
     @Rule
-    public ActivityTestRule<Login> loginActivityTestRule = new ActivityTestRule(Login.class);
-    public Login lT = null;
+    public ActivityTestRule<LoginActivity> loginActivityTestRule = new ActivityTestRule(LoginActivity.class);
+    public LoginActivity lT = null;
     Instrumentation.ActivityMonitor homePage = getInstrumentation().addMonitor(HomeScreen.class.getName(), null, false);
-    Instrumentation.ActivityMonitor loginPage = getInstrumentation().addMonitor(Login.class.getName(), null, false);
-    Instrumentation.ActivityMonitor registerPage = getInstrumentation().addMonitor(Register.class.getName(), null, false);
+    Instrumentation.ActivityMonitor loginPage = getInstrumentation().addMonitor(LoginActivity.class.getName(), null, false);
+    Instrumentation.ActivityMonitor registerPage = getInstrumentation().addMonitor(RegisterActivity.class.getName(), null, false);
 
     @Before
     public void setUp() throws Exception {
         lT = loginActivityTestRule.getActivity();
     }
 
-    // test that the LoginTest activity is not null when the application is run
+    // test that the LoginActivityTest activity is not null when the application is run
     @Test
     public void testLaunch(){
        // assertNotNull(lT);
@@ -99,30 +99,30 @@ public class LoginTest {
         Button button = lT.findViewById(R.id.loginButton);
         assertNotNull(button);
     }
-    //tests that the Login Button says Login
+    //tests that the LoginActivity Button says LoginActivity
     @Test
     public void loginButtonText(){
         Button button = lT.findViewById(R.id.loginButton);
         CharSequence Login = button.getText();
-        CharSequence actual = "Login";
+        CharSequence actual = "LoginActivity";
         assertEquals(Login, actual);
     }
 
-    // tests that the register button is displayed on screen
+    // tests that the registerActivity button is displayed on screen
     @Test
     public void testRegisterButtonExists() {
         Button button = lT.findViewById(R.id.registerButton);
         assertNotNull(button);
     }
-    //tests that the Register Button says Register
+    //tests that the RegisterActivity Button says RegisterActivity
     @Test
     public void registerButtonText(){
         Button button = lT.findViewById(R.id.registerButton);
         CharSequence Register = button.getText();
-        CharSequence actual = "Register";
+        CharSequence actual = "RegisterActivity";
         assertEquals(Register, actual);
     }
-    //testing when register button it clicked, it opens the register page or not
+    //testing when registerActivity button it clicked, it opens the registerActivity page or not
     @Test
     public void testRegisterButtonLeadsToRegisterPage(){
         onView(withId(R.id.registerButton)).perform(click());

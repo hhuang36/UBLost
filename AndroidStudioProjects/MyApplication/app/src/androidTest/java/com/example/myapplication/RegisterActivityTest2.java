@@ -3,35 +3,23 @@ package com.example.myapplication;
 
 import android.app.Activity;
 import android.app.Instrumentation;
-import android.support.test.espresso.DataInteraction;
 import android.support.test.espresso.ViewInteraction;
 import android.support.test.filters.LargeTest;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.runner.AndroidJUnit4;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewParent;
 
-import org.hamcrest.Description;
-import org.hamcrest.Matcher;
-import org.hamcrest.TypeSafeMatcher;
-import org.hamcrest.core.IsInstanceOf;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static android.support.test.InstrumentationRegistry.getInstrumentation;
-import static android.support.test.espresso.Espresso.onData;
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static android.support.test.espresso.action.ViewActions.replaceText;
-import static android.support.test.espresso.action.ViewActions.scrollTo;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.hasErrorText;
-import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static android.support.test.espresso.matcher.ViewMatchers.withClassName;
 import static android.support.test.espresso.matcher.ViewMatchers.withHint;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
@@ -42,21 +30,21 @@ import static org.junit.Assert.assertNotNull;
 
 @LargeTest
 @RunWith(AndroidJUnit4.class)
-public class RegisterTest2 {
+public class RegisterActivityTest2 {
 
     @Rule
-    public ActivityTestRule<Register> registerTestRule = new ActivityTestRule<>(Register.class);
-    Instrumentation.ActivityMonitor loginPage = getInstrumentation().addMonitor(Login.class.getName(), null, false);
+    public ActivityTestRule<RegisterActivity> registerTestRule = new ActivityTestRule<>(RegisterActivity.class);
+    Instrumentation.ActivityMonitor loginPage = getInstrumentation().addMonitor(LoginActivity.class.getName(), null, false);
 
-    Register register = null;
+    RegisterActivity registerActivity = null;
     @Before
     public void before(){
-        register = registerTestRule.getActivity();
+        registerActivity = registerTestRule.getActivity();
     }
 
     @Test
     public void testRegisterWithoutEmail() {
-        // click on register button
+        // click on registerActivity button
         onView(withId(R.id.registerButton)).perform(click());
 
         // check if error message pops up next to email
@@ -69,7 +57,7 @@ public class RegisterTest2 {
         ViewInteraction appCompatAutoCompleteTextView2 = onView(withId(R.id.email));
         appCompatAutoCompleteTextView2.perform(replaceText("test"), closeSoftKeyboard());
 
-        // click on register button
+        // click on registerActivity button
         onView(withId(R.id.registerButton)).perform(click());
 
         // check if error message pops up next to email
@@ -82,7 +70,7 @@ public class RegisterTest2 {
         ViewInteraction appCompatAutoCompleteTextView2 = onView(withId(R.id.email));
         appCompatAutoCompleteTextView2.perform(replaceText("test@gmail.com"), closeSoftKeyboard());
 
-        // click on register button
+        // click on registerActivity button
         onView(withId(R.id.registerButton)).perform(click());
 
         // check if error message pops up next to password
@@ -99,7 +87,7 @@ public class RegisterTest2 {
         ViewInteraction appCompatAutoCompleteTextView3 = onView(withId(R.id.password));
         appCompatAutoCompleteTextView3.perform(replaceText("123456"), closeSoftKeyboard());
 
-        // click on register button
+        // click on registerActivity button
         onView(withId(R.id.registerButton)).perform(click());
 
         // check if error message pops up next to confirm password
@@ -120,14 +108,14 @@ public class RegisterTest2 {
         ViewInteraction appCompatAutoCompleteTextView4 = onView(withId(R.id.confirm_password));
         appCompatAutoCompleteTextView4.perform(replaceText("12345"), closeSoftKeyboard());
 
-        // click on register button
+        // click on registerActivity button
         onView(withId(R.id.registerButton)).perform(click());
 
         // check if error message pops up next to confirm password
         onView(withId(R.id.confirm_password)).check(matches(hasErrorText("Passwords do not match!")));
     }
 
-    // tests that when the user successfully entered all fields that register brings the user back to the login activity
+    // tests that when the user successfully entered all fields that registerActivity brings the user back to the login activity
     @Test
     public void testRegisterButton(){
         // click email & type in test@gmail.com
@@ -142,7 +130,7 @@ public class RegisterTest2 {
         ViewInteraction appCompatAutoCompleteTextView4 = onView(withId(R.id.confirm_password));
         appCompatAutoCompleteTextView4.perform(replaceText("123456"), closeSoftKeyboard());
 
-        // click on register button
+        // click on registerActivity button
         onView(withId(R.id.radioButton)).perform(click());
         onView(withId(R.id.registerButton)).perform(click());
         Activity login = getInstrumentation().waitForMonitorWithTimeout(loginPage, 5000);

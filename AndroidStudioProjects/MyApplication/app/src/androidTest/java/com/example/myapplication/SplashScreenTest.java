@@ -1,32 +1,22 @@
 package com.example.myapplication;
 
 import android.content.Intent;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.support.test.rule.ActivityTestRule;
-import android.support.test.runner.AndroidJUnit4;
-import android.text.Layout;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.TextView;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
-import org.junit.*;
-import org.junit.runner.RunWith;
-import org.w3c.dom.Text;
 
 import static org.junit.Assert.*;
 
-public class MainActivityTest {
+public class SplashScreenTest {
 
     @Rule
-    public ActivityTestRule<MainActivity> mainActivityActivityTestRule = new ActivityTestRule(MainActivity.class);
+    public ActivityTestRule<SplashScreen> mainActivityActivityTestRule = new ActivityTestRule(SplashScreen.class);
 
-    public MainActivity mActivity = null;
+    public SplashScreen mActivity = null;
 
     @Before
     public void setUp() throws Exception{

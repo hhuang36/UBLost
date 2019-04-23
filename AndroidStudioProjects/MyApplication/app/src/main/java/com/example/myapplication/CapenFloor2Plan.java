@@ -12,6 +12,6 @@ public class CapenFloor2Plan extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_capen_floor2_plan);
         capenF2 = findViewById(R.id.capenF2);
-        capenF2.setImageResource(R.mipmap.capen_floor_3);
+        capenF2.setImageResource(R.mipmap.capen_floor_2);
     }
 }

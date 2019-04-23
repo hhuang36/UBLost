@@ -5,22 +5,18 @@ package com.example.myapplication;
         import android.support.test.filters.LargeTest;
         import android.support.test.rule.ActivityTestRule;
         import android.support.test.runner.AndroidJUnit4;
-        import android.text.SpannableString;
-        import android.text.style.ClickableSpan;
         import android.view.View;
         import android.widget.AutoCompleteTextView;
         import android.widget.Button;
         import android.widget.ImageView;
         import android.widget.RadioButton;
         import android.widget.ScrollView;
-        import android.widget.TextView;
 
         import org.junit.After;
         import org.junit.Before;
         import org.junit.Rule;
         import org.junit.Test;
         import org.junit.runner.RunWith;
-        import org.w3c.dom.Text;
 
         import static android.support.test.InstrumentationRegistry.getInstrumentation;
         import static android.support.test.espresso.Espresso.onView;
@@ -30,11 +26,11 @@ package com.example.myapplication;
 
 @RunWith(AndroidJUnit4.class)
 @LargeTest
-public class RegisterTest {
+public class RegisterActivityTest {
 
     @Rule
-    public ActivityTestRule<Register> registerTestRule = new ActivityTestRule(Register.class);
-    public Register rT = null;
+    public ActivityTestRule<RegisterActivity> registerTestRule = new ActivityTestRule(RegisterActivity.class);
+    public RegisterActivity rT = null;
     Instrumentation.ActivityMonitor homePage = getInstrumentation().addMonitor(HomeActivity.class.getName(), null, false);
 
     @Before
@@ -43,7 +39,7 @@ public class RegisterTest {
 
     }
 
-    @Test// Testing if the register activity is launching.
+    @Test// Testing if the registerActivity activity is launching.
     public void testLaunchRegister() {
         View view = rT.findViewById(R.id.RegisterTextView);
 
@@ -115,23 +111,23 @@ public class RegisterTest {
     }
 
 
-    @Test// Testing if the register button exists.
+    @Test// Testing if the registerActivity button exists.
     public void testRegisterButton(){
         Button registerButton = rT.findViewById(R.id.registerButton);
         assertNotNull(registerButton);
 
     }
 
-    // tests that the text displayed in the Register Button  is correct
+    // tests that the text displayed in the RegisterActivity Button  is correct
     @Test
     public void testRegisterButtonTextIsCorrect(){
         Button registerButton = rT.findViewById(R.id.registerButton);
         CharSequence registerButtonText = registerButton.getText();
-        CharSequence expected = "Register";
+        CharSequence expected = "RegisterActivity";
         assertEquals(registerButtonText, expected);
     }
 
-    // tests that when the user is not done filling out his or her credentials and clicks the register button, the home page should not be displayed.
+    // tests that when the user is not done filling out his or her credentials and clicks the registerActivity button, the home page should not be displayed.
     @Test
     public void testRegisterDoesNotLeadToHomePageWithIncorrectCredentials(){
         onView(withId(R.id.registerButton)).perform(click());
