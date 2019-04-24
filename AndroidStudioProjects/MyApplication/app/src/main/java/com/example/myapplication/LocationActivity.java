@@ -121,6 +121,9 @@ public class LocationActivity extends FragmentActivity implements GoogleMap.OnMa
                         .icon(BitmapDescriptorFactory.fromResource(R.drawable.map_blue_dot))
                         .anchor(0.5f, 0.5f)
                         .flat(true));
+
+                // Show zoom controls
+                mMap.getUiSettings().setZoomControlsEnabled(true);
             }
         } else {
             // move existing markers position to received location
@@ -396,6 +399,15 @@ public class LocationActivity extends FragmentActivity implements GoogleMap.OnMa
 
     @Override
     public void onMapClick(LatLng point) {
+        View decorView = getWindow().getDecorView();
+// Hide both the navigation bar and the status bar.
+// SYSTEM_UI_FLAG_FULLSCREEN is only available on Android 4.1 and higher, but as
+// a general rule, you should design your app to hide the status bar whenever you
+// hide the navigation bar.
+        int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                | View.SYSTEM_UI_FLAG_FULLSCREEN;
+        decorView.setSystemUiVisibility(uiOptions);
+
         if (mMap != null) {
 
             mWayfindingDestination = new IAWayfindingRequest.Builder()

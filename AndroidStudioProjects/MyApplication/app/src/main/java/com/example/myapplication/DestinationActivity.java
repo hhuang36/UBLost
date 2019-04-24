@@ -30,10 +30,10 @@ public class DestinationActivity extends AppCompatActivity {
 
         search_building = findViewById(R.id.search_building);
 
-        ArrayList<String> arrayBuildings = new ArrayList<String>();
+        ArrayList<String> arrayBuildings = new ArrayList<>();
         arrayBuildings.addAll(Arrays.asList(getResources().getStringArray(R.array.my_buildings)));
 
-        adapter = new ArrayAdapter<String>(
+        adapter = new ArrayAdapter<>(
                 DestinationActivity.this,
                 android.R.layout.simple_list_item_1,
                 arrayBuildings
@@ -44,20 +44,20 @@ public class DestinationActivity extends AppCompatActivity {
         search_building.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if(buildingButtons[position] == "Capen Library"){
-                    Intent intent = new Intent(DestinationActivity.this, CapenFloor1Plan.class);
+                if(buildingButtons[position].equals("Capen Library")){
+                    Intent intent = new Intent(DestinationActivity.this, CapenFloor2Plan.class);
                     startActivity(intent);
-                } else if(buildingButtons[position] == "Lockwood Library"){
-                    Intent intent = new Intent(DestinationActivity.this, CapenFloor1Plan.class);
+                } else if(buildingButtons[position].equals("Lockwood Library")){
+                    Intent intent = new Intent(DestinationActivity.this, CapenFloor2Plan.class);
                     startActivity(intent);
-                } else if(buildingButtons[position] == "Norton Hall"){
-                    Intent intent = new Intent(DestinationActivity.this, CapenFloor1Plan.class);
+                } else if(buildingButtons[position].equals("Norton Hall")){
+                    Intent intent = new Intent(DestinationActivity.this, CapenFloor2Plan.class);
                     startActivity(intent);
-                } else if(buildingButtons[position] == "Davis Hall"){
-                    Intent intent = new Intent(DestinationActivity.this, CapenFloor1Plan.class);
+                } else if(buildingButtons[position].equals("Davis Hall")){
+                    Intent intent = new Intent(DestinationActivity.this, CapenFloor2Plan.class);
                     startActivity(intent);
-                } else if(buildingButtons[position] == "Music Library"){
-                    Intent intent = new Intent(DestinationActivity.this, CapenFloor1Plan.class);
+                } else if(buildingButtons[position].equals("Music Library")){
+                    Intent intent = new Intent(DestinationActivity.this, CapenFloor2Plan.class);
                     startActivity(intent);
                 }
             }

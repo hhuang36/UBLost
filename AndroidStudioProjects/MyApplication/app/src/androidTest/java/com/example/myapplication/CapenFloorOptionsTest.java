@@ -2,7 +2,6 @@ package com.example.myapplication;
 
 import android.app.Activity;
 import android.app.Instrumentation;
-import android.support.annotation.FloatRange;
 import android.support.test.rule.ActivityTestRule;
 import android.widget.Adapter;
 import android.widget.ListView;
@@ -12,10 +11,7 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
-import java.util.List;
-
 import static android.support.test.InstrumentationRegistry.getInstrumentation;
-import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static org.junit.Assert.*;
@@ -26,11 +22,11 @@ public class CapenFloorOptionsTest {
     @Rule
     public ActivityTestRule<CapenFloorOptions> capenFloorOptionsActivityTestRule = new ActivityTestRule(CapenFloorOptions.class);
 
-    Instrumentation.ActivityMonitor monitor = getInstrumentation().addMonitor(CapenFloor1Plan.class.getName(), null, false);
-    Instrumentation.ActivityMonitor monitor1 = getInstrumentation().addMonitor(CapenFloor2Plan.class.getName(), null, false);
-    Instrumentation.ActivityMonitor monitor2 = getInstrumentation().addMonitor(CapenFloor3Plan.class.getName(), null, false);
+    private Instrumentation.ActivityMonitor monitor = getInstrumentation().addMonitor(CapenFloor2Plan.class.getName(), null, false);
+    private Instrumentation.ActivityMonitor monitor1 = getInstrumentation().addMonitor(CapenFloor3Plan.class.getName(), null, false);
+    private Instrumentation.ActivityMonitor monitor2 = getInstrumentation().addMonitor(CapenFloor4Plan.class.getName(), null, false);
 
-    public CapenFloorOptions cFO = null;
+    private CapenFloorOptions cFO = null;
 
     @Before
     public void setUp() throws Exception{
@@ -40,21 +36,21 @@ public class CapenFloorOptionsTest {
     // test that the first option shows the text "Floor2"
     @Test
     public void testCapenFloorStringArray1(){
-        String FloorTexts[] = new String [] {"Floor 2", "Floor 3", "Floor 4"};
+        String[] FloorTexts = new String[]{"Floor 2", "Floor 3", "Floor 4"};
         assertEquals(FloorTexts[0], cFO.capenFloorButtons[0]);
     }
 
     // test that the first option shows the text "Floor3"
     @Test
     public void testCapenFloorStringArray2(){
-        String FloorTexts[] = new String [] {"Floor 2", "Floor 3", "Floor 4"};
+        String[] FloorTexts = new String[]{"Floor 2", "Floor 3", "Floor 4"};
         assertEquals(FloorTexts[1], cFO.capenFloorButtons[1]);
     }
 
     // test that the first option shows the text "Floor4"
     @Test
     public void testCapenFloorStringArray3(){
-        String FloorTexts[] = new String [] {"Floor 2", "Floor 3", "Floor 4"};
+        String[] FloorTexts = new String[]{"Floor 2", "Floor 3", "Floor 4"};
         assertEquals(FloorTexts[2], cFO.capenFloorButtons[2]);
     }
 
@@ -80,7 +76,7 @@ public class CapenFloorOptionsTest {
         assertEquals(id, R.id.search_capen_floors);
     }
 
-    // test that the Floor 2 option brings the user to the CapenFloor1Plan.java activity
+    // test that the Floor 2 option brings the user to the CapenFloor2Plan.java activity
     @Test
     public void testFloorTwo(){
         final ListView lv = cFO.search_capen;
@@ -96,7 +92,7 @@ public class CapenFloorOptionsTest {
         secondActivity.finish();
     }
 
-    // test that the Floor 3 option brings the user to the CapenFloor2Plan.java activity
+    // test that the Floor 3 option brings the user to the CapenFloor3Plan.java activity
     @Test
     public void testFloorThree(){
         final ListView lv = cFO.search_capen;
@@ -112,7 +108,7 @@ public class CapenFloorOptionsTest {
         secondActivity.finish();
     }
 
-    // test that the Floor 3 option brings the user to the CapenFloor2Plan.java activity
+    // test that the Floor 3 option brings the user to the CapenFloor3Plan.java activity
     @Test
     public void testFloorFloor(){
         final ListView lv = cFO.search_capen;
@@ -130,7 +126,7 @@ public class CapenFloorOptionsTest {
 
 
     @After
-    public void tearDown() throws Exception{
+    public void tearDown() {
         cFO = null;
     }
 

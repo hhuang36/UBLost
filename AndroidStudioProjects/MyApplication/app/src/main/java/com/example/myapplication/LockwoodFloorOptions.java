@@ -1,46 +1,54 @@
 package com.example.myapplication;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class CapenFloorOptions extends AppCompatActivity {
+public class LockwoodFloorOptions extends AppCompatActivity {
 
-    ListView search_capen;
+    ListView search_lockwood;
     ArrayAdapter<String> adapter;
 
-    String[] capenFloorButtons = new String[]{"Floor 2", "Floor 3", "Floor 4"};
+    String lockwoodFloorButtons[] = new String [] {"Basement", "Floor 1", "Floor 2", "Floor 3", "Floor 4", "Floor 5"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_capen_floor_options);
+        setContentView(R.layout.activity_lockwood_floor_options);
 
-        search_capen = findViewById(R.id.search_capen_floors);
+        search_lockwood = findViewById(R.id.search_lockwood_floors);
 
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, capenFloorButtons);
-        search_capen.setAdapter(adapter);
-        search_capen.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, lockwoodFloorButtons);
+        search_lockwood.setAdapter(adapter);
+        search_lockwood.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if(capenFloorButtons[position].equals("Floor 2")){
-                    //Toast.makeText(CapenFloorOptions.this, "Testing", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(CapenFloorOptions.this, CapenFloor2Plan.class);
-                    startActivity(intent);
-                } else if(capenFloorButtons[position].equals("Floor 3")){
-                    Intent intent = new Intent(CapenFloorOptions.this, CapenFloor3Plan.class);
-                    startActivity(intent);
-                } else if(capenFloorButtons[position].equals("Floor 4")){
-                    Intent intent = new Intent(CapenFloorOptions.this, CapenFloor4Plan.class);
-                    startActivity(intent);
+                if(lockwoodFloorButtons[position] == "Basement"){
+                    // TODO: Add floor plans for Lockwood
+                    openUnderConstruction();
+                } else if(lockwoodFloorButtons[position].equals("Floor 1")){
+                    openUnderConstruction();
+                } else if(lockwoodFloorButtons[position].equals("Floor 2")){
+                    openUnderConstruction();
+                } else if(lockwoodFloorButtons[position].equals("Floor 3")) {
+                    openUnderConstruction();
+                } else if(lockwoodFloorButtons[position].equals("Floor 4")) {
+                    openUnderConstruction();
+                } else if(lockwoodFloorButtons[position].equals("Floor 5")) {
+                    openUnderConstruction();
                 }
             }
         });
 
+    }
+
+    public void openUnderConstruction(){
+        Intent intent = new Intent(LockwoodFloorOptions.this, UnderConstructionActivity.class);
+        startActivity(intent);
     }
 
 //    listview.setOnItemClickListener(new OnItemClickListener(){

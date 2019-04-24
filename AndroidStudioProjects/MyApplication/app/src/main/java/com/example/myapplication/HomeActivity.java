@@ -37,7 +37,7 @@ public class HomeActivity extends AppCompatActivity {
         lockwoodCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openCapenOptions();
+                openLockwoodOptions();
             }
         });
 
@@ -45,7 +45,7 @@ public class HomeActivity extends AppCompatActivity {
         musicCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openCapenOptions();
+                openMusicOptions();
             }
         });
 
@@ -53,7 +53,7 @@ public class HomeActivity extends AppCompatActivity {
         obrianCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openCapenOptions();
+                openUnderConstruction();
             }
         });
 
@@ -61,7 +61,7 @@ public class HomeActivity extends AppCompatActivity {
         davisCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openCapenOptions();
+                openUnderConstruction();
             }
         });
 
@@ -69,7 +69,7 @@ public class HomeActivity extends AppCompatActivity {
         mathCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openCapenOptions();
+                openUnderConstruction();
             }
         });
 
@@ -77,7 +77,7 @@ public class HomeActivity extends AppCompatActivity {
         alumniCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openCapenOptions();
+                openUnderConstruction();
             }
         });
 
@@ -85,7 +85,7 @@ public class HomeActivity extends AppCompatActivity {
         studentUnionCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openCapenOptions();
+                openUnderConstruction();
             }
         });
     }
@@ -93,6 +93,25 @@ public class HomeActivity extends AppCompatActivity {
     // Opens up the activity with floor options (e.g. 2, 3, 4)
     public void openCapenOptions(){
         Intent intent = new Intent(HomeActivity.this, CapenFloorOptions.class);
+        startActivity(intent);
+    }
+
+    // Opens up the activity with floor options (e.g. 2, 3, 4)
+    public void openLockwoodOptions(){
+        Intent intent = new Intent(HomeActivity.this, LockwoodFloorOptions.class);
+        startActivity(intent);
+    }
+
+    // Opens up the activity with floor options (e.g. 2, 3, 4)
+    public void openMusicOptions(){
+        Intent intent = new Intent(HomeActivity.this, MusicFloorOptions.class);
+        startActivity(intent);
+    }
+
+
+
+    public void openUnderConstruction(){
+        Intent intent = new Intent(HomeActivity.this, UnderConstructionActivity.class);
         startActivity(intent);
     }
 

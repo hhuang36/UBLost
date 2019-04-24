@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.content.Intent;
+import android.location.Location;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentActivity;
@@ -9,11 +10,13 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.CheckBox;
 import android.widget.Toast;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.Circle;
 import com.google.android.gms.maps.model.CircleOptions;
@@ -27,7 +30,8 @@ import com.indooratlas.android.sdk.IALocationRequest;
 
 import utils.ExampleUtils;
 
-public class HomeScreen extends FragmentActivity implements IALocationListener, OnMapReadyCallback { // THIS IS THE HOME PAGE
+public class HomeScreen extends FragmentActivity implements IALocationListener, GoogleMap.OnMyLocationButtonClickListener,
+        GoogleMap.OnMyLocationClickListener, OnMapReadyCallback { // THIS IS THE HOME PAGE
 
     private static final String TAG = "HomeScreen";
     private ActionBarDrawerToggle menuToggle;
@@ -61,6 +65,8 @@ public class HomeScreen extends FragmentActivity implements IALocationListener, 
                 return true;
             }
         });
+
+
 
         DrawerLayout menuDrawerLayout = findViewById(R.id.drawerLayout);
         menuToggle = new ActionBarDrawerToggle(this, menuDrawerLayout, R.string.open, R.string.close);
@@ -113,25 +119,28 @@ public class HomeScreen extends FragmentActivity implements IALocationListener, 
         if (mCircle == null) {
             // location can received before map is initialized, ignoring those updates
             if (mMap != null) {
-                mCircle = mMap.addCircle(new CircleOptions()
-                        .center(center)
-                        .radius(accuracyRadius)
-                        .fillColor(0x201681FB)
-                        .strokeColor(0x500A78DD)
-                        .zIndex(1.0f)
-                        .visible(true)
-                        .strokeWidth(5.0f));
-                mHeadingMarker = mMap.addMarker(new MarkerOptions()
-                        .position(center)
-                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.map_blue_dot))
-                        .anchor(0.5f, 0.5f)
-                        .flat(true));
+                // enable the myLocation layer
+                mMap.setMyLocationEnabled(true);
+
+//                mCircle = mMap.addCircle(new CircleOptions()
+//                        .center(center)
+//                        .radius(accuracyRadius)
+//                        .fillColor(0x201681FB)
+//                        .strokeColor(0x500A78DD)
+//                        .zIndex(1.0f)
+//                        .visible(true)
+//                        .strokeWidth(5.0f));
+//                mHeadingMarker = mMap.addMarker(new MarkerOptions()
+//                        .position(center)
+//                        .icon(BitmapDescriptorFactory.fromResource(R.drawable.map_blue_dot))
+//                        .anchor(0.5f, 0.5f)
+//                        .flat(true));
             }
         } else {
-            // move existing markers position to received location
-            mCircle.setCenter(center);
-            mHeadingMarker.setPosition(center);
-            mCircle.setRadius(accuracyRadius);
+//            // move existing markers position to received location
+//            mCircle.setCenter(center);
+//            mHeadingMarker.setPosition(center);
+//            mCircle.setRadius(accuracyRadius);
         }
     }
 
@@ -185,6 +194,18 @@ public class HomeScreen extends FragmentActivity implements IALocationListener, 
         return super.onOptionsItemSelected(x);
     }
 
+    @Override
+    public boolean onMyLocationButtonClick() {
+        Toast.makeText(this, "MyLocation button clicked", Toast.LENGTH_SHORT).show();
+        // Return false so that we don't consume the event and the default behavior still occurs
+        // (the camera animates to the user's current position).
+        return false;
+    }
+
+    @Override
+    public void onMyLocationClick(@NonNull Location location) {
+        Toast.makeText(this, "Current location:\n" + location, Toast.LENGTH_LONG).show();
+    }
 }
 
 

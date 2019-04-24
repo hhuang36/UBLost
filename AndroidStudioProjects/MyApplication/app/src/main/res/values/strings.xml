@@ -18,14 +18,12 @@
         <item>Norton Hall</item>
         <item>Davis Hall</item>
         <item>Music Library</item>
-        <item></item>
     </string-array>
     <string-array name="search_capen_floors">
         <item>Basement</item>
         <item>Floor 1</item>
         <item>Floor 2</item>
         <item>Floor 3</item>
-        <item></item>
     </string-array>
     <string-array name="my_locations">
         <item>Capen Library</item>
@@ -71,4 +69,17 @@
     <string name="log_in_to_continue">Log in to continue</string>
 
     <string name="saved_paths">Saved Paths</string>
+    <string name="capen_floor_2">Capen Floor 2</string>
+    <string name="capen_floor_4">Capen Floor 4</string>
+    <string name="north_campus">North Campus</string>
+    <string name="lightbulb">light bulb</string>
+    <string name="bookshelf">bookshelf</string>
+    <string name="violin">violin</string>
+    <string name="logo">logo</string>
+    <string name="locations">Locations</string>
+    <string name="o_brian_hall">O\'Brian Hall</string>
+    <string name="student_union">Student Union</string>
+    <string name="alumni_arena">Alumni Arena</string>
+    <string name="math_building">Math Building</string>
+
 </resources>

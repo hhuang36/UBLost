@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/darkenbackground2"
-    android:orientation="vertical"
-    tools:context=".HomeActivity">
+    tools:context=".HomeActivity"
+    android:orientation="vertical">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -19,7 +19,7 @@
                 android:id="@+id/txtlocations"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/Capen_Library"
+                android:text="@string/Music_Library"
                 android:textColor="#FFFFFF"
                 android:textSize="30sp" />
 
@@ -36,16 +36,16 @@
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_alignParentEnd="true"
-                android:src="@drawable/lightbulb"
+                android:src="@drawable/violin"
                 android:layout_marginEnd="10dp"
-                android:contentDescription="@string/lightbulb"/>
+                android:contentDescription="@string/violin" />
 
         </RelativeLayout>
 
         <ListView
             android:layout_marginTop="150dp"
             android:padding="20dp"
-            android:id="@+id/search_capen_floors"
+            android:id="@+id/search_music_floors"
             android:layout_width="wrap_content"
             android:layout_height="450dp"/>
 

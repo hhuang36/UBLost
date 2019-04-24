@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CapenFloor2Plan">
 
     <TextView
-        android:text="@string/capen_floor_3"
+        android:id="@+id/CapenFloor2TextView"
+        android:text="@string/capen_floor_2"
         android:textAlignment="center"
         android:textSize="48sp"
         android:paddingTop="20dp"
@@ -19,13 +19,15 @@
 
     </TextView>
 
-    <ImageView
-        android:layout_centerInParent="true"
-        android:id="@+id/capenF2"
+    <com.github.chrisbanes.photoview.PhotoView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
+        android:id="@+id/capenF2"
         android:src="@mipmap/capen_floor_2"
         android:contentDescription="@string/Capen_Library">
-    </ImageView>
+    </com.github.chrisbanes.photoview.PhotoView>
 
 </RelativeLayout>
