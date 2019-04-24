@@ -80,7 +80,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
         // Creating link text to go back to LoginActivity page
         TextView back2Login = findViewById(R.id.helpTextView);
-        String text = "Already have an account? LoginActivity now";
+        String text = "Already have an account? Login now";
         SpannableString ss = new SpannableString(text);
         ForegroundColorSpan color = new ForegroundColorSpan(Color.YELLOW);
 
