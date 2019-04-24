@@ -55,7 +55,7 @@ public class HomeScreen extends FragmentActivity implements IALocationListener, 
                         openFloorPlan();
                         break;
                     case R.id.action_nearby:
-                        Toast.makeText(HomeScreen.this, "Nearby", Toast.LENGTH_SHORT).show();
+                        openSavedFloorPlans();
                         break;
                 }
                 return true;
@@ -168,6 +168,11 @@ public class HomeScreen extends FragmentActivity implements IALocationListener, 
     }
 
     public void openNavigateMe(){
+        Intent intent = new Intent(this, LocationActivity.class);
+        startActivity(intent);
+    }
+
+    public void openSavedFloorPlans(){
         Intent intent = new Intent(this, LocationActivity.class);
         startActivity(intent);
     }

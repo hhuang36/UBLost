@@ -5,15 +5,23 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
-    <uses-feature android:name="android.hardware.sensor.accelerometer" android:required="true" />
-    <uses-feature android:name="android.hardware.sensor.compass"  android:required="true" />
-    <uses-feature android:name="android.hardware.sensor.gyroscope"  android:required="true" />
-    <uses-feature android:name="android.hardware.wifi" android:required="true" />
+    <uses-feature
+        android:name="android.hardware.sensor.accelerometer"
+        android:required="true" />
+    <uses-feature
+        android:name="android.hardware.sensor.compass"
+        android:required="true" />
+    <uses-feature
+        android:name="android.hardware.sensor.gyroscope"
+        android:required="true" />
+    <uses-feature
+        android:name="android.hardware.wifi"
+        android:required="true" />
 
     <application
         android:icon="@mipmap/ic_launcher"
@@ -21,11 +29,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".LocationActivity"></activity>
+        <activity android:name=".SavedPaths"></activity>
+        <activity android:name=".LocationActivity" />
         <activity android:name=".CapenFloor3Plan" />
         <activity android:name=".CapenFloor2Plan" />
         <activity android:name=".CapenFloor1Plan" />
-        <activity android:name=".SplashScreen" android:theme="@style/SplashTheme">
+        <activity
+            android:name=".SplashScreen"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -50,11 +61,9 @@
         <meta-data
             android:name="com.indooratlas.android.sdk.API_KEY"
             android:value="228a51a3-9501-4904-82a5-2605ec86137d" />
-
         <meta-data
             android:name="com.indooratlas.android.sdk.API_SECRET"
             android:value="ZwKfvS0eR2f1gOF5xS/zKUwmWNU9gFZUCCIh/TA0nAq+FPeMxMptWGdxlviKqYVHO4pV2fN8oam5TmlCtcdl1sjc5n0dC5VpBRVqh9TYHlSltEFnKJ32DFh7CYX2TQ==" />
-
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />

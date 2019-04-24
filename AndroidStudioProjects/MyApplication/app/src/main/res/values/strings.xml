@@ -69,4 +69,6 @@
     <string name="gradient_background">gradient background</string>
     <string name="welcome_back">Welcome Back,</string>
     <string name="log_in_to_continue">Log in to continue</string>
+
+    <string name="saved_paths">Saved Paths</string>
 </resources>
