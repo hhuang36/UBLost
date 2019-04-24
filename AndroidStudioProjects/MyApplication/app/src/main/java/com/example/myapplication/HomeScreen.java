@@ -182,7 +182,7 @@ public class HomeScreen extends FragmentActivity implements IALocationListener, 
     }
 
     public void openSavedFloorPlans(){
-        Intent intent = new Intent(this, LocationActivity.class);
+        Intent intent = new Intent(this, SavedPaths.class);
         startActivity(intent);
     }
 

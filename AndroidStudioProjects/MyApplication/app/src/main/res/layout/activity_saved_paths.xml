@@ -4,20 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
     tools:context=".SavedPaths">
 
-    <TextView
-        android:text="@string/saved_paths"
-        android:layout_centerHorizontal="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        />
 
-    <ListView
-        android:layout_marginTop="50dp"
+    <LinearLayout
+        android:id="@+id/layout_button"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true"
+        android:weightSum="2">
 
+        <Button
+            android:id="@+id/btnChoose"
+            android:text="Choose Path"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
 
-    </ListView>
+        <Button
+            android:id="@+id/btnUpload"
+            android:text="Upload Path"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imgView"
+        android:layout_below="@id/layout_button"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
 </RelativeLayout>
