@@ -77,6 +77,9 @@
         <activity android:name=".HomeActivity" />
         <activity android:name=".UnderConstructionActivity" />
 
+
+        <activity android:name=".ProfileActivity"/>
+
         <meta-data
             android:name="com.indooratlas.android.sdk.API_KEY"
             android:value="228a51a3-9501-4904-82a5-2605ec86137d" />
