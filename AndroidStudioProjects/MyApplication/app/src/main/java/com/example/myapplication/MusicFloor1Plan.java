@@ -13,7 +13,7 @@ public class MusicFloor1Plan extends AppCompatActivity {
 
         ViewPager viewPager = findViewById(R.id.gallery);
         ImageAdapter adapter = new ImageAdapter(this);
-        adapter.getmImageIds().add(R.mipmap.music_floor_1);
+        adapter.getmImageIds().add(R.mipmap.music_1);
         viewPager.setAdapter(adapter);
     }
 }
