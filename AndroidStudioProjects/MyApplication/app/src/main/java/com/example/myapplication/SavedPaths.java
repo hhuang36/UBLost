@@ -6,9 +6,13 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -36,9 +40,10 @@ public class SavedPaths extends AppCompatActivity {
     // variables
     private Button btnChoose, btnUpload;
     private ImageView imageView;
-
+    private Button Gallery;
     private Uri filePath;
     private final int PICK_IMAGE_REQUEST = 71;
+    private ActionBarDrawerToggle menuToggle;
 
     //Firebase
     FirebaseStorage storage;
@@ -53,24 +58,25 @@ public class SavedPaths extends AppCompatActivity {
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
 
-        // Init view
-        btnChoose = findViewById(R.id.btnChoose);
-        btnUpload = findViewById(R.id.btnUpload);
-        imageView = findViewById(R.id.imgView);
-
-        btnChoose.setOnClickListener(new View.OnClickListener() {
+        BottomNavigationView bottomNavigationView = findViewById(R.id.);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void onClick(View v) {
-                chooseImage();
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.choose:
+                        chooseImage();
+                        break;
+                    case R.id.upload:
+                        uploadImage();
+                        break;
+                    case R.id.gallery_paths:
+                        openGallery();
+                        break;
+                }
+                return true;
             }
+        });
 
-        });
-        btnUpload.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                uploadImage();
-            }
-        });
     }
 
     private void uploadImage() {
@@ -122,6 +128,10 @@ public class SavedPaths extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+    }
+
+    public void openGallery(){
+
     }
 
 }

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/choose"
+        android:enabled="true"
+        android:title="Choose Path"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/upload"
+        android:enabled="true"
+        android:title="Upload"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/gallery_paths"
+        android:enabled="true"
+        android:title="My Paths"
+        app:showAsAction="ifRoom" />
+</menu>
