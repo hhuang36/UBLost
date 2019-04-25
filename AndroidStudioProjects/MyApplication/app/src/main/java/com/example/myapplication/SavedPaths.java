@@ -58,7 +58,7 @@ public class SavedPaths extends AppCompatActivity {
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.savedpaths_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -76,6 +76,7 @@ public class SavedPaths extends AppCompatActivity {
                 return true;
             }
         });
+
 
     }
 
