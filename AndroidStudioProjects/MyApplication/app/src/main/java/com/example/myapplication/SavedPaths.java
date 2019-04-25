@@ -53,7 +53,7 @@ public class SavedPaths extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_saved_paths);
-
+        imageView = findViewById(R.id.imgView);
         // Firebase Init
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
@@ -90,7 +90,7 @@ public class SavedPaths extends AppCompatActivity {
             ref.putFile(filePath).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                    progressDialog.dismiss();;
+                    progressDialog.dismiss();
                     Toast.makeText(SavedPaths.this, "Saved", Toast.LENGTH_SHORT).show();
                 }
             }).addOnFailureListener(new OnFailureListener() {
