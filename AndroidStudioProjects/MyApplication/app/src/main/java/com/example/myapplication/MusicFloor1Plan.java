@@ -4,7 +4,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class CapenFloor4Plan extends AppCompatActivity {
+public class MusicFloor1Plan extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -13,11 +13,7 @@ public class CapenFloor4Plan extends AppCompatActivity {
 
         ViewPager viewPager = findViewById(R.id.gallery);
         ImageAdapter adapter = new ImageAdapter(this);
-        adapter.getmImageIds().add(R.mipmap.capen_floor_2);
-        adapter.getmImageIds().add(R.mipmap.capen_floor_3);
-        adapter.getmImageIds().add(R.mipmap.capen_floor_4);
+        adapter.getmImageIds().add(R.mipmap.music_floor_1);
         viewPager.setAdapter(adapter);
-        viewPager.setCurrentItem(2);
-
     }
 }

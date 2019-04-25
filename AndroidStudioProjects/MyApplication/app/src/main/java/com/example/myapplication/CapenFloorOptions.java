@@ -28,7 +28,6 @@ public class CapenFloorOptions extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 if(capenFloorButtons[position].equals("Floor 2")){
-                    //Toast.makeText(CapenFloorOptions.this, "Testing", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(CapenFloorOptions.this, CapenFloor2Plan.class);
                     startActivity(intent);
                 } else if(capenFloorButtons[position].equals("Floor 3")){
@@ -42,42 +41,4 @@ public class CapenFloorOptions extends AppCompatActivity {
         });
 
     }
-
-//    listview.setOnItemClickListener(new OnItemClickListener(){
-//        @Override
-//        public void onItemClick(AdapterView<?>adapter,View v, int position){
-//            ItemClicked item = adapter.getItemAtPosition(position);
-//
-//            Intent intent = new Intent(Activity.this,destinationActivity.class);
-//            //based on item add info to intent
-//            startActivity(intent);
-//        }
-//    });
-//    in your adapter's getItem you write
-//
-//    public ItemClicked getItem(int position){
-//        return items.get(position);
-//    }
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        MenuInflater inflater = getMenuInflater();
-//        inflater.inflate(R.menu.search_capen_floors, menu);
-//        MenuItem item = menu.findItem(R.id.search_capen_floors);
-//        SearchView searchView = (SearchView) item.getActionView();
-//
-//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-//            @Override
-//            public boolean onQueryTextSubmit(String query) {
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean onQueryTextChange(String newText) {
-//                adapter.getFilter().filter(newText);
-//                return false;
-//            }
-//        });
-//
-//        return super.onCreateOptionsMenu(menu);
-//    }
 }

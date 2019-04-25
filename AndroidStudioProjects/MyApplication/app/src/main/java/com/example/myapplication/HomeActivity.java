@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
-import android.widget.SearchView;
 import android.support.v7.widget.CardView;
 
 public class HomeActivity extends AppCompatActivity {
@@ -22,7 +20,7 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_building_options);
 
         // Set click listeners for each card, so it opens the appropriate activity.
         capenCard = findViewById(R.id.capenCard);
@@ -53,7 +51,7 @@ public class HomeActivity extends AppCompatActivity {
         obrianCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openUnderConstruction();
+                openLawOptions();
             }
         });
 
@@ -108,7 +106,10 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
+    public void openLawOptions(){
+        Intent intent = new Intent(HomeActivity.this, LawFloorOptions.class);
+        startActivity(intent);
+    }
 
     public void openUnderConstruction(){
         Intent intent = new Intent(HomeActivity.this, UnderConstructionActivity.class);

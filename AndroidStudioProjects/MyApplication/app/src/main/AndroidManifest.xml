@@ -34,6 +34,20 @@
         <activity android:name=".CapenFloor4Plan" />
         <activity android:name=".CapenFloor3Plan" />
         <activity android:name=".CapenFloor2Plan" />
+        <activity android:name=".LockwoodBPlan" />
+        <activity android:name=".LockwoodFloor1Plan" />
+        <activity android:name=".LockwoodFloor2Plan" />
+        <activity android:name=".LockwoodFloor3Plan" />
+        <activity android:name=".LockwoodFloor4Plan" />
+        <activity android:name=".LockwoodFloor5Plan" />
+        <activity android:name=".MusicFloor1Plan" />
+        <activity android:name=".LawFloor2Plan" />
+        <activity android:name=".LawFloor3Plan" />
+        <activity android:name=".LawFloor4Plan" />
+        <activity android:name=".LawFloor5Plan" />
+        <activity android:name=".LawFloor6Plan" />
+        <activity android:name=".LawFloor7Plan" />
+
         <activity
             android:name=".SplashScreen"
             android:theme="@style/SplashTheme">
@@ -57,6 +71,7 @@
         <activity android:name=".CapenFloorOptions" />
         <activity android:name=".LockwoodFloorOptions" />
         <activity android:name=".MusicFloorOptions" />
+        <activity android:name=".LawFloorOptions" />
         <activity android:name=".DestinationActivity" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".UnderConstructionActivity" />

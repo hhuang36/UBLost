@@ -235,7 +235,7 @@ public class LocationActivity extends FragmentActivity implements GoogleMap.OnMa
                     case R.id.action_map:
                         openFloorPlan();
                         break;
-                    case R.id.action_nearby:
+                    case R.id.action_paths:
                         Toast.makeText(LocationActivity.this, "Nearby", Toast.LENGTH_SHORT).show();
                         break;
                 }

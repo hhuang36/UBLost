@@ -81,5 +81,6 @@
     <string name="student_union">Student Union</string>
     <string name="alumni_arena">Alumni Arena</string>
     <string name="math_building">Math Building</string>
+    <string name="column">column</string>
 
 </resources>

@@ -27,16 +27,12 @@ public class MusicFloorOptions extends AppCompatActivity {
         search_music.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (musicFloorButtons[position].equals("Floor 1"))
-                    // TODO: Add floor plans for Music Library
-                    openUnderConstruction();
+                if (musicFloorButtons[position].equals("Floor 1")) {
+                    Intent intent = new Intent(MusicFloorOptions.this, MusicFloor1Plan.class);
+                    startActivity(intent);
+                }
+
             }
         });
     }
-
-    public void openUnderConstruction(){
-        Intent intent = new Intent(MusicFloorOptions.this, UnderConstructionActivity.class);
-        startActivity(intent);
-    }
-
 }

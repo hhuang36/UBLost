@@ -14,9 +14,9 @@
         android:title="Floor Plans"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/action_nearby"
+        android:id="@+id/action_paths"
         android:enabled="true"
-        android:icon="@mipmap/baseline_satellite_black_18dp"
+        android:icon="@drawable/ic_paths"
         android:title="Saved Paths"
         app:showAsAction="ifRoom" />
 </menu>
