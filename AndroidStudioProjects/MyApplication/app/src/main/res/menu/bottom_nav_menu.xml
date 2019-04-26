@@ -6,17 +6,25 @@
         android:enabled="true"
         android:icon="@drawable/ic_navigate"
         android:title="Navigate"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always" />
     <item
         android:id="@+id/action_map"
         android:enabled="true"
         android:icon="@drawable/ic_map"
         android:title="Floor Plans"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always" />
     <item
         android:id="@+id/action_paths"
         android:enabled="true"
         android:icon="@drawable/ic_paths"
-        android:title="Saved Paths"
-        app:showAsAction="ifRoom" />
+        android:title="Paths"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/user_profile"
+        android:enabled="true"
+        android:icon="@drawable/ic_user_profile"
+        android:title="My Profile"
+        app:showAsAction="always"
+        />
+
 </menu>

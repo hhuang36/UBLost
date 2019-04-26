@@ -56,6 +56,9 @@ public class HomeScreen extends FragmentActivity implements IALocationListener, 
                     case R.id.action_paths:
                         openSavedFloorPlans();
                         break;
+                    case R.id.user_profile:
+                        openUserProfile();
+                        break;
                 }
                 return true;
             }
@@ -178,6 +181,11 @@ public class HomeScreen extends FragmentActivity implements IALocationListener, 
 
     public void openSavedFloorPlans(){
         Intent intent = new Intent(this, SavedPaths.class);
+        startActivity(intent);
+    }
+
+    public void openUserProfile(){
+        Intent intent = new Intent(this, ProfileActivity.class);
         startActivity(intent);
     }
 
