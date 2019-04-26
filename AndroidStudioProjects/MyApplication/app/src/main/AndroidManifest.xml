@@ -9,7 +9,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.STORAGE"/>
+    <uses-permission android:name="android.permission.STORAGE" />
 
     <uses-feature
         android:name="android.hardware.sensor.accelerometer"
@@ -30,6 +30,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".MessagesActivity"></activity>
+        <activity android:name=".SettingsActivity" />
+        <activity android:name=".PubPathsActivity" />
         <activity android:name=".SavedPaths" />
         <activity android:name=".LocationActivity" />
         <activity android:name=".CapenFloor4Plan" />
@@ -48,7 +51,6 @@
         <activity android:name=".LawFloor5Plan" />
         <activity android:name=".LawFloor6Plan" />
         <activity android:name=".LawFloor7Plan" />
-
         <activity
             android:name=".SplashScreen"
             android:theme="@style/SplashTheme">
@@ -76,9 +78,13 @@
         <activity android:name=".DestinationActivity" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".UnderConstructionActivity" />
+        <activity android:name=".ProfileActivity">
+            <intent-filter>
+                <action android:name="android.intenet.action.MAIN" />
 
-
-        <activity android:name=".ProfileActivity"/>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <meta-data
             android:name="com.indooratlas.android.sdk.API_KEY"

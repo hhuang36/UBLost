@@ -1,7 +1,9 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -10,7 +12,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class ProfileActivity extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity{
 
     //database
     private FirebaseDatabase database;
@@ -43,12 +45,40 @@ public class ProfileActivity extends AppCompatActivity {
         profileAvatar = findViewById(R.id.profileAvatar);
         profileName = findViewById(R.id.profileName);
         profileStatus = findViewById(R.id.profileStatus);
-        profilePubPath = findViewById(R.id.profilePubPath);
-        profilePubPathIcon = findViewById(R.id.profilePubPathIcon);
-        profileSettings = findViewById(R.id.profileSettings);
-        profileSettingsIcon = findViewById(R.id.profileSettingsIcon);
-        profileMessage = findViewById(R.id.profileMessage);
+
+        //Message Button
         profileMsgIcon = findViewById(R.id.profileMsgIcon);
+        profileMessage = findViewById(R.id.profileMessage);
+        profileMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (ProfileActivity.this, MessagesActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        //Public Paths Button
+        profilePubPathIcon = findViewById(R.id.profilePubPathIcon);
+        profilePubPath = findViewById(R.id.profilePubPath);
+        profilePubPath.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProfileActivity.this, PubPathsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        //Settings Button
+        profileSettingsIcon = findViewById(R.id.profileSettingsIcon);
+        profileSettings = findViewById(R.id.profileSettings);
+        profileSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ProfileActivity.this, SettingsActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
+
 }
