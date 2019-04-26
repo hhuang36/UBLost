@@ -44,7 +44,11 @@ public class ProfileActivity extends AppCompatActivity{
         //activity attributes
         profileAvatar = findViewById(R.id.profileAvatar);
         profileName = findViewById(R.id.profileName);
+        String name = mAuth.getCurrentUser().getEmail();
+        name = name.replace("@buffalo.edu","");
+        profileName.setText(name);
         profileStatus = findViewById(R.id.profileStatus);
+        String status = mAuth.getCurrentUser().getUid();
 
         //Message Button
         profileMsgIcon = findViewById(R.id.profileMsgIcon);
