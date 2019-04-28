@@ -65,7 +65,6 @@ public class HomeScreen extends FragmentActivity implements IALocationListener, 
         });
 
 
-
         DrawerLayout menuDrawerLayout = findViewById(R.id.drawerLayout);
         menuToggle = new ActionBarDrawerToggle(this, menuDrawerLayout, R.string.open, R.string.close);
 

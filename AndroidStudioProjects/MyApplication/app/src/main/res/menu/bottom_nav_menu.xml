@@ -26,5 +26,4 @@
         android:title="My Profile"
         app:showAsAction="always"
         />
-
 </menu>
