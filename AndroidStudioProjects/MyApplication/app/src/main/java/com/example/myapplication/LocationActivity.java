@@ -236,7 +236,10 @@ public class LocationActivity extends FragmentActivity implements GoogleMap.OnMa
                         openFloorPlan();
                         break;
                     case R.id.action_paths:
-                        Toast.makeText(LocationActivity.this, "Nearby", Toast.LENGTH_SHORT).show();
+                        openSavedFloorPlans();
+                        break;
+                    case R.id.user_profile:
+                        openUserProfile();
                         break;
                 }
                 return true;
@@ -491,6 +494,16 @@ public class LocationActivity extends FragmentActivity implements GoogleMap.OnMa
 
             mPolylines.add(mMap.addPolyline(opt));
         }
+    }
+
+    public void openSavedFloorPlans(){
+        Intent intent = new Intent(this, SavedPaths.class);
+        startActivity(intent);
+    }
+
+    public void openUserProfile(){
+        Intent intent = new Intent(this, ProfileActivity.class);
+        startActivity(intent);
     }
 }
 
