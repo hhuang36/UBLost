@@ -8,6 +8,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
+import org.w3c.dom.Text;
 
 import static org.junit.Assert.*;
 
@@ -54,6 +55,22 @@ public class ProfileActivityTest {
         int expectedID = R.id.profileName;
         assertEquals(ID, expectedID);
     }
+
+
+    @Test
+    public void testProfileStatusTextViewExists(){
+        TextView profileStatus = profileActivity.profileStatus;
+        assertNotNull(profileStatus);
+    }
+
+    @Test
+    public void testProfileStatusTextViewHasCorrectID(){
+        TextView profileStatus = profileActivity.profileStatus;
+        int ID = profileStatus.getId();
+        int expectedID = R.id.profileStatus;
+        assertEquals(ID, expectedID);
+    }
+
     
     @After
     public void tearDown() throws Exception {
