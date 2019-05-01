@@ -1,5 +1,7 @@
 package com.example.myapplication;
 
+import android.app.Activity;
+import android.app.Instrumentation;
 import android.support.test.rule.ActivityTestRule;
 import android.widget.Adapter;
 import android.widget.ImageView;
@@ -14,6 +16,7 @@ import org.w3c.dom.Text;
 
 import java.util.List;
 
+import static android.support.test.InstrumentationRegistry.getInstrumentation;
 import static org.junit.Assert.*;
 
 public class ProfileActivityTest {
@@ -21,6 +24,9 @@ public class ProfileActivityTest {
     public ActivityTestRule<ProfileActivity> profileActivityActivityTestRule = new ActivityTestRule<ProfileActivity>(ProfileActivity.class);
 
     ProfileActivity profileActivity = null;
+    private Instrumentation.ActivityMonitor monitor0 = getInstrumentation().addMonitor(MessagesActivity.class.getName(), null, false);
+    private Instrumentation.ActivityMonitor monitor1 = getInstrumentation().addMonitor(PubPathsActivity.class.getName(), null, false);
+    private Instrumentation.ActivityMonitor monitor2 = getInstrumentation().addMonitor(SettingsActivity.class.getName(), null, false);
 
     @Before
     public void setUp() throws Exception {
@@ -111,6 +117,54 @@ public class ProfileActivityTest {
     public void testProfileOptionsArray3(){
         String[] profileOptions = new String[]{"Messages", "My Paths", "My Account"};
         assertEquals(profileOptions[2], profileActivity.profileOptions[2]);
+    }
+
+    @Test
+    public void testMessagesOption(){
+        final ListView lv = profileActivity.profile_options;
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                lv.performItemClick(lv.getAdapter().getView(0, null, null),
+                        0, lv.getAdapter().getItemId(0));
+            }
+        });
+
+        Activity secondActivity = getInstrumentation().waitForMonitorWithTimeout(monitor0, 5000);
+        assertNotNull(secondActivity);
+        secondActivity.finish();
+    }
+
+    @Test
+    public void testMyPathsOption(){
+        final ListView lv = profileActivity.profile_options;
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                lv.performItemClick(lv.getAdapter().getView(1, null, null),
+                        1, lv.getAdapter().getItemId(1));
+            }
+        });
+
+        Activity secondActivity = getInstrumentation().waitForMonitorWithTimeout(monitor1, 5000);
+        assertNotNull(secondActivity);
+        secondActivity.finish();
+    }
+
+    @Test
+    public void testMyAccountOption(){
+        final ListView lv = profileActivity.profile_options;
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                lv.performItemClick(lv.getAdapter().getView(2, null, null),
+                        2, lv.getAdapter().getItemId(2));
+            }
+        });
+
+        Activity secondActivity = getInstrumentation().waitForMonitorWithTimeout(monitor2, 5000);
+        assertNotNull(secondActivity);
+        secondActivity.finish();
     }
 
     @After
