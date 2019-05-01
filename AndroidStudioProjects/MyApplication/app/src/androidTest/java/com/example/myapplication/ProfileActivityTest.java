@@ -95,6 +95,23 @@ public class ProfileActivityTest {
         assertNotNull(adapter);
     }
 
+    @Test
+    public void testProfileOptionsArray1(){
+        String[] profileOptions = new String[]{"Messages", "My Paths", "My Account"};
+        assertEquals(profileOptions[0], profileActivity.profileOptions[0]);
+    }
+
+    @Test
+    public void testProfileOptionsArray2(){
+        String[] profileOptions = new String[]{"Messages", "My Paths", "My Account"};
+        assertEquals(profileOptions[1], profileActivity.profileOptions[1]);
+    }
+
+    @Test
+    public void testProfileOptionsArray3(){
+        String[] profileOptions = new String[]{"Messages", "My Paths", "My Account"};
+        assertEquals(profileOptions[2], profileActivity.profileOptions[2]);
+    }
 
     @After
     public void tearDown() throws Exception {
