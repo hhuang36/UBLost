@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.app.Activity;
 import android.app.Instrumentation;
+import android.support.design.widget.BottomNavigationView;
 import android.support.test.rule.ActivityTestRule;
 import android.widget.Adapter;
 import android.widget.ImageView;
@@ -165,6 +166,20 @@ public class ProfileActivityTest {
         Activity secondActivity = getInstrumentation().waitForMonitorWithTimeout(monitor2, 5000);
         assertNotNull(secondActivity);
         secondActivity.finish();
+    }
+
+    @Test
+    public void testBottomMenuBarExists(){
+        BottomNavigationView bottomNavigationView = profileActivity.bottomNavigationView;
+        assertNotNull(bottomNavigationView);
+    }
+
+    @Test
+    public void testBottomMenuBarHasCorrectID(){
+        BottomNavigationView bottomNavigationView = profileActivity.bottomNavigationView;
+        int ID = bottomNavigationView.getId();
+        int expectedID = R.id.bottom_navigation;
+        assertEquals(ID, expectedID);
     }
 
     @After

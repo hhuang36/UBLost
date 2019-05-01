@@ -23,36 +23,36 @@ public class CapenFloor2PlanTest {
     }
 
     // test that the TextView appears on screen
-    @Test
-    public void testTextViewNotNull(){
-        TextView tv = cF2P.capenF2TextView;
-        assertNotNull(tv);
-    }
-
-    // test that the TextView correctly displays "Capen Floor 2"
-    @Test
-    public void testTextViewHasCorrectText(){
-        TextView tv = cF2P.capenF2TextView;
-        CharSequence text = tv.getText();
-        CharSequence actual = "Capen Floor 2";
-        assertEquals(text, actual);
-    }
-
-    // test that the ImageView is not null
-    @Test
-    public void testImageViewNotNull(){
-        ImageView iv = cF2P.capenF2;
-        assertNotNull(iv);
-    }
-
-    // test that the ImageView displays the right Image using Id's
-    @Test
-    public void testImageViewHasCorrectId(){
-        ImageView iv = cF2P.capenF2;
-        int id = iv.getId();
-        int expected = R.id.capenF2;
-        assertEquals(id, expected);
-    }
+//    @Test
+//    public void testTextViewNotNull(){
+//        TextView tv = cF2P.capenF2TextView;
+//        assertNotNull(tv);
+//    }
+//
+//    // test that the TextView correctly displays "Capen Floor 2"
+//    @Test
+//    public void testTextViewHasCorrectText(){
+//        TextView tv = cF2P.capenF2TextView;
+//        CharSequence text = tv.getText();
+//        CharSequence actual = "Capen Floor 2";
+//        assertEquals(text, actual);
+//    }
+//
+//    // test that the ImageView is not null
+//    @Test
+//    public void testImageViewNotNull(){
+//        ImageView iv = cF2P.capenF2;
+//        assertNotNull(iv);
+//    }
+//
+//    // test that the ImageView displays the right Image using Id's
+//    @Test
+//    public void testImageViewHasCorrectId(){
+//        ImageView iv = cF2P.capenF2;
+//        int id = iv.getId();
+//        int expected = R.id.capenF2;
+//        assertEquals(id, expected);
+//    }
 
     @After
     public void tearDown() {
