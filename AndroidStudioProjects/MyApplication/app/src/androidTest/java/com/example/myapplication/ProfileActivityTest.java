@@ -1,7 +1,9 @@
 package com.example.myapplication;
 
 import android.support.test.rule.ActivityTestRule;
+import android.widget.Adapter;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import org.junit.After;
@@ -9,6 +11,8 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.w3c.dom.Text;
+
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -71,7 +75,27 @@ public class ProfileActivityTest {
         assertEquals(ID, expectedID);
     }
 
-    
+    @Test
+    public void testListViewExists(){
+        ListView profileOptions = profileActivity.profile_options;
+        assertNotNull(profileOptions);
+    }
+
+    @Test
+    public void testListViewHasCorrectID(){
+        ListView profileOptions = profileActivity.profile_options;
+        int ID = profileOptions.getId();
+        int expectedID = R.id.profile_options_list;
+        assertEquals(ID, expectedID);
+    }
+
+    @Test
+    public void testAdapterExists(){
+        Adapter adapter = profileActivity.adapter;
+        assertNotNull(adapter);
+    }
+
+
     @After
     public void tearDown() throws Exception {
         profileActivity = null;
