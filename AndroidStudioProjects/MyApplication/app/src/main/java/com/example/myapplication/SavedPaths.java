@@ -44,6 +44,7 @@ public class SavedPaths extends AppCompatActivity {
     Uri filePath;
     final int PICK_IMAGE_REQUEST = 71;
     private ActionBarDrawerToggle menuToggle;
+    BottomNavigationView bottomNavigationView;
 
     //Firebase
     FirebaseStorage storage;
@@ -58,7 +59,7 @@ public class SavedPaths extends AppCompatActivity {
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.savedpaths_navigation);
+        bottomNavigationView = findViewById(R.id.savedpaths_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {

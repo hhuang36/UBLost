@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.support.design.widget.BottomNavigationView;
 import android.support.test.rule.ActivityTestRule;
 import android.widget.ImageView;
 
@@ -37,6 +38,20 @@ public class SavedPathsTest {
         ImageView imageView = savedPaths.imageView;
         int ID = imageView.getId();
         int expectedID = R.id.imgView;
+        assertEquals(ID, expectedID);
+    }
+
+    @Test
+    public void testMenuBarExists(){
+        BottomNavigationView bottomNavigationView = savedPaths.bottomNavigationView;
+        assertNotNull(bottomNavigationView);
+    }
+
+    @Test
+    public void testMenuBarHasCorrectID(){
+        BottomNavigationView bottomNavigationView = savedPaths.bottomNavigationView;
+        int ID = bottomNavigationView.getId();
+        int expectedID = R.id.savedpaths_navigation;
         assertEquals(ID, expectedID);
     }
 
