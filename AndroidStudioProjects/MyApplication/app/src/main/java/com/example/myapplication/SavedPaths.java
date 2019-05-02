@@ -39,10 +39,10 @@ public class SavedPaths extends AppCompatActivity {
 
     // variables
     private Button btnChoose, btnUpload;
-    private ImageView imageView;
-    private Button Gallery;
-    private Uri filePath;
-    private final int PICK_IMAGE_REQUEST = 71;
+    ImageView imageView;
+    Button Gallery;
+    Uri filePath;
+    final int PICK_IMAGE_REQUEST = 71;
     private ActionBarDrawerToggle menuToggle;
 
     //Firebase
