@@ -6,6 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".SavedPaths">
 
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/arFragment"
+        android:name="com.google.ar.sceneform.ux.ArFragment"
+        />
+
     <ImageView
         android:id="@+id/imgView"
         android:layout_above="@id/savedpaths_navigation"

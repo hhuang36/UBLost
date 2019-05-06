@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,6 +23,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.ar.core.Anchor;
+import com.google.ar.sceneform.AnchorNode;
+import com.google.ar.sceneform.rendering.ModelRenderable;
+import com.google.ar.sceneform.ux.ArFragment;
+import com.google.ar.sceneform.ux.TransformableNode;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.storage.FirebaseStorage;
@@ -44,6 +50,9 @@ public class SavedPaths extends AppCompatActivity {
     private Uri filePath;
     private final int PICK_IMAGE_REQUEST = 71;
     private ActionBarDrawerToggle menuToggle;
+
+    // createmap
+    private ArFragment arFragment;
 
     //Firebase
     FirebaseStorage storage;
@@ -77,6 +86,22 @@ public class SavedPaths extends AppCompatActivity {
             }
         });
 
+        arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.arFragment);
+        arFragment.setOnTapArPlaneListener((hitResult, plane, motionEvent) -> {
+            Anchor anchor = hitResult.createAnchor();
+
+            // save anchor to firebase?
+            ModelRenderable.builder()
+                    .setSource(this, Uri.parse("model.sfb"))
+                    .build()
+                    .thenAccept(modelRenderable -> addModeltoScene(anchor, modelRenderable))
+                    .exceptionally(throwable -> {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                        builder.setMessage(throwable.getMessage())
+                                .show();
+                        return null;
+                    });
+        });
 
     }
 
@@ -132,6 +157,17 @@ public class SavedPaths extends AppCompatActivity {
     }
 
     public void openGallery(){
+
+    }
+
+    private void addModeltoScene(Anchor anchor, ModelRenderable modelRenderable)  {
+        AnchorNode anchorNode = new AnchorNode(anchor);
+        TransformableNode transformableNode = new TransformableNode(arFragment.getTransformationSystem());
+        transformableNode.setParent(anchorNode);
+        transformableNode.setRenderable(modelRenderable);
+        arFragment.getArSceneView().getScene().addChild(anchorNode); //always add parent after addchild;
+        // otherwise, scene will not bring up the child of the parent node aka the transformable node
+        transformableNode.select();
 
     }
 

@@ -10,6 +10,8 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.hardware.camera.ar" />
 
     <uses-feature
         android:name="android.hardware.sensor.accelerometer"
@@ -70,6 +72,7 @@
             android:name=".MenuBarVersion2"
             android:label="@string/title_activity_menu_bar_version2"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".MainAR" />
         <activity android:name=".HomeScreen" />
         <activity android:name=".CapenFloorOptions" />
         <activity android:name=".LockwoodFloorOptions" />
@@ -78,7 +81,8 @@
         <activity android:name=".DestinationActivity" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".UnderConstructionActivity" />
-        <activity android:name=".ProfileActivity">
+        <activity android:name=".ProfileActivity" >
+
             <intent-filter>
                 <action android:name="android.intenet.action.MAIN" />
 
@@ -98,6 +102,10 @@
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyAH7Vh6cthSUtIYzk849mNJOxlHhDecDwE" />
+
+        <meta-data
+            android:name="com.google.ar.core"
+            android:value="required" />
     </application>
 
 </manifest>
