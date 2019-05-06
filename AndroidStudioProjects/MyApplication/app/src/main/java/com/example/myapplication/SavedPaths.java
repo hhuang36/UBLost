@@ -45,11 +45,12 @@ public class SavedPaths extends AppCompatActivity {
 
     // variables
     private Button btnChoose, btnUpload;
-    private ImageView imageView;
-    private Button Gallery;
-    private Uri filePath;
-    private final int PICK_IMAGE_REQUEST = 71;
+    ImageView imageView;
+    Button Gallery;
+    Uri filePath;
+    final int PICK_IMAGE_REQUEST = 71;
     private ActionBarDrawerToggle menuToggle;
+    BottomNavigationView bottomNavigationView;
 
     // createmap
     private ArFragment arFragment;
@@ -67,7 +68,7 @@ public class SavedPaths extends AppCompatActivity {
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.savedpaths_navigation);
+        bottomNavigationView = findViewById(R.id.savedpaths_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {

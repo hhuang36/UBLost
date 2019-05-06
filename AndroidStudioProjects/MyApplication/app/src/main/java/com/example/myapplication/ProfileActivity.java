@@ -24,7 +24,7 @@ public class ProfileActivity extends AppCompatActivity{
     private FirebaseDatabase database;
     private DatabaseReference users;
     private FirebaseAuth mAuth;
-
+    BottomNavigationView bottomNavigationView;
     //activity attributes
     ImageView profileAvatar;
     TextView profileName;
@@ -66,7 +66,7 @@ public class ProfileActivity extends AppCompatActivity{
             }
         });
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
