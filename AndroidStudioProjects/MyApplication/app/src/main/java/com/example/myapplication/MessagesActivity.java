@@ -29,6 +29,7 @@ public class MessagesActivity extends AppCompatActivity {
     private FirebaseListAdapter<ChatMessage> adapter;
     RelativeLayout activity_messages;
     FloatingActionButton fab;
+    ListView listOfMessages;
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
@@ -94,7 +95,7 @@ public class MessagesActivity extends AppCompatActivity {
     }
 
     private void displayChatMessage() {
-        ListView listOfMessages = findViewById(R.id.list_of_messages);
+        listOfMessages = findViewById(R.id.list_of_messages);
         adapter = new FirebaseListAdapter<ChatMessage>(this, ChatMessage.class, R.layout.list_messages, FirebaseDatabase.getInstance().getReference()){
             @Override
             protected void populateView(View v, ChatMessage node1, int position){
