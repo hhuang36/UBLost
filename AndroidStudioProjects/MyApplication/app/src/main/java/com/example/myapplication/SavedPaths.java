@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
+import android.content.Context;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -107,27 +108,42 @@ public class SavedPaths extends AppCompatActivity {
                     });
         });
         // undo button
-        // TODO: undo button
         Button undoButton = findViewById(R.id.undo_button);
         undoButton.setOnClickListener(
                 (unusedView) -> {
                     // undo:
                     // - remove previously saved anchor from anchorList
                     // - remove last anchor + its rendering
-                    this.saveAnchorsToCloud(anchorList);
-                    ShareDialogFragment dialog = new ShareDialogFragment();
+                    if (anchorList.isEmpty()) {
+                        Context context = getApplicationContext();
+                        CharSequence text = "You haven't placed down any arrows!";
+                        int duration = Toast.LENGTH_SHORT;
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+                    } else {
+                        int lastAnchorIndex = anchorList.size() - 1;
+                        Anchor lastAnchor = anchorList.remove(lastAnchorIndex);
+                        deleteAnchor(lastAnchor);
+                    }
                 });
         // clear button
-        // TODO: clear button
         Button clearButton = findViewById(R.id.clear_button);
         clearButton.setOnClickListener(
                 (unusedView) -> {
                     // clear:
-                    // - make the anchorList a new list to ensure that it is empty
+                    // - make anchorList empty
                     // - remove all anchors and their rendering
-                    userIsDone = true;
-                    this.saveAnchorsToCloud(anchorList);
-                    ShareDialogFragment dialog = new ShareDialogFragment();
+                    if (anchorList.isEmpty()) {
+                        Context context = getApplicationContext();
+                        CharSequence text = "You haven't placed down any arrows!";
+                        int duration = Toast.LENGTH_SHORT;
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+                    } else {
+                    for (int i = 0; i < anchorList.size(); i++) {
+                        deleteAnchor(anchorList.get(i)); }
+                    anchorList.clear();
+                    }
                 });
         // done button
         Button doneButton = findViewById(R.id.done_button);
@@ -141,6 +157,10 @@ public class SavedPaths extends AppCompatActivity {
                     this.saveAnchorsToCloud(anchorList);
                     ShareDialogFragment dialog = new ShareDialogFragment();
                 });
+    }
+
+    private void deleteAnchor(Anchor delanchor) {
+        delanchor.detach();
     }
 
     private String chooseCorrectModel() {
