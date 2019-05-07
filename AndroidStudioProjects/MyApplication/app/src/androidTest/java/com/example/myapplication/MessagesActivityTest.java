@@ -14,6 +14,8 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
+import java.util.Date;
+
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
@@ -73,6 +75,9 @@ public class MessagesActivityTest {
     // test that the edit text view is not null when the activity is run
     @Test
     public void testEditTextExists(){
+        ViewInteraction appCompatEditTextView = onView(withId(R.id.input));
+        appCompatEditTextView.perform(replaceText("testEditTextExists"), closeSoftKeyboard());
+        onView(withId(R.id.fab)).perform(click());
         EditText input = messagesActivity.input;
         assertNotNull(input);
     }
@@ -80,6 +85,9 @@ public class MessagesActivityTest {
     // test that the edit text view uses the correct button
     @Test
     public void testEditTextHasCorrectID(){
+        ViewInteraction appCompatEditTextView = onView(withId(R.id.input));
+        appCompatEditTextView.perform(replaceText("testEditTextHasCorrectID"), closeSoftKeyboard());
+        onView(withId(R.id.fab)).perform(click());
         EditText input = messagesActivity.input;
         int ID = input.getId();
         int expectedID = R.id.input;
@@ -102,7 +110,7 @@ public class MessagesActivityTest {
         ViewInteraction appCompatEditTextView = onView(withId(R.id.input));
         appCompatEditTextView.perform(replaceText("testMessageText"), closeSoftKeyboard());
         onView(withId(R.id.fab)).perform(click());
-        TextView messageText = messagesActivity.messageUser;
+        TextView messageText = messagesActivity.messageText;
         assertNotNull(messageText);
     }
 
@@ -112,10 +120,10 @@ public class MessagesActivityTest {
         ViewInteraction appCompatEditTextView = onView(withId(R.id.input));
         appCompatEditTextView.perform(replaceText("testMessageTime"), closeSoftKeyboard());
         onView(withId(R.id.fab)).perform(click());
-        TextView messageTime= messagesActivity.messageUser;
+        TextView messageTime= messagesActivity.messageTime;
         assertNotNull(messageTime);
     }
-
+    
     @After
     public void tearDown() throws Exception {
         messagesActivity = null;

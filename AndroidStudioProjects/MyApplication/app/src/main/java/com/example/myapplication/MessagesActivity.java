@@ -30,7 +30,7 @@ public class MessagesActivity extends AppCompatActivity {
     RelativeLayout activity_messages;
     FloatingActionButton fab;
     ListView listOfMessages;
-    TextView messageText, messageUser, messaageTime;
+    TextView messageText, messageUser, messageTime;
     EditText input;
 
     @Override
@@ -74,10 +74,10 @@ public class MessagesActivity extends AppCompatActivity {
 
         activity_messages = findViewById(R.id.activity_messages);
         fab = findViewById(R.id.fab);
+        input = findViewById(R.id.input);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                input = findViewById(R.id.input);
                 FirebaseDatabase.getInstance().getReference().push().setValue(new ChatMessage(input.getText().toString(), FirebaseAuth.getInstance().getCurrentUser().getEmail()));
                 input.setText("");
             }
@@ -104,11 +104,11 @@ public class MessagesActivity extends AppCompatActivity {
                 // get reference to the views of list_messages.xml
                 messageText = v.findViewById(R.id.message_text);
                 messageUser = v.findViewById(R.id.message_user);
-                messaageTime = v.findViewById(R.id.message_time);
+                messageTime = v.findViewById(R.id.message_time);
 
                 messageText.setText(node1.getMessageText());
                 messageUser.setText(node1.getMessageUser());
-                messaageTime.setText(DateFormat.format("dd-MM-yyyy (HH:mm:ss)", node1.getMessageTime()));
+                messageTime.setText(DateFormat.format("dd-MM-yyyy (HH:mm:ss)", node1.getMessageTime()));
             }
         };
 
