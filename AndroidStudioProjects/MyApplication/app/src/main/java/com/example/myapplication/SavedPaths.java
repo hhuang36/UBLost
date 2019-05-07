@@ -88,7 +88,7 @@ public class SavedPaths extends AppCompatActivity {
                 return true;
             }
         });
-
+        // ar session stuff
         arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.arFragment);
         arFragment.setOnTapArPlaneListener((hitResult, plane, motionEvent) -> {
             Anchor anchor = hitResult.createAnchor();
@@ -97,7 +97,6 @@ public class SavedPaths extends AppCompatActivity {
             // save anchor to firebase?
             ModelRenderable.builder()
                     .setSource(this, Uri.parse(chooseCorrectModel()))
-                    //.setSource(this, Uri.parse("model.sfa"))
                     .build()
                     .thenAccept(modelRenderable -> addModeltoScene(anchor, modelRenderable))
                     .exceptionally(throwable -> {
@@ -107,7 +106,41 @@ public class SavedPaths extends AppCompatActivity {
                         return null;
                     });
         });
-
+        // undo button
+        // TODO: undo button
+        Button undoButton = findViewById(R.id.undo_button);
+        undoButton.setOnClickListener(
+                (unusedView) -> {
+                    // undo:
+                    // - remove previously saved anchor from anchorList
+                    // - remove last anchor + its rendering
+                    this.saveAnchorsToCloud(anchorList);
+                    ShareDialogFragment dialog = new ShareDialogFragment();
+                });
+        // clear button
+        // TODO: clear button
+        Button clearButton = findViewById(R.id.clear_button);
+        clearButton.setOnClickListener(
+                (unusedView) -> {
+                    // clear:
+                    // - make the anchorList a new list to ensure that it is empty
+                    // - remove all anchors and their rendering
+                    userIsDone = true;
+                    this.saveAnchorsToCloud(anchorList);
+                    ShareDialogFragment dialog = new ShareDialogFragment();
+                });
+        // done button
+        Button doneButton = findViewById(R.id.done_button);
+        doneButton.setOnClickListener(
+                (unusedView) -> {
+                    // done:
+                    // - set userisDone to true
+                    // - call saveAnchorsToCloud to save those anchors to the cloud
+                    // - create ShareDialogFragment (prompt asking for user email to share with)
+                    userIsDone = true;
+                    this.saveAnchorsToCloud(anchorList);
+                    ShareDialogFragment dialog = new ShareDialogFragment();
+                });
     }
 
     private String chooseCorrectModel() {
@@ -116,6 +149,22 @@ public class SavedPaths extends AppCompatActivity {
         else {
             return "model.sfb";
         }
+    }
+
+    // TODO: saveAnchorsToCloud method: firebase and easter egg and all that stuff
+    private void saveAnchorsToCloud(ArrayList<Anchor> savetheseanchors) {
+
+    }
+
+    private void addModeltoScene(Anchor anchor, ModelRenderable modelRenderable)  {
+        AnchorNode anchorNode = new AnchorNode(anchor);
+        TransformableNode transformableNode = new TransformableNode(arFragment.getTransformationSystem());
+        transformableNode.setParent(anchorNode);
+        transformableNode.setRenderable(modelRenderable);
+        arFragment.getArSceneView().getScene().addChild(anchorNode); //always add parent after addchild;
+        // otherwise, scene will not bring up the child of the parent node aka the transformable node
+        transformableNode.select();
+
     }
 
     private void uploadImage() {
@@ -173,15 +222,5 @@ public class SavedPaths extends AppCompatActivity {
 
     }
 
-    private void addModeltoScene(Anchor anchor, ModelRenderable modelRenderable)  {
-        AnchorNode anchorNode = new AnchorNode(anchor);
-        TransformableNode transformableNode = new TransformableNode(arFragment.getTransformationSystem());
-        transformableNode.setParent(anchorNode);
-        transformableNode.setRenderable(modelRenderable);
-        arFragment.getArSceneView().getScene().addChild(anchorNode); //always add parent after addchild;
-        // otherwise, scene will not bring up the child of the parent node aka the transformable node
-        transformableNode.select();
-
-    }
 
 }
