@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.support.design.widget.FloatingActionButton;
 import android.support.test.rule.ActivityTestRule;
 import android.widget.ListView;
 
@@ -41,7 +42,23 @@ public class MessagesActivityTest {
         int expectedID = R.id.list_of_messages;
         assertEquals(ID, expectedID);
     }
-    
+
+    // test that the send button is not null when the activity is run
+    @Test
+    public void testSendButtonExists(){
+        FloatingActionButton sendButton = messagesActivity.fab;
+        assertNotNull(sendButton);
+    }
+
+    // test that the send button uses the correct button
+    @Test
+    public void testSendButtonHasCorrectID(){
+        FloatingActionButton sendButton = messagesActivity.fab;
+        int ID = sendButton.getId();
+        int expectedID = R.id.fab;
+        assertEquals(ID, expectedID);
+    }
+
     @After
     public void tearDown() throws Exception {
         messagesActivity = null;
