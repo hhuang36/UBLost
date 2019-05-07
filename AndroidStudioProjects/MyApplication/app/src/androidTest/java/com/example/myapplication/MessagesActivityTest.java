@@ -2,7 +2,10 @@ package com.example.myapplication;
 
 import android.support.design.widget.FloatingActionButton;
 import android.support.test.rule.ActivityTestRule;
+import android.widget.EditText;
 import android.widget.ListView;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 import org.junit.After;
 import org.junit.Before;
@@ -58,6 +61,23 @@ public class MessagesActivityTest {
         int expectedID = R.id.fab;
         assertEquals(ID, expectedID);
     }
+
+    // test that the edit text view is not null when the activity is run
+    @Test
+    public void testEditTextExists(){
+        EditText input = messagesActivity.input;
+        assertNotNull(input);
+    }
+
+    // test that the edit text view uses the correct button
+    @Test
+    public void testEditTextHasCorrectID(){
+        EditText input = messagesActivity.input;
+        int ID = input.getId();
+        int expectedID = R.id.input;
+        assertEquals(ID, expectedID);
+    }
+
 
     @After
     public void tearDown() throws Exception {

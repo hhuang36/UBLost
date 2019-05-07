@@ -30,6 +30,8 @@ public class MessagesActivity extends AppCompatActivity {
     RelativeLayout activity_messages;
     FloatingActionButton fab;
     ListView listOfMessages;
+    TextView messageText, messageUser, messaageTime;
+    EditText input;
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
@@ -75,7 +77,7 @@ public class MessagesActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText input = findViewById(R.id.input);
+                input = findViewById(R.id.input);
                 FirebaseDatabase.getInstance().getReference().push().setValue(new ChatMessage(input.getText().toString(), FirebaseAuth.getInstance().getCurrentUser().getEmail()));
                 input.setText("");
             }
@@ -100,7 +102,6 @@ public class MessagesActivity extends AppCompatActivity {
             @Override
             protected void populateView(View v, ChatMessage node1, int position){
                 // get reference to the views of list_messages.xml
-                TextView messageText, messageUser, messaageTime;
                 messageText = v.findViewById(R.id.message_text);
                 messageUser = v.findViewById(R.id.message_user);
                 messaageTime = v.findViewById(R.id.message_time);
