@@ -1,9 +1,11 @@
 package com.example.myapplication;
 
 import android.support.design.widget.FloatingActionButton;
+import android.support.test.espresso.ViewInteraction;
 import android.support.test.rule.ActivityTestRule;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -12,11 +14,17 @@ import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 
+import static android.support.test.espresso.Espresso.onView;
+import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
+import static android.support.test.espresso.action.ViewActions.replaceText;
+import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static org.junit.Assert.*;
 
 public class MessagesActivityTest {
     @Rule
-    ActivityTestRule<MessagesActivity> messagesActivityActivityTestRule = new ActivityTestRule<MessagesActivity>(MessagesActivity.class);
+    public ActivityTestRule<MessagesActivity> messagesActivityActivityTestRule = new ActivityTestRule<>(MessagesActivity.class);
+
     MessagesActivity messagesActivity = null;
 
     @Before
@@ -78,6 +86,35 @@ public class MessagesActivityTest {
         assertEquals(ID, expectedID);
     }
 
+    // test that when a message is sent, the message user receives the current user's emails
+    @Test
+    public void testMessageUserNotNull(){
+        ViewInteraction appCompatEditTextView = onView(withId(R.id.input));
+        appCompatEditTextView.perform(replaceText("testMessageUser"), closeSoftKeyboard());
+        onView(withId(R.id.fab)).perform(click());
+        TextView messageUser = messagesActivity.messageUser;
+        assertNotNull(messageUser);
+    }
+
+    // test that when a message is sent, the message text receives the current user's input text
+    @Test
+    public void testMessageTextNotNull(){
+        ViewInteraction appCompatEditTextView = onView(withId(R.id.input));
+        appCompatEditTextView.perform(replaceText("testMessageText"), closeSoftKeyboard());
+        onView(withId(R.id.fab)).perform(click());
+        TextView messageText = messagesActivity.messageUser;
+        assertNotNull(messageText);
+    }
+
+    // test that when a message is sent, the message time receives the current user's time stamp
+    @Test
+    public void testMessageTimeNotNull(){
+        ViewInteraction appCompatEditTextView = onView(withId(R.id.input));
+        appCompatEditTextView.perform(replaceText("testMessageTime"), closeSoftKeyboard());
+        onView(withId(R.id.fab)).perform(click());
+        TextView messageTime= messagesActivity.messageUser;
+        assertNotNull(messageTime);
+    }
 
     @After
     public void tearDown() throws Exception {

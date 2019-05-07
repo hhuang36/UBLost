@@ -25,8 +25,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class MessagesActivity extends AppCompatActivity {
 
-    private static int SIGN_IN_REQUEST_CODE = 1;
-    private FirebaseListAdapter<ChatMessage> adapter;
+    public static int SIGN_IN_REQUEST_CODE = 1;
+    public FirebaseListAdapter<ChatMessage> adapter;
     RelativeLayout activity_messages;
     FloatingActionButton fab;
     ListView listOfMessages;
@@ -54,7 +54,7 @@ public class MessagesActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+    public void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == SIGN_IN_REQUEST_CODE){
             if(resultCode == RESULT_OK){
@@ -68,7 +68,7 @@ public class MessagesActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_messages);
 
@@ -96,7 +96,7 @@ public class MessagesActivity extends AppCompatActivity {
 
     }
 
-    private void displayChatMessage() {
+    public void displayChatMessage() {
         listOfMessages = findViewById(R.id.list_of_messages);
         adapter = new FirebaseListAdapter<ChatMessage>(this, ChatMessage.class, R.layout.list_messages, FirebaseDatabase.getInstance().getReference()){
             @Override
