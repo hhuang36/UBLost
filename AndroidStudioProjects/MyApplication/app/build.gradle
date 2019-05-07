@@ -100,3 +100,13 @@ sceneform.asset('sampledata/model.obj',
         'default',
         'sampledata/model.sfa',
         'src/main/assets/model')
+
+sceneform.asset('sampledata/model_start_end.obj',
+        'default',
+        'sampledata/model_start_end.sfa',
+        'src/main/assets/model_start_end')
+
+sceneform.asset('sampledata/model_easter_egg.obj',
+        'default',
+        'sampledata/model_easter_egg.sfa',
+        'src/main/assets/model_easter_egg')

@@ -54,6 +54,8 @@ public class SavedPaths extends AppCompatActivity {
 
     // createmap
     private ArFragment arFragment;
+    private ArrayList<Anchor> anchorList = new ArrayList<Anchor>();
+    private boolean userIsDone = false;
 
     //Firebase
     FirebaseStorage storage;
@@ -90,10 +92,12 @@ public class SavedPaths extends AppCompatActivity {
         arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.arFragment);
         arFragment.setOnTapArPlaneListener((hitResult, plane, motionEvent) -> {
             Anchor anchor = hitResult.createAnchor();
+            anchorList.add(anchor);
 
             // save anchor to firebase?
             ModelRenderable.builder()
-                    .setSource(this, Uri.parse("model.sfb"))
+                    .setSource(this, Uri.parse(chooseCorrectModel()))
+                    //.setSource(this, Uri.parse("model.sfa"))
                     .build()
                     .thenAccept(modelRenderable -> addModeltoScene(anchor, modelRenderable))
                     .exceptionally(throwable -> {
@@ -104,6 +108,14 @@ public class SavedPaths extends AppCompatActivity {
                     });
         });
 
+    }
+
+    private String chooseCorrectModel() {
+        if (anchorList.size() == 1 || userIsDone) {
+            return "model_start_end.sfb";}
+        else {
+            return "model.sfb";
+        }
     }
 
     private void uploadImage() {
