@@ -16,7 +16,7 @@ import com.google.ar.sceneform.ux.TransformableNode;
 public class MainAR extends AppCompatActivity {
 
     // createmap
-    private ArFragment arFragment;
+    public ArFragment arFragment;
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
