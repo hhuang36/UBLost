@@ -1,44 +1,46 @@
 package com.example.myapplication;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
-import android.content.Context;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+
 import com.google.ar.core.Anchor;
+import com.google.ar.core.Session;
+import com.google.ar.core.ArCoreApk;
+import com.google.ar.core.ArCoreApk.InstallStatus;
+import com.google.ar.core.exceptions.UnavailableApkTooOldException;
+import com.google.ar.core.exceptions.UnavailableArcoreNotInstalledException;
+import com.google.ar.core.exceptions.UnavailableDeviceNotCompatibleException;
+import com.google.ar.core.exceptions.UnavailableSdkTooOldException;
+import com.google.ar.core.exceptions.UnavailableUserDeclinedInstallationException;
 import com.google.ar.sceneform.AnchorNode;
 import com.google.ar.sceneform.rendering.ModelRenderable;
 import com.google.ar.sceneform.ux.ArFragment;
 import com.google.ar.sceneform.ux.TransformableNode;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import java.io.File;
 import java.io.IOException;
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -57,6 +59,8 @@ public class SavedPaths extends AppCompatActivity {
     private ArFragment arFragment;
     private ArrayList<Anchor> anchorList = new ArrayList<Anchor>();
     private boolean userIsDone = false;
+    private Session session;
+    private boolean installRequested;
 
     //Firebase
     FirebaseStorage storage;
@@ -90,12 +94,52 @@ public class SavedPaths extends AppCompatActivity {
             }
         });
         // ar session stuff
+        if (session == null) {
+            try {
+                ArCoreApk.getInstance().requestInstall(this, !installRequested);
+            } catch (UnavailableUserDeclinedInstallationException e) {
+                Context context = getApplicationContext();
+                CharSequence text = "You declined ARCore installation. :(";
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+            } catch (UnavailableDeviceNotCompatibleException e) {
+                Context context = getApplicationContext();
+                CharSequence text = "Your device is incompatible with ARCore. :(";
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+            }
+            Context context = getApplicationContext();
+            try {
+                session = new Session(context);
+            } catch (UnavailableArcoreNotInstalledException e) {
+                CharSequence text = "You haven't installed ARCore. :(";
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+            } catch (UnavailableApkTooOldException e) {
+                CharSequence text = "You need to update your ARCore. :(";
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+            } catch (UnavailableSdkTooOldException e) {
+                CharSequence text = "Our app's version of ARCore is too old for your version of ARCore. :(";
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+            } catch (UnavailableDeviceNotCompatibleException e) {
+                CharSequence text = "Your device is incompatible with ARCore. :(";
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+            }
+        }
         arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.arFragment);
         arFragment.setOnTapArPlaneListener((hitResult, plane, motionEvent) -> {
             Anchor anchor = hitResult.createAnchor();
             anchorList.add(anchor);
 
-            // save anchor to firebase?
             ModelRenderable.builder()
                     .setSource(this, Uri.parse(chooseCorrectModel()))
                     .build()
@@ -154,7 +198,13 @@ public class SavedPaths extends AppCompatActivity {
                     // - call saveAnchorsToCloud to save those anchors to the cloud
                     // - create ShareDialogFragment (prompt asking for user email to share with)
                     userIsDone = true;
-                    this.saveAnchorsToCloud(anchorList);
+                    saveAnchorsToCloud(anchorList);
+                    ShareDialogFragment dialog = new ShareDialogFragment();
+                });
+        // open/follow a path button TODO: openButton aka Follow Maps story
+        Button openButton = findViewById(R.id.open_button);
+        openButton.setOnClickListener(
+                (unusedView) -> {
                     ShareDialogFragment dialog = new ShareDialogFragment();
                 });
     }
@@ -173,7 +223,20 @@ public class SavedPaths extends AppCompatActivity {
 
     // TODO: saveAnchorsToCloud method: firebase and easter egg and all that stuff
     private void saveAnchorsToCloud(ArrayList<Anchor> savetheseanchors) {
-
+        if (savetheseanchors.isEmpty()) {
+            Context context = getApplicationContext();
+            CharSequence text = "You haven't placed down any arrows!";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show(); }
+        else {
+            for (int i = 0; i < savetheseanchors.size(); i++) {
+                session.hostCloudAnchor(savetheseanchors.get(i));}
+            Context context = getApplicationContext();
+            CharSequence text = "Saving";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show(); }
     }
 
     private void addModeltoScene(Anchor anchor, ModelRenderable modelRenderable)  {
