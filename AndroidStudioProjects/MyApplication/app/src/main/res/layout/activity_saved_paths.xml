@@ -46,7 +46,7 @@
             android:id="@+id/open_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Follow path"/>
+            android:text="Follow"/>
     </LinearLayout>
 
     <android.support.design.widget.BottomNavigationView

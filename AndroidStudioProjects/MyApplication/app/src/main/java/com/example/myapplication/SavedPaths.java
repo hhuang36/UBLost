@@ -20,21 +20,24 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
-
 import com.google.ar.core.Anchor;
-import com.google.ar.core.Session;
+import com.google.ar.core.Anchor.CloudAnchorState;
 import com.google.ar.core.ArCoreApk;
-import com.google.ar.core.ArCoreApk.InstallStatus;
+import com.google.ar.core.Camera;
+import com.google.ar.core.Frame;
+import com.google.ar.core.Pose;
+import com.google.ar.core.Session;
+import com.google.ar.core.exceptions.CameraNotAvailableException;
 import com.google.ar.core.exceptions.UnavailableApkTooOldException;
 import com.google.ar.core.exceptions.UnavailableArcoreNotInstalledException;
 import com.google.ar.core.exceptions.UnavailableDeviceNotCompatibleException;
 import com.google.ar.core.exceptions.UnavailableSdkTooOldException;
 import com.google.ar.core.exceptions.UnavailableUserDeclinedInstallationException;
+import com.google.ar.core.TrackingState;
 import com.google.ar.sceneform.AnchorNode;
 import com.google.ar.sceneform.rendering.ModelRenderable;
 import com.google.ar.sceneform.ux.ArFragment;
 import com.google.ar.sceneform.ux.TransformableNode;
-
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -113,6 +116,17 @@ public class SavedPaths extends AppCompatActivity {
             Context context = getApplicationContext();
             try {
                 session = new Session(context);
+//                try {
+//                    session.resume();
+//                } catch (CameraNotAvailableException e) {
+//                    CharSequence text = "Camera is unavailable. :(";
+//                    int duration = Toast.LENGTH_SHORT;
+//                    Toast toast = Toast.makeText(context, text, duration);
+//                    toast.show();
+//                }
+//                Frame frame = session.update();
+//                Camera camera = frame.getCamera();
+//                TrackingState cameraTrackingState = camera.getTrackingState();
             } catch (UnavailableArcoreNotInstalledException e) {
                 CharSequence text = "You haven't installed ARCore. :(";
                 int duration = Toast.LENGTH_SHORT;
@@ -137,20 +151,40 @@ public class SavedPaths extends AppCompatActivity {
         }
         arFragment = (ArFragment) getSupportFragmentManager().findFragmentById(R.id.arFragment);
         arFragment.setOnTapArPlaneListener((hitResult, plane, motionEvent) -> {
-            Anchor anchor = hitResult.createAnchor();
-            anchorList.add(anchor);
+            if (!userIsDone) {
+                Anchor anchor = hitResult.createAnchor();
+                anchorList.add(anchor);
+//                Pose pose = anchor.getPose();
+//                anchorList.add(session.createAnchor(pose));
+//                TrackingState trackstate = session.createAnchor(pose).getTrackingState();
+//                if (trackstate == TrackingState.TRACKING) {
+//                    Context context = getApplicationContext();
+//                    CharSequence text = "This anchor is trackable.";
+//                    int duration = Toast.LENGTH_SHORT;
+//                    Toast toast = Toast.makeText(context, text, duration);
+//                    toast.show();
+//                }
 
-            ModelRenderable.builder()
-                    .setSource(this, Uri.parse(chooseCorrectModel()))
-                    .build()
-                    .thenAccept(modelRenderable -> addModeltoScene(anchor, modelRenderable))
-                    .exceptionally(throwable -> {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                        builder.setMessage(throwable.getMessage())
-                                .show();
-                        return null;
-                    });
+                ModelRenderable.builder()
+                        .setSource(this, Uri.parse(chooseCorrectModel()))
+                        .build()
+                        .thenAccept(modelRenderable -> addModeltoScene(anchor, modelRenderable))
+                        .exceptionally(throwable -> {
+                            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                            builder.setMessage(throwable.getMessage())
+                                    .show();
+                            return null;
+                        });
+            }
+            else {
+                Context context = getApplicationContext();
+                CharSequence text = "You've already pressed done and completed making your path! To make a new path, please restart the app.";
+                int duration = Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(context, text, duration);
+                toast.show();
+            }
         });
+
         // undo button
         Button undoButton = findViewById(R.id.undo_button);
         undoButton.setOnClickListener(
@@ -158,13 +192,20 @@ public class SavedPaths extends AppCompatActivity {
                     // undo:
                     // - remove previously saved anchor from anchorList
                     // - remove last anchor + its rendering
-                    if (anchorList.isEmpty()) {
+                    if (userIsDone) {
+                        Context context = getApplicationContext();
+                        CharSequence text = "You've already pressed done and completed making your path! You cannot undo the last arrow you put down. To make a new path, please restart the app.";
+                        int duration = Toast.LENGTH_SHORT;
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show(); }
+                    else if (anchorList.isEmpty()) {
                         Context context = getApplicationContext();
                         CharSequence text = "You haven't placed down any arrows!";
                         int duration = Toast.LENGTH_SHORT;
                         Toast toast = Toast.makeText(context, text, duration);
                         toast.show();
-                    } else {
+                    }
+                    else {
                         int lastAnchorIndex = anchorList.size() - 1;
                         Anchor lastAnchor = anchorList.remove(lastAnchorIndex);
                         deleteAnchor(lastAnchor);
@@ -177,19 +218,26 @@ public class SavedPaths extends AppCompatActivity {
                     // clear:
                     // - make anchorList empty
                     // - remove all anchors and their rendering
-                    if (anchorList.isEmpty()) {
+                    if (userIsDone) {
+                        Context context = getApplicationContext();
+                        CharSequence text = "You've already pressed done and completed making your path! You cannot undo the last arrow you put down. To make a new path, please restart the app.";
+                        int duration = Toast.LENGTH_SHORT;
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show(); }
+                    else if (anchorList.isEmpty()) {
                         Context context = getApplicationContext();
                         CharSequence text = "You haven't placed down any arrows!";
                         int duration = Toast.LENGTH_SHORT;
                         Toast toast = Toast.makeText(context, text, duration);
                         toast.show();
-                    } else {
+                    }
+                    else {
                     for (int i = 0; i < anchorList.size(); i++) {
                         deleteAnchor(anchorList.get(i)); }
                     anchorList.clear();
                     }
                 });
-        // done button
+        // done button // TODO: need to handle
         Button doneButton = findViewById(R.id.done_button);
         doneButton.setOnClickListener(
                 (unusedView) -> {
@@ -199,14 +247,14 @@ public class SavedPaths extends AppCompatActivity {
                     // - create ShareDialogFragment (prompt asking for user email to share with)
                     userIsDone = true;
                     saveAnchorsToCloud(anchorList);
-                    ShareDialogFragment dialog = new ShareDialogFragment();
+                    //ShareDialogFragment dialog = new ShareDialogFragment();
                 });
         // open/follow a path button TODO: openButton aka Follow Maps story
-        Button openButton = findViewById(R.id.open_button);
-        openButton.setOnClickListener(
-                (unusedView) -> {
-                    ShareDialogFragment dialog = new ShareDialogFragment();
-                });
+//        Button openButton = findViewById(R.id.open_button);
+//        openButton.setOnClickListener(
+//                (unusedView) -> {
+//                    ShareDialogFragment dialog = new ShareDialogFragment();
+//                });
     }
 
     private void deleteAnchor(Anchor delanchor) {
@@ -222,22 +270,42 @@ public class SavedPaths extends AppCompatActivity {
     }
 
     // TODO: saveAnchorsToCloud method: firebase and easter egg and all that stuff
-    private void saveAnchorsToCloud(ArrayList<Anchor> savetheseanchors) {
-        if (savetheseanchors.isEmpty()) {
-            Context context = getApplicationContext();
-            CharSequence text = "You haven't placed down any arrows!";
-            int duration = Toast.LENGTH_SHORT;
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show(); }
-        else {
-            for (int i = 0; i < savetheseanchors.size(); i++) {
-                session.hostCloudAnchor(savetheseanchors.get(i));}
-            Context context = getApplicationContext();
-            CharSequence text = "Saving";
-            int duration = Toast.LENGTH_SHORT;
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show(); }
-    }
+    private void saveAnchorsToCloud(ArrayList<Anchor> savetheseanchors) {}
+//        System.out.print("saveAnchorsToCloud is running");
+//        if (savetheseanchors.isEmpty()) {
+//            Context context = getApplicationContext();
+//            CharSequence text = "You haven't placed down any arrows!";
+//            int duration = Toast.LENGTH_SHORT;
+//            Toast toast = Toast.makeText(context, text, duration);
+//            toast.show(); }
+//        else {
+//            Anchor anchor = savetheseanchors.get(0);
+//            session.hostCloudAnchor(anchor);
+//            String id = anchor.getCloudAnchorId();
+//            CloudAnchorState state = anchor.getCloudAnchorState();
+//            System.out.print("CloudID: "+id);
+//            System.out.print("State: "+state.toString()); }
+//    }
+//        else {
+//            for (int i = 0; i < savetheseanchors.size(); i++) {
+//                Anchor anchor = savetheseanchors.get(i);
+//                session.hostCloudAnchor(anchor);
+//                String id = anchor.getCloudAnchorId();
+//                CloudAnchorState state = anchor.getCloudAnchorState();
+//                Context context = getApplicationContext();
+//                String beginningtext = "Saving cloud ID: ";
+//                String midtext = id+", state: ";
+//                String endtext = state.toString();
+//                CharSequence text = beginningtext + midtext + endtext;
+//                int duration = Toast.LENGTH_SHORT;
+//                Toast toast = Toast.makeText(context, text, duration);
+//                toast.show();}
+//            Context context = getApplicationContext();
+//            CharSequence text = "Saved all";
+//            int duration = Toast.LENGTH_SHORT;
+//            Toast toast = Toast.makeText(context, text, duration);
+//            toast.show(); }
+//    }
 
     private void addModeltoScene(Anchor anchor, ModelRenderable modelRenderable)  {
         AnchorNode anchorNode = new AnchorNode(anchor);
