@@ -3,18 +3,30 @@ package com.example.myapplication;
 import android.support.test.rule.ActivityTestRule;
 import android.widget.ListView;
 
+import com.google.android.gms.maps.model.Circle;
+import com.google.android.gms.maps.model.GroundOverlay;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.Polyline;
+import com.indooratlas.android.sdk.IALocationManager;
+import com.indooratlas.android.sdk.IARegion;
+import com.indooratlas.android.sdk.IARoute;
+import com.squareup.picasso.Target;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.*;
 
 public class LocationActivityTest {
 
     @Rule
-    private ActivityTestRule<DestinationActivity> destinationActivityTestRule = new ActivityTestRule(DestinationActivity.class);
-    private ActivityTestRule<LocationActivity> locationActivityActivityTestRule = new ActivityTestRule<>(LocationActivity.class);
+    public ActivityTestRule<LocationActivity> locationActivityActivityTestRule = new ActivityTestRule<>(LocationActivity.class);
 
     public LocationActivity location = null;
     @Before
@@ -32,4 +44,36 @@ public class LocationActivityTest {
     public void tearDown() {
         location = null;
     }
+
+    @Test
+    public void testDestinationMarkerNotNull(){
+        Marker mDestinationMarker = location.mDestinationMarker;
+        assertNotNull(mDestinationMarker);
+    }
+
+    @Test
+    public void testHeadingMarkerNotNull(){
+        Marker mHeadingMarker = location.mHeadingMarker;
+        assertNotNull(mHeadingMarker);
+    }
+
+    @Test
+    public void testCameraUpdates(){
+        boolean mCameraPositionNeedsUpdating = location.mCameraPositionNeedsUpdating;
+        assertTrue(mCameraPositionNeedsUpdating);
+    }
+
+    @Test
+    public void testCircleNotNull(){
+        Circle circle = location.mCircle;
+        assertNotNull(circle);
+    }
+
+    @Test
+    public void testDestinationEqualsFinal(){
+        LatLng destination = location.destinationLocation;
+        LatLng finalLocation = location.finalLocation;
+        assertEquals(destination, finalLocation);
+    }
+
 }

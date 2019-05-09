@@ -63,16 +63,19 @@ public class LocationActivity extends FragmentActivity implements GoogleMap.OnMa
 
     private GoogleMap mMap; // Might be null if Google Play services APK is not available.
 
-    private Circle mCircle;
-    private IARegion mOverlayFloorPlan = null;
-    private GroundOverlay mGroundOverlay = null;
-    private IALocationManager mIALocationManager;
-    private Target mLoadTarget;
-    private boolean mCameraPositionNeedsUpdating = true; // update on first location
-    private Marker mDestinationMarker;
-    private Marker mHeadingMarker;
-    private List<Polyline> mPolylines = new ArrayList<>();
-    private IARoute mCurrentRoute;
+     Circle mCircle;
+     IARegion mOverlayFloorPlan = null;
+     GroundOverlay mGroundOverlay = null;
+     IALocationManager mIALocationManager;
+     Target mLoadTarget;
+     boolean mCameraPositionNeedsUpdating = true; // update on first location
+     Marker mDestinationMarker;
+     Marker mHeadingMarker;
+     List<Polyline> mPolylines = new ArrayList<>();
+     IARoute mCurrentRoute;
+
+    LatLng finalLocation;
+    LatLng destinationLocation;
 
     private IAWayfindingRequest mWayfindingDestination;
     private IAWayfindingListener mWayfindingListener = new IAWayfindingListener() {
@@ -412,7 +415,7 @@ public class LocationActivity extends FragmentActivity implements GoogleMap.OnMa
         decorView.setSystemUiVisibility(uiOptions);
 
         if (mMap != null) {
-
+            destinationLocation = point;
             mWayfindingDestination = new IAWayfindingRequest.Builder()
                     .withFloor(mFloor)
                     .withLatitude(point.latitude)
@@ -444,6 +447,8 @@ public class LocationActivity extends FragmentActivity implements GoogleMap.OnMa
         final double FINISH_THRESHOLD_METERS = 8.0;
         double routeLength = 0;
         for (IARoute.Leg leg : route.getLegs()) routeLength += leg.getLength();
+        int size = route.getLegs().size();
+        finalLocation = new LatLng(route.getLegs().get(size).getEnd().getLatitude(), route.getLegs().get(size).getEnd().getLongitude());
         return routeLength < FINISH_THRESHOLD_METERS;
     }
 

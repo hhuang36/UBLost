@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
