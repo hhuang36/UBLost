@@ -22,6 +22,7 @@ public class User {
     public void addFriend(String user) {
         friends.add(user);
     }
+
     public String getPassword() {
         return password;
     }
