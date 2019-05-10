@@ -40,40 +40,18 @@ public class LocationActivityTest {
         assertNotNull(location);
     }
 
-    @After
-    public void tearDown() {
-        location = null;
-    }
-
-    @Test
-    public void testDestinationMarkerNotNull(){
-        Marker mDestinationMarker = location.mDestinationMarker;
-        assertNotNull(mDestinationMarker);
-    }
-
-    @Test
-    public void testHeadingMarkerNotNull(){
-        Marker mHeadingMarker = location.mHeadingMarker;
-        assertNotNull(mHeadingMarker);
-    }
-
     @Test
     public void testCameraUpdates(){
         boolean mCameraPositionNeedsUpdating = location.mCameraPositionNeedsUpdating;
         assertTrue(mCameraPositionNeedsUpdating);
     }
 
-    @Test
-    public void testCircleNotNull(){
-        Circle circle = location.mCircle;
-        assertNotNull(circle);
+    @After
+    public void tearDown() {
+        location = null;
     }
 
-    @Test
-    public void testDestinationEqualsFinal(){
-        LatLng destination = location.destinationLocation;
-        LatLng finalLocation = location.finalLocation;
-        assertEquals(destination, finalLocation);
-    }
+
+
 
 }
