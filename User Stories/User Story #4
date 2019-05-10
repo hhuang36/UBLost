@@ -1,0 +1,89 @@
+CURRENT STATUS: COMPLETE (MERGED TO DEVELOPMENT 5/9/19)
+
+**Story:**
+As a student I want to have a profile so that my colleagues can invite me to places on campus to study. 
+
+**Acceptance Tests:**
+1. Open the app
+2. Enter email and password
+3. Click the login button
+4. Upon successful login, your user profile will appear
+
+Task A - Logo Screen
+  #Tasks
+  Ensure that the application displays a logo screen with the app logo for 2 seconds before the Login page appears. 
+
+  #Task Tests
+  The activity titled "MainActivity.java" is run and the test checks that the imageView with the ID "SplashScreen" for the logo is displayed when the splash screen appears.
+
+  #Github Link
+  https://github.com/hhuang36/UBLost/commit/9248bf1ab89148f68c8c50e86ebc70c4f79a237a
+  Lines 29-33
+  
+Task B - Profile Page as Home Screen
+  #Tasks
+  Set the user profile as the home screen
+
+  #Task Test
+  Test that after the user logs in with correct credentials that the profile activity is shown on the screen.
+  
+  #Github Link
+  https://github.com/hhuang36/UBLost/commit/4645f270857d7a6fb88b7088114640a4d5cbe89a
+  
+Task C - Profile Page
+  #Tasks
+  *Create elements of the Profile Activity*
+  D.1: Create user's avatar view
+  D.2: Create user's status view
+  D.3: Create user's username view
+
+  #Task Test
+  D.1: Test that the image view for the user avatar is not null and uses correct ID
+  D.2: Test that the text view for the user's status is not null and uses correct ID
+  D.3: Test that the text view for the user's username is not null and uses correct ID
+
+  #Github Link
+  https://github.com/hhuang36/UBLost/blob/User_Story_2/AndroidStudioProjects/MyApplication/app/src/androidTest/java/com/example/myapplication/SavedPathsTest.java
+  
+Task D - Profile Avatar
+  #Tasks
+  *Create imageView with default image icon, which represents the user's avatar*
+
+  #Task Test
+   Test that the imageView appears on the profile activity, and is set to the default drawable icon. Additionally, check that the image view uses the correct ID.
+
+  #Github Link
+  https://github.com/hhuang36/UBLost/blob/development/AndroidStudioProjects/MyApplication/app/src/androidTest/java/com/example/myapplication/ProfileActivityTest.java
+
+Task E - Message Button
+  #Tasks
+  *Implement the button that leads to the messaging page*
+
+  #Task Test
+  Check that the message button, when clicked, brings the user to the messages activity and that it is not null when the activity is run.
+  
+  #Github Link
+  https://github.com/hhuang36/UBLost/blob/User_Story_5/AndroidStudioProjects/MyApplication/app/src/androidTest/java/com/example/myapplication/ProfileActivityTest.java
+  Lines 136-151
+ 
+Task F - My Account Button
+  #Tasks
+  *Implement the button that leads to the my account page*
+  
+  #Task Test
+  Check that the settings button, when clicked, brings the user to the settings activity and that it is not null when the activity is run.
+
+  #Github Link
+  https://github.com/hhuang36/UBLost/blob/User_Story_5/AndroidStudioProjects/MyApplication/app/src/androidTest/java/com/example/myapplication/ProfileActivityTest.java
+  Lines 170-185
+  
+Task G - My Tasks Button
+  #Tasks
+  *Implement the button that leads to the my paths page*
+
+  #Task Test
+  Check that the my paths button, when clicked, brings the user to the my paths activity and that it is not null when the activity is run.
+
+  #Github Link
+  https://github.com/hhuang36/UBLost/blob/User_Story_5/AndroidStudioProjects/MyApplication/app/src/androidTest/java/com/example/myapplication/ProfileActivityTest.java
+  Lines 153-168
