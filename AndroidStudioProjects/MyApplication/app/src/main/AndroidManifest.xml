@@ -30,7 +30,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MessagesActivity"></activity>
+        <activity android:name=".FriendsActivity"></activity>
+        <activity android:name=".MessagesActivity" />
         <activity android:name=".SettingsActivity" />
         <activity android:name=".PubPathsActivity" />
         <activity android:name=".SavedPaths" />
@@ -78,14 +79,7 @@
         <activity android:name=".DestinationActivity" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".UnderConstructionActivity" />
-        <activity android:name=".ProfileActivity">
-            <intent-filter>
-                <action android:name="android.intenet.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
+        <activity android:name=".ProfileActivity"/>
         <meta-data
             android:name="com.indooratlas.android.sdk.API_KEY"
             android:value="228a51a3-9501-4904-82a5-2605ec86137d" />
