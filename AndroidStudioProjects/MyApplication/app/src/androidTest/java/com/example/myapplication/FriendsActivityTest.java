@@ -23,13 +23,13 @@ public class FriendsActivityTest {
         friendsActivity = friendsActivityTestRule.getActivity();
     }
 
-    // test that the activity is not null when the app is run
+    // test that the activity is not null when the activity is run
     @Test
     public void testfriendsActivityNotNull(){
         assertNotNull(friendsActivity);
     }
 
-    //test that the list view is not null when
+    //test that the list view is not null when the activity is open
     @Test
     public void testFriendsListExists() {
         ListView friendsList = friendsActivity.listFriends;

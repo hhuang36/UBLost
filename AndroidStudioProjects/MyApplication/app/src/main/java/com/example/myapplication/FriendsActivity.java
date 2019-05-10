@@ -15,6 +15,5 @@ public class FriendsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_friends);
 
         listFriends = (ListView) findViewById(R.id.listFriends);
-
     }
 }
