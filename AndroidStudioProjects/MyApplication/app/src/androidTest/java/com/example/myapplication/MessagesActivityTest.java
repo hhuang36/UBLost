@@ -94,26 +94,6 @@ public class MessagesActivityTest {
         assertEquals(ID, expectedID);
     }
 
-    // test that when a message is sent, the message user receives the current user's emails
-    @Test
-    public void testMessageUserNotNull(){
-        ViewInteraction appCompatEditTextView = onView(withId(R.id.input));
-        appCompatEditTextView.perform(replaceText("testMessageUser"), closeSoftKeyboard());
-        onView(withId(R.id.fab)).perform(click());
-        TextView messageUser = messagesActivity.messageUser;
-        assertNotNull(messageUser);
-    }
-
-    // test that when a message is sent, the message text receives the current user's input text
-    @Test
-    public void testMessageTextNotNull(){
-        ViewInteraction appCompatEditTextView = onView(withId(R.id.input));
-        appCompatEditTextView.perform(replaceText("testMessageText"), closeSoftKeyboard());
-        onView(withId(R.id.fab)).perform(click());
-        TextView messageText = messagesActivity.messageText;
-        assertNotNull(messageText);
-    }
-
     // test that when a message is sent, the message time receives the current user's time stamp
     @Test
     public void testMessageTimeNotNull(){
