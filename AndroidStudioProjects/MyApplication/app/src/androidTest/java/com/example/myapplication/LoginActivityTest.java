@@ -31,7 +31,7 @@ public class LoginActivityTest {
     @Rule
     public ActivityTestRule<LoginActivity> loginActivityTestRule = new ActivityTestRule(LoginActivity.class);
     public LoginActivity lT = null;
-    Instrumentation.ActivityMonitor homePage = getInstrumentation().addMonitor(HomeScreen.class.getName(), null, false);
+    Instrumentation.ActivityMonitor homePage = getInstrumentation().addMonitor(LoginActivity.class.getName(), null, false);
     Instrumentation.ActivityMonitor loginPage = getInstrumentation().addMonitor(LoginActivity.class.getName(), null, false);
     Instrumentation.ActivityMonitor registerPage = getInstrumentation().addMonitor(RegisterActivity.class.getName(), null, false);
 
@@ -106,7 +106,7 @@ public class LoginActivityTest {
     public void loginButtonText(){
         Button button = lT.findViewById(R.id.loginButton);
         CharSequence Login = button.getText();
-        CharSequence actual = "LoginActivity";
+        CharSequence actual = "Login";
         assertEquals(Login, actual);
     }
 
@@ -121,7 +121,7 @@ public class LoginActivityTest {
     public void registerButtonText(){
         Button button = lT.findViewById(R.id.registerButton);
         CharSequence Register = button.getText();
-        CharSequence actual = "RegisterActivity";
+        CharSequence actual = "Register";
         assertEquals(Register, actual);
     }
     //testing when registerActivity button it clicked, it opens the registerActivity page or not
