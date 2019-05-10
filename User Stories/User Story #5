@@ -1,0 +1,75 @@
+CURRENT STATUS: DONE (MERGED TO DEVELOPMENT 5/9/19)
+
+**Story:** As a student trying to coordinate a meeting location with my friend, I want to use instant messaging to communicate directly with him.
+
+**Acceptance Tests:**
+1. Open the app and wait for the login page to appear after the splash screen
+2. Login with my account
+3. My user profile will appear on the screen
+4. Click on "Messages"
+5. Select a friend to message
+6. Type "Hi, let's meet at Capen Library." in the chat bar and press the send button
+7. Your message with the time stamp, date, and email will appear on the chat log
+
+Task A - Messaging Activity
+  #Tasks
+  *Create the activity for instant messaging*
+
+  #Task Test
+  Test that the activity is not null and that it is using the correct xml resource file when the app is run.
+
+  #Github Link
+  https://github.com/hhuang36/UBLost/blob/User_Story_5/AndroidStudioProjects/MyApplication/app/src/androidTest/java/com/example/myapplication/MessagesActivityTest.java
+  Lines 25-28
+
+Task B - Create Chat Log
+  #Tasks
+  *Create the chat log environment for users to send messages*
+
+  #Task Test
+  Test that the list view of sent messages are not null when the activity is run. Their ID's will also be tested to ensure that the right elements are being used.
+
+  #Github Link
+  https://github.com/hhuang36/UBLost/blob/User_Story_5/AndroidStudioProjects/MyApplication/app/src/androidTest/java/com/example/myapplication/MessagesActivityTest.java
+  Lines 33-46
+
+Task C - Add Chat Bar
+  #Tasks
+  *Create the chat bar for the user to type messages*
+
+  #Task Test
+  Test that the textview for inputting text is not null, and that it uses the correct ID from the corresponding xml file.
+
+  #Github Link
+  https://github.com/hhuang36/UBLost/blob/User_Story_5/AndroidStudioProjects/MyApplication/app/src/androidTest/java/com/example/myapplication/MessagesActivityTest.java
+  Lines 65-79
+
+Task D - Create Send Button
+  #Tasks
+  *Create the button with a send icon to allow users to send messages*
+
+  #Task Test
+  Test that the button appears on the screen when the activity is not null, and that it is using the right icon and the correct ID from the corresponding xml file. Additionally, check that when a message is inputted and the button is pressed, that the message is sent to the log.
+
+  #Github Link
+  https://github.com/hhuang36/UBLost/blob/User_Story_5/AndroidStudioProjects/MyApplication/app/src/androidTest/java/com/example/myapplication/MessagesActivityTest.java
+  Lines 49-62
+
+Task E - Sending Messages
+  #Tasks
+  *Display the chat messages to in the chat log*
+  E.1: Display the user's email to the chat log
+  E.2: Display the user's message to the chat log
+  E.3: Display the user's date and time to the chat log
+
+  #Task Test
+  E.1: Test that when a message is sent by the user that the text field for the message's user is not null.
+  E.2: Test that when a message is sent by the user that the text field for the message is not null.
+  E.3: Test that when a message is sent by the user that the text field for the message's time is not null.
+
+  #Github Link
+  https://github.com/hhuang36/UBLost/blob/User_Story_5/AndroidStudioProjects/MyApplication/app/src/androidTest/java/com/example/myapplication/MessagesActivityTest.java
+
+  E.1: Lines 97-105
+  E.2: Lines 107-115
+  E.3: Lines 118 -125
