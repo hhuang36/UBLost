@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 public class LawFloor2Plan extends AppCompatActivity {
-
+    ImageAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -13,7 +13,7 @@ public class LawFloor2Plan extends AppCompatActivity {
 
 
         ViewPager viewPager = findViewById(R.id.gallery);
-        ImageAdapter adapter = new ImageAdapter(this);
+        adapter = new ImageAdapter(this);
         adapter.getmImageIds().add(R.mipmap.law_2);
         adapter.getmImageIds().add(R.mipmap.law_3);
         adapter.getmImageIds().add(R.mipmap.law_4);
