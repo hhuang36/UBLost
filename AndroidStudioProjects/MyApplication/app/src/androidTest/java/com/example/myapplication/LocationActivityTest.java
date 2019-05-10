@@ -40,6 +40,7 @@ public class LocationActivityTest {
         assertNotNull(location);
     }
 
+    // test that the camera updates its position as user moves
     @Test
     public void testCameraUpdates(){
         boolean mCameraPositionNeedsUpdating = location.mCameraPositionNeedsUpdating;

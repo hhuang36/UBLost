@@ -22,7 +22,9 @@ public class CapenFloor2PlanTest {
     CapenFloor2Plan cF2P = null;
     CapenFloor3Plan cF3P = null;
     CapenFloor4Plan cF4P = null;
+    MusicFloor1Plan mF1P = null;
 
+    // setting up the activities to be tested
     @Before
     public void setUp() {
         cF2P = capenFloor2PlanActivityTestRule.getActivity();
@@ -30,6 +32,7 @@ public class CapenFloor2PlanTest {
         cF4P = capenFloor4PlanActivityTestRule.getActivity();
     }
 
+    // test that Capen Floor 2 Plan activity, when clicked, displays the right image
     @Test
     public void testCapenFloor2(){
         ImageAdapter imageAdapter = cF2P.adapter;
@@ -38,6 +41,7 @@ public class CapenFloor2PlanTest {
         assertEquals(secondFloor, expected);
     }
 
+    // test that Capen Floor 3 Plan activity, when clicked, displays the right image
     @Test
     public void testCapenFloor3(){
         ImageAdapter imageAdapter = cF2P.adapter;
@@ -46,6 +50,7 @@ public class CapenFloor2PlanTest {
         assertEquals(secondFloor, expected);
     }
 
+    // test that Capen Floor 4 Plan activity, when clicked, displays the right image
     @Test
     public void testCapenFloor4(){
         ImageAdapter imageAdapter = cF2P.adapter;
@@ -54,11 +59,13 @@ public class CapenFloor2PlanTest {
         assertEquals(secondFloor, expected);
     }
 
+    // cleaning up after testing is done
     @After
     public void tearDown() {
         cF2P = null;
         cF3P = null;
         cF4P = null;
+        mF1P = null;
     }
 
 }
