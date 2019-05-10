@@ -1,6 +1,8 @@
 package com.example.myapplication;
 
 import android.support.test.rule.ActivityTestRule;
+import android.support.v7.widget.RecyclerView;
+import android.widget.ListView;
 
 import org.junit.After;
 import org.junit.Before;
@@ -25,6 +27,13 @@ public class FriendsActivityTest {
     @Test
     public void testfriendsActivityNotNull(){
         assertNotNull(friendsActivity);
+    }
+
+    //test that the list view is not null when
+    @Test
+    public void testFriendsListExists() {
+        ListView friendsList = friendsActivity.listFriends;
+        assertNotNull(friendsList);
     }
 
 
