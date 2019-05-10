@@ -1,0 +1,70 @@
+CURRENT STATUS: ONGOING
+
+Feature: Navigating a Floor Plan
+
+Story:As a freshman who wants to find my way to the library during breaks, I open the app to determine the way from my location to the library and reuse it.
+
+Acceptance Tests:
+1. Open the app, and wait for the splash screen to appear
+2. Sign in with account after the splash screen. 
+3. Click on the navigate icon. 
+4. The app will determine my location and place a floor plan if I am at a location with floor plans available.
+5. Then I will click a point that I want to navigate to on the floor plan.
+5. The app will calculate the route and display it on my screen.
+6. When I move, the user's current location and route will update.
+7. When I am there, the app will say that I am there. 
+
+Task A - Logo Screen
+  #Tasks
+  Ensure that the application displays a logo screen with the app logo for 2 seconds before the Login page appears.
+  
+  #Task Tests
+  The activity titled "MainActivity.java" is run and the test checks that the imageView with the ID "SplashScreen" for the logo is displayed when the splash screen appears.
+  
+  #Github Link
+  https://github.com/hhuang36/UBLost/commit/9248bf1ab89148f68c8c50e86ebc70c4f79a237a
+  Lines 29-33
+  
+Task B - Profile Page as Home Screen
+  #Tasks
+  Set the user profile as the home screen
+
+  #Task Test
+  Test that after the user logs in with correct credentials that the profile activity is shown on the screen.
+
+  #Github Link
+  https://github.com/hhuang36/UBLost/commit/4645f270857d7a6fb88b7088114640a4d5cbe89a
+
+Task C - Navigation Button
+  #Task
+  Implement the Navigation Button to bring the user to an activity with a search bar for destinations
+
+  #Task Test
+  @Test "testLaunchOfNavigateMe" opens the home screen activity titled "HomeScreen.java". The icon "Navigate" gets clicked, and the test checks to see that the activity titled "LocationActivity.java" pops up. This activity holds the search bar and list of searchable buildings.
+
+  #Github Link
+  https://github.com/hhuang36/UBLost/commit/9248bf1ab89148f68c8c50e86ebc70c4f79a237a
+
+Task D - Current Location
+  #Task
+  Implement the functionality of retrieving the user's location using Wifi
+    D.1: Incorporate Google Maps into the home screen
+    D.2: Get user's current location to appear on the map
+
+  #Task Test
+  D.1: Test that the google maps api is not null when the activity is run.
+  D.2: Test that the current location appears on the map with a blue circle.
+
+  #Github Link
+  TODO
+ 
+
+Task E - Navigation
+  #Task
+  Implement the functionality of navigating the user to his/her desired destination from his/her current location
+
+  #Task Test
+  The user can navigate to a destination on the floor plan by a route which will be calculated starting from the user's location. As the user walks, the route will be updated. When the user has reached his destination, the app will tell the user that he is there.
+
+  #Github Link
+  https://prezi.com/oihbzbdg6kjc/ublost-presentation/
