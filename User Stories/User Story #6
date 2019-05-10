@@ -1,19 +1,17 @@
-CURRENT STATUS: ONGOING
+CURRENT STATUS: DONE
 
-Feature: Adding a Friend
+Feature: Access Friends List
 
-**Story:** As a student trying to connect with a colleague, I want to add her as a friend so that we can be connected.
+**Story:**As a student, I want to have a friends list so that I am connected with other users on the app.
 
 **Acceptance Tests:**
 1. Open the app and wait for the login page to appear after the splash screen
 2. Login with my account
 3. My user profile will appear on the screen
-4. Click on "Search"
-5. Search for a colleague
-6.  See colleagues profile
-7. Click add as friend
+4. Click on "Friends"
+5. See my friends list
 
-Task 0 - Friends Button
+Task A - Friends Button
   #Tasks
   *Implement the button that leads to the Friends page from Profile*
 
@@ -27,7 +25,7 @@ Task 0 - Friends Button
   https://github.com/hhuang36/UBLost/commit/18461f0e4f93590dcef73377baee6d13ab210088#diff-de4a77bd11bf8c13dd81b0ae6c2cd6f9R124
   https://github.com/hhuang36/UBLost/commit/c6fb89547e44004a05f4a0aac197cea7ae353bd2
 
-Task A - Friends Activity
+Task B - Friends Activity
   #Tasks
   *Create the activity for displaying a friends list*
 
@@ -37,7 +35,7 @@ Task A - Friends Activity
   #Github Link
   https://github.com/hhuang36/UBLost/commit/a31e0c812da72fc7a02d9c02dbe32575f5b4ad6e#diff-17847a064186253a3a01a2bdef496a40R26
 
-Task B - Friends List
+Task C - Friends List
   #Tasks
   *Create the friends list for users to see their friends*
 
@@ -47,8 +45,3 @@ Task B - Friends List
   #Github Link
   https://github.com/hhuang36/UBLost/commit/cdcb6cfb86dc4e98f3a071ed9012c2618e9e3a7a#diff-17847a064186253a3a01a2bdef496a40R33
 
-Task C - Search For User
-
-Task D - Select User
-
-Task E - Redirect to Friend's Profile
