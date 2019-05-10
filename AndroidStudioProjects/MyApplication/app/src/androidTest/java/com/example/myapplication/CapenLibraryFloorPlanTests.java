@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
-public class CapenFloor2PlanTest {
+public class CapenLibraryFloorPlanTests {
     @Rule
     public ActivityTestRule<CapenFloor2Plan> capenFloor2PlanActivityTestRule = new ActivityTestRule<>(CapenFloor2Plan.class);
     public ActivityTestRule<CapenFloor3Plan> capenFloor3PlanActivityTestRule = new ActivityTestRule<>(CapenFloor3Plan.class);

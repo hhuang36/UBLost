@@ -9,7 +9,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class MusicFloor1PlanTest {
+public class MusicLibraryFloorPlanTests {
     @Rule
     public ActivityTestRule<MusicFloor1Plan> musicFloor1PlanActivityTestRule = new ActivityTestRule<>(MusicFloor1Plan.class);
 

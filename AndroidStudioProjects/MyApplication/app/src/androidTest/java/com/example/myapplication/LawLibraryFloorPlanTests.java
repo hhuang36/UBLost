@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
-public class LawFloor2PlanTest {
+public class LawLibraryFloorPlanTests {
     @Rule
     public ActivityTestRule<LawFloor2Plan> lawFloor2PlanActivityTestRule = new ActivityTestRule<>(LawFloor2Plan.class);
     public ActivityTestRule<LawFloor3Plan> lawFloor3PlanActivityTestRule = new ActivityTestRule<>(LawFloor3Plan.class);
