@@ -115,22 +115,29 @@ public class ProfileActivityTest {
     // tests that the first option in the list view displays exactly "Messages"
     @Test
     public void testProfileOptionsArray1(){
-        String[] profileOptions = new String[]{"Messages", "My Paths", "My Account"};
+        String[] profileOptions = new String[]{"Messages", "Friends", "My Paths", "My Account"};
         assertEquals(profileOptions[0], profileActivity.profileOptions[0]);
     }
 
-    // tests that the second option in the list view displays exactly "My Paths"
+    // tests that the second option in the list view displays exactly "Friends"
     @Test
     public void testProfileOptionsArray2(){
-        String[] profileOptions = new String[]{"Messages", "My Paths", "My Account"};
+        String[] profileOptions = new String[]{"Messages", "Friends", "My Paths", "My Account"};
         assertEquals(profileOptions[1], profileActivity.profileOptions[1]);
     }
 
-    // tests that the third option in the list view displays exactly "My Account"
+    // tests that the third option in the list view displays exactly "My Paths"
     @Test
     public void testProfileOptionsArray3(){
-        String[] profileOptions = new String[]{"Messages", "My Paths", "My Account"};
+        String[] profileOptions = new String[]{"Messages", "Friends", "My Paths", "My Account"};
         assertEquals(profileOptions[2], profileActivity.profileOptions[2]);
+    }
+
+    //test that the fourth option in the list view displays exactly "My Account"
+    @Test
+    public void testProfileOptionsArray4() {
+        String[] profileOptions = new String[]{"Messages", "Friends", "My Paths", "My Account"};
+        assertEquals(profileOptions[3], profileActivity.profileOptions[3]);
     }
 
     // tests that the first option in the list view when clicked brings user to MessagesActivity.java

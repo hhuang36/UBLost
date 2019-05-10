@@ -38,7 +38,7 @@ public class ProfileActivity extends AppCompatActivity{
 
     ListView profile_options;
     ArrayAdapter<String> adapter;
-    String[] profileOptions = new String[]{"Messages", "My Paths", "My Account"};
+    String[] profileOptions = new String[]{"Messages", "Friends", "My Paths", "My Account"};
 
 
     @Override
@@ -56,7 +56,11 @@ public class ProfileActivity extends AppCompatActivity{
                 if(profileOptions[position].equals("Messages")){
                     Intent intent = new Intent(ProfileActivity.this, MessagesActivity.class);
                     startActivity(intent);
-                } else if(profileOptions[position].equals("My Paths")){
+                }
+                else if (profileOptions[position].equals("Friends")){
+                    Intent intent = new Intent (ProfileActivity.this, FriendsActivity.class);
+                    startActivity(intent);
+                }else if(profileOptions[position].equals("My Paths")){
                     Intent intent = new Intent(ProfileActivity.this, PubPathsActivity.class);
                     startActivity(intent);
                 } else if(profileOptions[position].equals("My Account")){
