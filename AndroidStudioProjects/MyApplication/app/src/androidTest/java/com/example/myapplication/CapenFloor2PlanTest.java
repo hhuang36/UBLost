@@ -45,18 +45,18 @@ public class CapenFloor2PlanTest {
     @Test
     public void testCapenFloor3(){
         ImageAdapter imageAdapter = cF2P.adapter;
-        java.lang.Object secondFloor = imageAdapter.getmImageIds().get(1);
+        java.lang.Object thirdFloor = imageAdapter.getmImageIds().get(1);
         java.lang.Object expected = R.mipmap.capen_floor_3;
-        assertEquals(secondFloor, expected);
+        assertEquals(thirdFloor, expected);
     }
 
     // test that Capen Floor 4 Plan activity, when clicked, displays the right image
     @Test
     public void testCapenFloor4(){
         ImageAdapter imageAdapter = cF2P.adapter;
-        java.lang.Object secondFloor = imageAdapter.getmImageIds().get(2);
+        java.lang.Object fourthFloor = imageAdapter.getmImageIds().get(2);
         java.lang.Object expected = R.mipmap.capen_floor_4;
-        assertEquals(secondFloor, expected);
+        assertEquals(fourthFloor, expected);
     }
 
     // cleaning up after testing is done
