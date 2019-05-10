@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.app.Activity;
 import android.app.Instrumentation;
+import android.graphics.drawable.Drawable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.test.rule.ActivityTestRule;
 import android.widget.Adapter;
@@ -26,8 +27,9 @@ public class ProfileActivityTest {
 
     ProfileActivity profileActivity = null;
     private Instrumentation.ActivityMonitor monitor0 = getInstrumentation().addMonitor(MessagesActivity.class.getName(), null, false);
-    private Instrumentation.ActivityMonitor monitor1 = getInstrumentation().addMonitor(PubPathsActivity.class.getName(), null, false);
-    private Instrumentation.ActivityMonitor monitor2 = getInstrumentation().addMonitor(SettingsActivity.class.getName(), null, false);
+    private Instrumentation.ActivityMonitor monitor1 = getInstrumentation().addMonitor(FriendsActivity.class.getName(), null, false);
+    private Instrumentation.ActivityMonitor monitor2 = getInstrumentation().addMonitor(PubPathsActivity.class.getName(), null, false);
+    private Instrumentation.ActivityMonitor monitor3 = getInstrumentation().addMonitor(SettingsActivity.class.getName(), null, false);
 
     // initializing the activity
     @Before
@@ -56,7 +58,13 @@ public class ProfileActivityTest {
         int expectedID = R.id.profileAvatar;
         assertEquals(ID, expectedID);
     }
-
+    // tests that the default user profile avatar appears when the profile activity is run
+    @Test
+    public void testProfileAvatarDrawableExists(){
+        ImageView avatar = profileActivity.profileAvatar;
+        Drawable drawable = avatar.getDrawable();
+        assertNotNull(drawable);
+    }
     // tests that the text view for the profile name exists
     @Test
     public void testProfileNameTextViewExists(){
@@ -115,22 +123,29 @@ public class ProfileActivityTest {
     // tests that the first option in the list view displays exactly "Messages"
     @Test
     public void testProfileOptionsArray1(){
-        String[] profileOptions = new String[]{"Messages", "My Paths", "My Account"};
+        String[] profileOptions = new String[]{"Messages", "Friends", "My Paths", "My Account"};
         assertEquals(profileOptions[0], profileActivity.profileOptions[0]);
     }
 
-    // tests that the second option in the list view displays exactly "My Paths"
+    // tests that the second option in the list view displays exactly "Friends"
     @Test
     public void testProfileOptionsArray2(){
-        String[] profileOptions = new String[]{"Messages", "My Paths", "My Account"};
+        String[] profileOptions = new String[]{"Messages", "Friends", "My Paths", "My Account"};
         assertEquals(profileOptions[1], profileActivity.profileOptions[1]);
     }
 
-    // tests that the third option in the list view displays exactly "My Account"
+    // tests that the third option in the list view displays exactly "My Paths"
     @Test
     public void testProfileOptionsArray3(){
-        String[] profileOptions = new String[]{"Messages", "My Paths", "My Account"};
+        String[] profileOptions = new String[]{"Messages", "Friends", "My Paths", "My Account"};
         assertEquals(profileOptions[2], profileActivity.profileOptions[2]);
+    }
+
+    //test that the fourth option in the list view displays exactly "My Account"
+    @Test
+    public void testProfileOptionsArray4() {
+        String[] profileOptions = new String[]{"Messages", "Friends", "My Paths", "My Account"};
+        assertEquals(profileOptions[3], profileActivity.profileOptions[3]);
     }
 
     // tests that the first option in the list view when clicked brings user to MessagesActivity.java
@@ -150,9 +165,9 @@ public class ProfileActivityTest {
         secondActivity.finish();
     }
 
-    // tests that the second option in the list view when clicked brings user to PubPathsActivity.java
+    //test that the second option in the list view when clicked brings user to FriendsActivity.java
     @Test
-    public void testMyPathsOption(){
+    public void testFriendsOption(){
         final ListView lv = profileActivity.profile_options;
         getInstrumentation().runOnMainSync(new Runnable() {
             @Override
@@ -166,10 +181,9 @@ public class ProfileActivityTest {
         assertNotNull(secondActivity);
         secondActivity.finish();
     }
-
-    // tests that the third option in the list view when clicked brings user to SettingsActivity.java
+    // tests that the third option in the list view when clicked brings user to PubPathsActivity.java
     @Test
-    public void testMyAccountOption(){
+    public void testMyPathsOption(){
         final ListView lv = profileActivity.profile_options;
         getInstrumentation().runOnMainSync(new Runnable() {
             @Override
@@ -180,6 +194,23 @@ public class ProfileActivityTest {
         });
 
         Activity secondActivity = getInstrumentation().waitForMonitorWithTimeout(monitor2, 5000);
+        assertNotNull(secondActivity);
+        secondActivity.finish();
+    }
+
+    // tests that the third option in the list view when clicked brings user to SettingsActivity.java
+    @Test
+    public void testMyAccountOption(){
+        final ListView lv = profileActivity.profile_options;
+        getInstrumentation().runOnMainSync(new Runnable() {
+            @Override
+            public void run() {
+                lv.performItemClick(lv.getAdapter().getView(3, null, null),
+                        3, lv.getAdapter().getItemId(3));
+            }
+        });
+
+        Activity secondActivity = getInstrumentation().waitForMonitorWithTimeout(monitor3, 5000);
         assertNotNull(secondActivity);
         secondActivity.finish();
     }

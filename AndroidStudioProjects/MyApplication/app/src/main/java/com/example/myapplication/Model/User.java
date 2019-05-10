@@ -1,5 +1,7 @@
 package com.example.myapplication.Model;
 
+import java.util.List;
+
 public class User {
 
     private String password;

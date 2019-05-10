@@ -58,7 +58,7 @@ public class HomeScreen extends FragmentActivity implements IALocationListener, 
 
     ListView profile_options;
     ArrayAdapter<String> adapter;
-    String[] profileOptions = new String[]{"Messages", "My Paths", "My Account"};
+    String[] profileOptions = new String[]{"Messages","Friends", "My Paths","My Account"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,6 +102,9 @@ public class HomeScreen extends FragmentActivity implements IALocationListener, 
                     startActivity(intent);
                 } else if(profileOptions[position].equals("My Account")){
                     Intent intent = new Intent(HomeScreen.this, SettingsActivity.class);
+                    startActivity(intent);
+                } else if (profileOptions[position].equals("Friends")){
+                    Intent intent = new Intent (HomeScreen.this, FriendsActivity.class);
                     startActivity(intent);
                 }
             }
