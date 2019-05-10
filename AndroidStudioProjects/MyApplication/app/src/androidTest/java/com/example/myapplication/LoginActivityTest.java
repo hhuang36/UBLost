@@ -31,7 +31,7 @@ public class LoginActivityTest {
     @Rule
     public ActivityTestRule<LoginActivity> loginActivityTestRule = new ActivityTestRule(LoginActivity.class);
     public LoginActivity lT = null;
-    Instrumentation.ActivityMonitor homePage = getInstrumentation().addMonitor(LoginActivity.class.getName(), null, false);
+    Instrumentation.ActivityMonitor homePage = getInstrumentation().addMonitor(HomeScreen.class.getName(), null, false);
     Instrumentation.ActivityMonitor loginPage = getInstrumentation().addMonitor(LoginActivity.class.getName(), null, false);
     Instrumentation.ActivityMonitor registerPage = getInstrumentation().addMonitor(RegisterActivity.class.getName(), null, false);
 
