@@ -18,15 +18,24 @@
         <item>Norton Hall</item>
         <item>Davis Hall</item>
         <item>Music Library</item>
-        <item></item>
     </string-array>
     <string-array name="search_capen_floors">
         <item>Basement</item>
         <item>Floor 1</item>
         <item>Floor 2</item>
         <item>Floor 3</item>
-        <item></item>
     </string-array>
+    <string-array name="my_locations">
+        <item>Capen Library</item>
+        <item>Lockwood Library</item>
+        <item>Norton Hall</item>
+        <item>Davis Hall</item>
+        <item>Music Library</item>
+        <item>Natural Science Complex</item>
+        <item>Student Union</item>
+        <item>Knox Hall</item>
+    </string-array>
+    <string name="my_location">My Location</string>
     <string name="my_building">My Buildings</string>
     <string name="title_activity_menu_bar_version2">MenuBarVersion2</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -46,9 +55,32 @@
     <string name="confirm_password">confirm password</string>
     <string name="terms">I agree to the Terms and Conditions</string>
     <string name="back2login">Already have an account? Login now</string>
+    <string name="storage_permission_denied_message_osm">No access to external storage. Permission needed for storing map tiles in the OSMDroid example.</string>
 
     <string-array name="status_array">
         <item>Student</item>
         <item>Faculty</item>
     </string-array>
+
+    <string name="button_close">Close</string>
+    <string name="capen_floor_3">Capen Floor 3</string>
+    <string name="gradient_background">gradient background</string>
+    <string name="welcome_back">Welcome Back,</string>
+    <string name="log_in_to_continue">Log in to continue</string>
+
+    <string name="saved_paths">Saved Paths</string>
+    <string name="capen_floor_2">Capen Floor 2</string>
+    <string name="capen_floor_4">Capen Floor 4</string>
+    <string name="north_campus">North Campus</string>
+    <string name="lightbulb">light bulb</string>
+    <string name="bookshelf">bookshelf</string>
+    <string name="violin">violin</string>
+    <string name="logo">logo</string>
+    <string name="locations">Locations</string>
+    <string name="o_brian_hall">O\'Brian Hall</string>
+    <string name="student_union">Student Union</string>
+    <string name="alumni_arena">Alumni Arena</string>
+    <string name="math_building">Math Building</string>
+    <string name="column">column</string>
+
 </resources>

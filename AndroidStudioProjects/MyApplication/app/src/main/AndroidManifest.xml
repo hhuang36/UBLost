@@ -2,8 +2,32 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.myapplication">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.hardware.camera.ar" />
+
+    <uses-feature
+        android:name="android.hardware.sensor.accelerometer"
+        android:required="true" />
+    <uses-feature
+        android:name="android.hardware.sensor.compass"
+        android:required="true" />
+    <uses-feature
+        android:name="android.hardware.sensor.gyroscope"
+        android:required="true" />
+    <uses-feature
+        android:name="android.hardware.wifi"
+        android:required="true" />
+    <uses-feature
+        android:name="android.hardware.camera.ar"
+        android:required="true" />
 
     <application
         android:icon="@mipmap/ic_launcher"
@@ -11,35 +35,83 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".CapenFloor3Plan"></activity>
+        <activity android:name=".MessagesActivity"></activity>
+        <activity android:name=".SettingsActivity" />
+        <activity android:name=".PubPathsActivity" />
+        <activity android:name=".SavedPaths" />
+        <activity android:name=".LocationActivity" />
+        <activity android:name=".CapenFloor4Plan" />
+        <activity android:name=".CapenFloor3Plan" />
         <activity android:name=".CapenFloor2Plan" />
-        <activity android:name=".CapenFloor1Plan" />
-
-        <activity android:name=".MainActivity">
+        <activity android:name=".LockwoodBPlan" />
+        <activity android:name=".LockwoodFloor1Plan" />
+        <activity android:name=".LockwoodFloor2Plan" />
+        <activity android:name=".LockwoodFloor3Plan" />
+        <activity android:name=".LockwoodFloor4Plan" />
+        <activity android:name=".LockwoodFloor5Plan" />
+        <activity android:name=".MusicFloor1Plan" />
+        <activity android:name=".LawFloor2Plan" />
+        <activity android:name=".LawFloor3Plan" />
+        <activity android:name=".LawFloor4Plan" />
+        <activity android:name=".LawFloor5Plan" />
+        <activity android:name=".LawFloor6Plan" />
+        <activity android:name=".LawFloor7Plan" />
+        <activity
+            android:name=".SplashScreen"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-        <activity android:name=".Login"
-                  android:theme="@style/AppTheme.NoActionBar" />
-
-        <activity android:name=".Register"
-                  android:theme="@style/AppTheme.NoActionBar" />
-
+        <activity
+            android:name=".LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".RegisterActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".MenuBarVersion2"
             android:label="@string/title_activity_menu_bar_version2"
             android:theme="@style/AppTheme.NoActionBar" />
-
-        <activity android:name=".SplashScreen2" />
+        <activity android:name=".MainAR" />
         <activity android:name=".HomeScreen" />
         <activity android:name=".CapenFloorOptions" />
-        <activity android:name=".HomeActivity2" />
+        <activity android:name=".LockwoodFloorOptions" />
+        <activity android:name=".MusicFloorOptions" />
+        <activity android:name=".LawFloorOptions" />
+        <activity android:name=".DestinationActivity" />
         <activity android:name=".HomeActivity" />
+        <activity android:name=".UnderConstructionActivity" />
+        <activity android:name=".ProfileActivity" >
 
+            <intent-filter>
+                <action android:name="android.intenet.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="com.indooratlas.android.sdk.API_KEY"
+            android:value="228a51a3-9501-4904-82a5-2605ec86137d" />
+        <meta-data
+            android:name="com.indooratlas.android.sdk.API_SECRET"
+            android:value="ZwKfvS0eR2f1gOF5xS/zKUwmWNU9gFZUCCIh/TA0nAq+FPeMxMptWGdxlviKqYVHO4pV2fN8oam5TmlCtcdl1sjc5n0dC5VpBRVqh9TYHlSltEFnKJ32DFh7CYX2TQ==" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyAH7Vh6cthSUtIYzk849mNJOxlHhDecDwE" />
+
+        <meta-data
+            android:name="com.google.ar.core"
+            android:value="required" />
+        <meta-data
+            android:name="com.google.android.ar.API_KEY"
+            android:value="AIzaSyCLblgbXAmfbZxvAp-PKAAUYU9PC_y_FkM" />
     </application>
 
 </manifest>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_navigate"
+        android:enabled="true"
+        android:icon="@drawable/ic_navigate"
+        android:title="Navigate"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_map"
+        android:enabled="true"
+        android:icon="@drawable/ic_map"
+        android:title="Floor Plans"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_paths"
+        android:enabled="true"
+        android:icon="@drawable/ic_paths"
+        android:title="Paths"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/user_profile"
+        android:enabled="true"
+        android:icon="@drawable/ic_user_profile"
+        android:title="My Profile"
+        app:showAsAction="always"
+        />
+</menu>

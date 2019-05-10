@@ -23,12 +23,12 @@ public class HomeScreenTest {
     @Rule
     public ActivityTestRule<HomeScreen> splashScreenHomeRule = new ActivityTestRule(HomeScreen.class);
 
-    public HomeScreen splashScreen = null;
-    Instrumentation.ActivityMonitor HomePage = getInstrumentation().addMonitor(HomeActivity.class.getName(), null, false);
-    Instrumentation.ActivityMonitor NavigationOptions = getInstrumentation().addMonitor(HomeActivity2.class.getName(), null, false);
+    private HomeScreen splashScreen = null;
+    private Instrumentation.ActivityMonitor HomePage = getInstrumentation().addMonitor(HomeActivity.class.getName(), null, false);
+    private Instrumentation.ActivityMonitor NavigationOptions = getInstrumentation().addMonitor(DestinationActivity.class.getName(), null, false);
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         splashScreen = splashScreenHomeRule.getActivity();
     }
 
@@ -42,7 +42,7 @@ public class HomeScreenTest {
     // tests that the Search Floor Plans button when clicked brings user to HomeActivity.java
     @Test
     public void testLaunchOfSearchFloorPlansButton(){
-        onView(withId(R.id.floorplanButton)).perform(click());
+        onView(withId(R.id.action_map)).perform(click());
         Activity secondActivity = getInstrumentation().waitForMonitorWithTimeout(HomePage, 5000);
         assertNotNull(secondActivity);
         secondActivity.finish();
@@ -51,24 +51,24 @@ public class HomeScreenTest {
     // tests that the Navigate Me Button is displayed on the screen
     @Test
     public void testFloorPlanButtonExists(){
-        Button nmb = splashScreen.findViewById(R.id.NavigateMe);
+        Button nmb = splashScreen.findViewById(R.id.action_map);
         assertNotNull(nmb);
     }
 
     // tests that the Floor Plan Button is displayed on the screen
     @Test
     public void testNavigateMeButtonExists(){
-        Button fpb = splashScreen.findViewById(R.id.floorplanButton);
+        Button fpb = splashScreen.findViewById(R.id.action_navigate);
         assertNotNull(fpb);
 
     }
 
-    // tests that Navigate Me button when clicked brings user to HomeActivity2.java
+    // tests that Navigate Me button when clicked brings user to DestinationActivity.java
     @Test
     public void testLaunchOfNavigateMe(){
-        assertNotNull(splashScreen.findViewById(R.id.NavigateMe));
+        assertNotNull(splashScreen.findViewById(R.id.action_navigate));
 
-        onView(withId(R.id.NavigateMe)).perform(click());
+        onView(withId(R.id.action_navigate)).perform(click());
         Activity thirdActivity = getInstrumentation().waitForMonitorWithTimeout(NavigationOptions, 5000);
         assertNotNull(thirdActivity);
         thirdActivity.finish();
@@ -80,7 +80,7 @@ public class HomeScreenTest {
         TextView tv = splashScreen.findViewById(R.id.textView);
         CharSequence logo = tv.getText();
         CharSequence actual = "Home Page";
-        assertTrue(logo.equals(actual));
+        assertEquals(logo, actual);
     }
 
     // tests that the length of the text is correct
@@ -88,31 +88,12 @@ public class HomeScreenTest {
     public void testTextLength(){
         TextView tv = splashScreen.findViewById(R.id.textView);
         int wordLength = tv.getText().length();
-        assertTrue(wordLength == 9);
+        assertEquals(9, wordLength);
 
-    }
-
-
-    // tests that the text on the Floor Plan button displays "Search Floor Plans"
-    @Test
-    public void FloorPlanButtonText(){
-        Button button = splashScreen.floorplanButton;
-        CharSequence buttonText = button.getText();
-        CharSequence expected = "Search Floor Plans";
-        assertEquals(buttonText, expected);
-    }
-
-    // tests that the text on the Navigate Me button displays "Navigate Me"
-    @Test
-    public void NavigateMeButtonText(){
-        Button button = splashScreen.navigateMe;
-        CharSequence buttonText = button.getText();
-        CharSequence expected = "Navigate Me";
-        assertEquals(buttonText, expected);
     }
 
     @After
-    public void tearDown() throws Exception {
+    public void tearDown() {
         splashScreen = null;
     }
 }

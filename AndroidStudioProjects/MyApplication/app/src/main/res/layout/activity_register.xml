@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Register">
+    tools:context=".RegisterActivity">
 
     <ImageView
         android:id="@+id/Background"
@@ -11,17 +11,7 @@
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
         android:background="@drawable/grad_bg"
-        android:contentDescription="gradient background" />
-
-
-    <!--<ImageView-->
-        <!--android:id="@+id/UBLostLogo"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="80dp"-->
-        <!--android:layout_marginTop="30dp"-->
-        <!--android:scaleType="fitCenter"-->
-        <!--android:src="@drawable/ub_lost_logo"-->
-        <!--android:contentDescription="UBLost Logo" />-->
+        android:contentDescription="@string/gradient_background" />
 
     <ScrollView
         android:id="@+id/scrollView"
@@ -53,7 +43,7 @@
                 android:id="@+id/RegisterTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="40dp"
+                android:layout_marginBottom="20dp"
                 android:paddingStart="10dp"
                 android:paddingEnd="10dp"
                 android:text="@string/register"
@@ -131,7 +121,7 @@
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="15dp"
-                android:layout_marginBottom="15dp"
+                android:layout_marginBottom="10dp"
                 android:backgroundTint="@color/white"
                 android:hint="@string/confirm_password"
                 android:inputType="textPassword"
@@ -150,10 +140,8 @@
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
                 android:button="@drawable/radiobutton"
-                android:paddingLeft="5dp"
+                android:paddingStart="5dp"
                 android:text="@string/terms"
                 android:textColor="@color/white"
                 android:textSize="12sp" />

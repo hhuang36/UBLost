@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/darkenbackground2">
+
+        <ImageView
+            android:id="@+id/profileAvatar"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:src="@drawable/ic_user_profile2" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/profileName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerInParent="true"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/profileStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="147dp"
+                android:layout_below="@+id/profileName"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="20dp"
+                android:text="Student"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <ListView
+                android:layout_marginTop="100dp"
+                android:padding="20dp"
+                android:id="@+id/profile_options_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <!--<ImageView-->
+            <!--android:id="@+id/profileMsgIcon"-->
+            <!--android:layout_width="47dp"-->
+            <!--android:layout_height="47dp"-->
+            <!--android:layout_alignParentStart="true"-->
+            <!--android:layout_alignParentTop="true"-->
+            <!--android:layout_marginStart="114dp"-->
+            <!--android:layout_marginTop="50dp"-->
+            <!--android:layout_marginEnd="20dp"-->
+            <!--android:layout_toStartOf="@+id/profileMessage"-->
+            <!--app:srcCompat="@drawable/ic_menu_share"-->
+            <!--android:tint="@color/colorPrimaryDark"/>-->
+
+            <!--<Button-->
+            <!--android:id="@+id/profileMessage"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignParentTop="true"-->
+            <!--android:layout_alignParentEnd="true"-->
+            <!--android:layout_marginTop="50dp"-->
+            <!--android:layout_marginEnd="137dp"-->
+            <!--android:text="Messages" />-->
+
+            <!--<ImageView-->
+            <!--android:id="@+id/profilePubPathIcon"-->
+            <!--android:layout_width="47dp"-->
+            <!--android:layout_height="47dp"-->
+            <!--android:layout_alignParentStart="true"-->
+            <!--android:layout_alignParentTop="true"-->
+            <!--android:layout_marginStart="114dp"-->
+            <!--android:layout_marginTop="16dp"-->
+            <!--android:layout_marginEnd="20dp"-->
+            <!--android:layout_toStartOf="@+id/profilePubPath"-->
+            <!--app:srcCompat="@drawable/ic_menu_gallery"-->
+            <!--android:tint="@color/colorPrimaryDark"/>-->
+
+            <!--<Button-->
+            <!--android:id="@+id/profilePubPath"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignParentTop="true"-->
+            <!--android:layout_alignParentEnd="true"-->
+            <!--android:layout_marginTop="16dp"-->
+            <!--android:layout_marginEnd="111dp"-->
+            <!--android:text="Public Paths"-->
+            <!--android:tint="@color/colorPrimaryDark"/>-->
+
+            <!--<ImageView-->
+            <!--android:id="@+id/profileSettingsIcon"-->
+            <!--android:layout_width="47dp"-->
+            <!--android:layout_height="47dp"-->
+            <!--android:layout_alignParentStart="true"-->
+            <!--android:layout_alignParentTop="true"-->
+            <!--android:layout_marginStart="114dp"-->
+            <!--android:layout_marginTop="16dp"-->
+            <!--android:layout_marginEnd="20dp"-->
+            <!--android:layout_toStartOf="@+id/profileSettings"-->
+            <!--app:srcCompat="@drawable/ic_menu_manage"-->
+            <!--android:tint="@color/colorPrimaryDark"/>-->
+
+            <!--<Button-->
+            <!--android:id="@+id/profileSettings"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_alignParentTop="true"-->
+            <!--android:layout_alignParentEnd="true"-->
+            <!--android:layout_marginTop="16dp"-->
+            <!--android:layout_marginEnd="138dp"-->
+            <!--android:text="Settings"-->
+            <!--android:tint="@color/colorPrimaryDark"/>-->
+
+            <android.support.design.widget.BottomNavigationView
+                android:id="@+id/bottom_navigation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:layout_alignParentBottom="true"
+                app:itemBackground="@color/colorPrimary"
+                app:itemIconTint="@android:color/white"
+                app:itemTextColor="@android:color/white"
+                app:menu="@menu/bottom_nav_menu" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
